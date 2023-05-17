@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/*COLORES */
+
+$blanco: #fff;
+$negro:#000000;
+$paleta2:#474f59;
+$paleta3: #a6986d;
+$paleta5:#d9c5c1;
+$gradiente: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40));
+$primary:#d9c5c1;
+$dark:#474f59;
+
+/*TIPOGRAFÍA*/
+
+$tipografia: 'Montserrat', sans-serif;
+
+
+/*ANCHOS Y ALTOS*/
+
+$espaciadoPA: 1px;
+$espaciadoH1: 5px;
+$espaciadoH2: 3px;
+
+
+$letraPequeña: 15px;
+$letraMediana: 20px;
+$letraGrandeH2:40px;
+$letraTitulo: 4vmin;
+
+/*BORDES*/
+
+$bordeBlanco: 1px rgb(255, 255, 255) solid;
+$bordeNegro:1px rgb(0, 0, 0) solid;
+$bordePaleta: 1px #171c26 solid ;
+

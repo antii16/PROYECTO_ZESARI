@@ -1,0 +1,22 @@
+{
+    "name": "usuario/proyecto_zesari",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "./",
+            "Controllers\\": "./Controllers",
+            "Models\\": "./Models",
+            "Lib\\": "./Lib",
+            "Utils\\": "./Utils",
+            "Src\\": "./Src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Antonella",
+            "email": "98277771+antii16@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
