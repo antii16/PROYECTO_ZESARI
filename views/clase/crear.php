@@ -4,6 +4,8 @@ use Models\Usuario;
 
 ?>
 
+<div class="crear"> 
+
 <form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
     <p> 
         <label for="titulo">Titulo: </label>
@@ -57,3 +59,5 @@ use Models\Usuario;
 <input type="submit"  name="crear" value="Crear" class="btn btn-success">
         
 </form>
+
+</div>

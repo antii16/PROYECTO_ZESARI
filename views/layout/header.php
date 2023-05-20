@@ -22,27 +22,32 @@
     <title>Zésari</title>
 </head>
 <body>
-    <nav class="nav-menu">
+    <span class="nav-bar" id="btnMenu">
         <div class="logo">
-            <a href="<?=$_ENV['base_url']?>"><img src="<?=$_ENV['base_url']?>src/img/logoZesari.png" alt="Logotipo"></a>
+            <a href="<?=$_ENV['base_url']?>"><img src="<?=$_ENV['base_url']?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
         </div>
+        <i class="fas fa-bars"></i>
+    </span>
+    <nav class="nav-menu">
+        
 
-        <ul class="menu-horizontal">
-            <li><a href="<?=$_ENV['base_url']?>clase/clases">Clases</a></li>
-            <li><a href="<?=$_ENV['base_url']?>usuario/ver">Entrenadores</a></li>
-            <li><a href="<?=$_ENV['base_url']?>home/sobreNosotros">Quiénes somos</a></li>
-            <li><a href="<?=$_ENV['base_url']?>blog/ver">Blog</a></li>
-            <li><a href="<?=$_ENV['base_url']?>home/formulario">Contacto</a></li>
+        <ul class="menu" id="menu">
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>clase/clases">Clases</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/ver">Entrenadores</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>home/sobreNosotros">Quiénes somos</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>blog/ver">Blog</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>home/formulario">Contacto</a></li>
 
             <!-- ADMINISTRADOR -->
             <?php if(isset($_SESSION['admin'])): ?>
-            <li><a href="">Administrador</a>
-                <ul class="menu-vertical">
-                    <li><a href="<?=$_ENV['base_url']?>usuario/registro">Usuarios</a></li>
-                    <li><a href="<?=$_ENV['base_url']?>clase/gestionClase">Clases</a></li>
-                    <li><a href="<?=$_ENV['base_url']?>clase/gestionHorario">Horario</a></li>
-                    <li><a href="<?=$_ENV['base_url']?>blog/gestionBlog">Blogs</a></li>
-                    <li><a href="<?=$_ENV['base_url']?>usuario/logout">Cerrar Sesión</a></li>
+            <li class="menu-item container-submenu">
+                <a href="#" class="menu-link submenu-btn">Administrador <i class="fas fa-chevron-down"></i></a>
+                <ul class="submenu">
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/registro">Usuarios</a></li>
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>clase/gestionClase">Clases</a></li>
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>clase/gestionHorario">Horario</a></li>
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>blog/gestionBlog">Blogs</a></li>
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/logout">Cerrar Sesión</a></li>
                 </ul>
             </li>
             <?php endif; ?>
@@ -73,12 +78,12 @@
             <?php endif; ?>
          </ul>
 
-        <label class="checkbtn">
+        <!-- <label class="checkbtn">
             <i class="fa fa-bars"></i>
-        </label>
+        </label> -->
     </nav>
 
-
+<script src="menu.js"></script>
     
 </body>
 </html>

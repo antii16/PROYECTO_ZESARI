@@ -1,6 +1,12 @@
 <?php use Models\Clase;?>
 <h1>Clases</h1>
 
+
+<div class="crud">
+
+
+<h1>Gestión de Clases</h1>
+
 <form action="">
     <label for="buscar">Buscar</label>
     <input type="text" name="">
@@ -35,10 +41,12 @@
             <td style="text-align: center;"><?=$clase->imagen?></td>
             <td style="text-align: center;"><?=$clase->id_usuario_profesor?></td>
             <td style="text-align: center;">
-                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$cat->id?>">Borrar</a>
-                <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$cat->id?>">Editar</a>
+                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$clase->id?>">Borrar</a>
+                <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$clase->id?>">Editar</a>
             </td>
         </tr>
      <?php endwhile?>
     </tbody>
 </table>
+
+</div>

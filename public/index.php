@@ -8,6 +8,7 @@ use Lib\Pages;
 use Controllers\UsuarioController;
 use Controllers\ClaseController;
 use Controllers\HomeController;
+use Controllers\BlogController;
 
 $pages = new Pages();
 $dotenv = Dotenv::createImmutable(__DIR__);
@@ -43,6 +44,26 @@ Router::add('GET', 'clase/crear', function(){
 
 Router::add('POST', 'clase/crear', function(){
     return (new ClaseController())->save();
+});
+
+
+/*********************************************** */
+/***********************BLOGS***************** */
+
+Router::add('GET', 'blog/blogs', function(){
+    return (new BlogController())->ver();
+});
+
+Router::add('GET', 'blog/gestionBlog', function(){
+    return (new BlogController())->gestion();
+});
+
+Router::add('GET', 'blog/crear', function(){
+    return (new BlogController())->save();
+});
+
+Router::add('POST', 'blog/crear', function(){
+    return (new BlogController())->save();
 });
 
 

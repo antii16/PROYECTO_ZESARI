@@ -6,18 +6,19 @@
 <?php unset($_SESSION['login']);?>
 
 
-<h1>Login</h1>
-<form style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>usuario/login" method="POST" enctype="multipart/form-data">
+<div class="contenedor-login">
+<h1>Iniciar Sesión</h1>
+<form action="<?=$_ENV['base_url']?>usuario/login" method="POST" enctype="multipart/form-data">
     <p>
-        <label for="email">Email:</label>
-        <input type="text" name="data[email]">
+        <input type="text" name="data[email]" placeholder="Correo electrónico" required>
     </p>
     <p>
-        <label for="password">Password:</label>
-        <input type="password" name="data[password]">
+        <input type="password" name="data[password]" placeholder="Contraseña" required>
     </p>
 
     <input type="submit"  value="Login" class="btn btn-primary">
 
 </form>
+
+<div>
 

@@ -1,0 +1,99 @@
+
+.contenedor-blogs {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+
+    .swiper {
+        width: 90%; //igual margen a los productos
+        height: 390px;
+
+
+        .swiper-slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            font-size: 18px;
+            background: $blanco;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            background-color: $blanco;
+            background-color: rgba(255, 255, 255, 0.5);
+            right: 10px;
+            padding: 30px;
+            color: $negro !important;
+            fill: $negro!important;
+            stroke: $negro !important;
+        }
+    }
+
+
+    figure {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 2px;
+        box-shadow: 0px 5px 10px;
+        cursor: pointer;
+
+
+        img {
+            width: 100%;
+            height: 100%;
+            transition: all 500ms ease-out;
+        }
+
+        .texto {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 103, 123, 0.7);
+            transition: all 500ms ease-out;
+            opacity: 0;
+            visibility: hidden;
+            text-align: center;
+
+            h3 {
+                color: $blanco;
+                font-weight: 400;
+                transition: all 500ms ease-out;
+                /* margin-top: 30px;*/
+                margin-bottom: 120px;
+
+            }
+
+            a {
+                color: #fff;
+                line-height: 1.5;
+                width: 100%;
+                max-width: 220px;
+                margin: auto;
+                text-decoration: none;
+            }
+
+
+        }
+
+
+    }
+
+    figure:hover>.texto {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    figure:hover>.texto h3 {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+
+}

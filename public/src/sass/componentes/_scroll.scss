@@ -1,0 +1,14 @@
+.imagen_scroll {
+    margin-top: 100px;
+    background-image: url(../img/fondoScroll.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 20em;
+
+    @include ordenador-4k(ordenador-4k) {
+        height: 500px;
+
+    }
+
+}
