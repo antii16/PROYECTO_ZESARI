@@ -17,9 +17,11 @@ use Models\Blog;
 
 <main>
 
-    <h2>¿Por qué elegir Zésari?</h2>
+<section>
+<h2>¿Por qué elegir Zésari?</h2>
+    <h3>Estas son algunas de nuestras razones</h3>
 
-    <section class="principios">
+    <div class="principios">
         <div class="caja">
             <div class="image">
                 <picture>
@@ -32,7 +34,7 @@ use Models\Blog;
             </div>
         
             <div class="contenido">
-                <h3>Pasión por el pilates</h3>
+                <h4>Pasión por el pilates</h4>
                 <p>En Zesari intentamos trasmitir la pasión del pilates en ti.</p>
             </div>
         </div>
@@ -49,7 +51,7 @@ use Models\Blog;
             </div>
         
             <div class="contenido">
-                <h3>Ambiente único y exclusivo</h3>
+                <h4>Ambiente único y exclusivo</h4>
                 <p>Nuestro centro cuenta con un lugar excelente para practicar cualquier ejercicio.</p>
             </div>
         </div>
@@ -65,7 +67,7 @@ use Models\Blog;
             </div>
         
             <div class="contenido">
-                <h3>Gran equipo y magníficas instalaciones</h3>
+                <h4>Gran equipo y magníficas instalaciones</h4>
                 <p>Grandes profesionales y las instalaciones muy amplias luminoso un lugar que invita al bienestar.</p>
             </div>
         </div>
@@ -81,97 +83,132 @@ use Models\Blog;
             </div>
         
             <div class="contenido">
-                <h3>Clases adaptadas a ti</h3>
+                <h4>Clases adaptadas a ti</h4>
                 <p>Nuestros centro procura ofrecerte la clase que más se adapte a ti.</p>
             </div>
         </div>
-    </section>
+</div>
 
-    <h2>Nuestras clases</h2>
-    <section class="clases">
-        
+</section>
 
+    <!-------------CLASES-------------------------->
+<section>
+
+<h2>Nuestras clases</h2>
+    <h3>Estas son nuestras clases disponibles</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+    
         <?php $clases = Clase::obtenerClases(); ?>
         <?php while($clase = $clases->fetch(PDO::FETCH_OBJ)):?>
-        <div class="clase">
-            <div class="image">
+        <div class="col">
+            <div class="card">
                 <picture>
-
-                <img src="<?=$_ENV['base_url']?>/src/img/<?=$clase->imagen?>" alt="Card image cap">
+                <img class="card-img-top" src="<?=$_ENV['base_url']?>/src/img/<?=$clase->imagen?>" alt="Card image cap">
                 </picture>
 
             </div>
             
-            <div class="contenido">
+            <div class="card-body">
 
-                <h5><?=$clase->titulo?></h5>
-                <p><?=$clase->descripcion?></p>
+                <h5 class="card-title"><?=$clase->titulo?></h5>
+                <p class= "card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
                 <a href="#">Saber más</a>
             </div>
         </div>
     <?php endwhile?>
-    </section>
+        </div>
+
+</section>
+
+    
 
      <!--IMAGEN SCROLL-->
 
      <div class="imagen_scroll"></div>
 
+
+       <!--EQUIPO-->
+
+     <section>
+
      <h2>Nuestro equipo</h2>
      <h3>Siempre dispuesto a ayudarte</h3>
 
-     <section class="equipo">
+     <div class="row row-cols-1 row-cols-md-4 g-4">
 
      <?php $equipo = Usuario::obtenerProfesor(); ?>
         <?php while($empleado = $equipo->fetch(PDO::FETCH_OBJ)):?>
-        <div class="">
-            <div class="">
+        <div class="col">
+            <div class="card">
                 <picture>
 
-                <img src="<?=$_ENV['base_url']?>/src/img/<?=$empleado->imagen?>" alt="Card image cap">
+                <img class="card-img-top" src="<?=$_ENV['base_url']?>/src/img/<?=$empleado->imagen?>" alt="Card image cap">
                 </picture>
 
             </div>
             
-            <div class="">
+            <div class="card-body">
 
-                <h5><?=$empleado->nombre?><?=$empleado->apellidos?></h5>
-                <p>Descripcion del empleado</p>
+                <h5 class="card-title"><?=$empleado->nombre?><?=$empleado->apellidos?></h5>
+                <p class="card-text">Descripcion del empleado</p>
                 <a href="#">Ver Ficha</a>
             </div>
         </div>
     <?php endwhile?>
 
+        </div>
+
      </section>
 
+     <!--BLOGS--> 
 
-     <h2>últimas noticias</h2>
+     <section>
+
+     <h2>Últimas noticias</h2>
      <h3>Descubre las últimas noticias de nuestro centro</h3>
 
 
-     <section class="blogs">
+     <!-- <div class="contenedor-blogs">
 
-<?php $blogs = Blog::obtenerBlogs(); ?>
-   <?php while($blog = $blogs->fetch(PDO::FETCH_OBJ)):?>
-   <div class="">
-       <div class="">
+     <div class="swiper-contenedor-blogs mySwiper">
+        <div class="swiper-wrapper"> -->
+
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+
+<?php $equipo = Blog::ObtenerBlogs(); ?>
+   <?php while($empleado = $equipo->fetch(PDO::FETCH_OBJ)):?>
+   <div class="col">
+       <div class="card">
            <picture>
 
-           <img src="<?=$_ENV['base_url']?>/src/img/<?=$blog->imagen?>" alt="Card image cap">
+           <img class="card-img-top" src="<?=$_ENV['base_url']?>/src/img/<?=$empleado->imagen?>" alt="Card image cap">
            </picture>
 
        </div>
        
-       <div class="">
+       <div class="card-body">
 
-           <h5><?=$blog->titulo?></h5>
-           <p><?=$blog->descripcion?></p>
-           <a href="#">Ver Noticia</a>
+           <h5 class="card-title"><?=$empleado->titulo?></h5>
+           <p class="card-text">Descripcion del blog</p>
+           <a href="#">Ver Ficha</a>
        </div>
    </div>
 <?php endwhile?>
 
-</section>
+   </div>
 
+
+        <!-- </div>
+        <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+     </div>
+
+   </div> -->
+
+     </section>
 
 </main>
+
+
 

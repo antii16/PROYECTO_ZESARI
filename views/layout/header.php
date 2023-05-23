@@ -22,21 +22,27 @@
     <title>Zésari</title>
 </head>
 <body>
-    <span class="nav-bar" id="btnMenu">
-        <div class="logo">
-            <a href="<?=$_ENV['base_url']?>"><img src="<?=$_ENV['base_url']?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
-        </div>
-        <i class="fas fa-bars"></i>
-    </span>
-    <nav class="nav-menu">
-        
+
+
+<span class="nav-bar" id="btnMenu">
+    <li class="fas fa-bars">
+    </li>
+    
+</span>
+   
+<div class="logo">
+    <a href="<?=$_ENV['base_url']?>"><img src="<?=$_ENV['base_url']?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
+    </div>
+
+    <nav class="main-nav">
 
         <ul class="menu" id="menu">
+            
             <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>clase/clases">Clases</a></li>
             <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/ver">Entrenadores</a></li>
-            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>home/sobreNosotros">Quiénes somos</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>navegacion/sobreNosotros">Quiénes somos</a></li>
             <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>blog/ver">Blog</a></li>
-            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>home/formulario">Contacto</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>navegacion/formulario">Contacto</a></li>
 
             <!-- ADMINISTRADOR -->
             <?php if(isset($_SESSION['admin'])): ?>
@@ -54,36 +60,39 @@
 
             <!-- EMPLEADO -->
             <?php if(isset($_SESSION['empleado'])): ?>
-            <li><a href="">Empleado</a>
-                <ul class="menu-vertical">
-                    <li><a href="<?=$_ENV['base_url']?>usuario/registro">Gestión de usuarios</a></li>
-                    <li><a href="crear">Clientes</a></li>
+            <li class="menu-item container-submenu"><a href="">Empleado</a>
+                <ul class="submenu">
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/registro">Gestión de usuarios</a></li>
+                    <li class="menu-item"><a class="menu-link" href="crear">Clientes</a></li>
                 </ul>
             </li>
             <?php endif; ?>
 
             <!-- CLIENTE -->
             <?php if(isset($_SESSION['cliente'])): ?>
-            <li><a href="">Cliente</a>
-                <ul class="menu-vertical">
-                    <li><a href="<?=$_ENV['base_url']?>usuario/registro">Gestión de usuarios</a></li>
-                    <li><a href="crear">Clientes</a></li>
+            <li class="menu-item container-submenu"><a href="">Cliente</a>
+                <ul class="submenu">
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/registro">Gestión de usuarios</a></li>
+                    <li class="menu-item"><a class="menu-link" href="crear">Clientes</a></li>
                 </ul>
             </li>
             <?php endif; ?>
 
             <!-- LOGIN -->
             <?php if( !isset($_SESSION['identity'])): ?>
-            <li><a href="<?=$_ENV['base_url']?>usuario/login">Login</a></li>
+            <li class="menu-item"><a href="<?=$_ENV['base_url']?>usuario/login">Login</a></li>
             <?php endif; ?>
          </ul>
 
-        <!-- <label class="checkbtn">
-            <i class="fa fa-bars"></i>
-        </label> -->
+        
     </nav>
 
-<script src="menu.js"></script>
-    
+</div>
+   
+<script src="<?=$_ENV['base_url']?>src/js/menu.js"></script>
+
+    <!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="<?=$_ENV['base_url']?>src/js/carrousel.js"></script>
 </body>
 </html>

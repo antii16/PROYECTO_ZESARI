@@ -21,10 +21,7 @@ Router::add('GET', '/', function(){
     
 });
 
-// CONTACTO
-Router::add('GET', 'contacto/formulario', function(){
-    return (new HomeController())->contacto();
-});
+
 
 
 /*********************************************** */
@@ -86,6 +83,12 @@ Router::add('POST', 'usuario/login', function(){
     return (new UsuarioController())->login();
 });
 
+
+/***********************NAVEGACION *******************/
+/*************************************************** */
+Router::add('GET', 'navegacion/formulario', function(){
+    return (new HomeController())->contacto();
+});
 
 
 Router::dispatch();

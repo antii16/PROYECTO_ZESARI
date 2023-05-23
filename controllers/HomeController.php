@@ -28,7 +28,7 @@ class HomeController{
          * en el main 
          */
         
-        $this->pages->render('contacto/formulario');
+        $this->pages->render('navegacion/contacto');
     }
 
 }

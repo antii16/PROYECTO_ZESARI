@@ -1,15 +1,14 @@
 
 .inicio {
     height: 50vh;
-    // background-color: #321c3d;
-    background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/IMG-20230514-WA0019.jpg);
+    background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
     background-position: bottom;
     background-size: cover;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    // margin-top: 100px;
+    margin-top: 0;
 
     @include movil-max(movil-max) {
         height: 120vh;
@@ -21,7 +20,6 @@
     @include ordenador-4k(ordenador-4k) {
         height: 70vh;
     }
-
     .header-contenido {
         color: $blanco;
         text-align: center;
@@ -71,3 +69,50 @@
         }
     }   
 }
+
+
+.secundario {
+    background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
+    @include ordenador-4k(ordenador-4k) {
+        background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
+    }
+
+    margin-top: 95px;
+    height: 50vh;
+    background-position: bottom;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include ordenador-4k(ordenador-4k) {
+        height: 500px;
+    }
+
+    .titulo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h1 {
+            font-size:$letraTitulo;
+            letter-spacing: $espaciadoH1;
+            padding: 10px;
+            font-style: italic;
+            color: $blanco;
+            text-transform: uppercase;
+            word-spacing: 0.25em;
+        }
+
+        p{
+            color: $blanco;
+            letter-spacing: $espaciadoPA;
+        }
+    }
+    
+
+    
+}
+

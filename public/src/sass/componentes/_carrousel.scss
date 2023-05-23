@@ -61,7 +61,7 @@
             visibility: hidden;
             text-align: center;
 
-            h3 {
+            h5 {
                 color: $blanco;
                 font-weight: 400;
                 transition: all 500ms ease-out;
@@ -70,7 +70,7 @@
 
             }
 
-            a {
+            p {
                 color: #fff;
                 line-height: 1.5;
                 width: 100%;
@@ -90,7 +90,7 @@
         visibility: visible;
     }
 
-    figure:hover>.texto h3 {
+    figure:hover>.texto h5 {
         margin-top: 10px;
         margin-bottom: 15px;
     }

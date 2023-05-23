@@ -27,56 +27,105 @@ body {
   }
 }
 
+.logo {
+  width: 100px;
+  display: inline-block;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: -60px;
+}
+.logo img {
+  width: 100%;
+}
+
 .nav-bar {
   background-color: #321c3d;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   color: #fff;
+  display: block;
+  padding: 20px;
   cursor: pointer;
   font-size: 1.5em;
   width: 100%;
 }
-.nav-bar .logo {
-  width: 150px;
-}
-.nav-bar .logo img {
-  width: 100%;
+
+.menu, .submenu {
+  padding: 0;
+  margin: 0;
 }
 
 .menu {
   background-color: #321c3d;
   width: 100%;
-  padding: 0;
-  margin: 0;
   margin-left: -100%;
+  position: absolute;
 }
 .menu .menu-link {
   display: block;
-  padding: 30px;
+  padding: 10px;
   color: #fff;
-  font-size: 1.2em;
+  font: 1.2em;
 }
-.menu .submenu {
-  height: 0;
+
+.submenu {
+  height: 100vh;
   overflow: hidden;
   transition: all 0.3s;
 }
-.menu .submenu .menu-link {
-  background-color: #1d0e24;
+.submenu .menu-link {
+  background-color: #1c1022;
   padding-left: 40px;
 }
 
+.menu-link:hover {
+  color: grey;
+}
+
+.mostrar {
+  margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .nav-bar {
+    display: none;
+  }
+  .logo {
+    margin-top: 10px;
+    z-index: 10000;
+  }
+  .menu {
+    margin-left: 0;
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content: flex-end;
+  }
+  .container-submenu {
+    position: relative;
+  }
+  .submenu {
+    position: absolute;
+    top: 60px;
+    width: 200px;
+    overflow: visible;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .container-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 .inicio {
   height: 50vh;
-  background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/IMG-20230514-WA0019.jpg);
+  background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
   background-position: bottom;
   background-size: cover;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0;
   /*Es la resolución maxima para un movil */
   /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
   /*Resolución para resoluciones superiores a 2000px*/
@@ -100,7 +149,8 @@ body {
   color: #fff;
   text-align: center;
   width: 50%;
-  margin-top: 100px; /*Es la resolución maxima para un movil */
+  margin-top: 100px;
+  /*Es la resolución maxima para un movil */
 }
 @media only screen and (max-width: 767px) {
   .inicio .header-contenido {
@@ -151,49 +201,112 @@ body {
   }
 }
 
+.secundario {
+  background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
+  /*Resolución para resoluciones superiores a 2000px*/
+  margin-top: 95px;
+  height: 50vh;
+  background-position: bottom;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*Resolución para resoluciones superiores a 2000px*/
+}
+@media only screen and (min-width: 2000px) {
+  .secundario {
+    background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
+  }
+}
+@media only screen and (min-width: 2000px) {
+  .secundario {
+    height: 500px;
+  }
+}
+.secundario .titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.secundario .titulo h1 {
+  font-size: 4vmin;
+  letter-spacing: 5px;
+  padding: 10px;
+  font-style: italic;
+  color: #fff;
+  text-transform: uppercase;
+  word-spacing: 0.25em;
+}
+.secundario .titulo p {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
 .pie {
-  background-color: #000000;
-  height: 250px;
+  background-color: #321c3d;
+  width: 100%;
+  height: 350px;
   color: #fff;
   display: flex;
   justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 50px;
   /*Es la resolución maxima para un movil */
+}
+.pie a {
+  color: #fff;
 }
 @media only screen and (max-width: 767px) {
   .pie {
+    margin-top: 1100px;
     flex-direction: column;
-    height: 1000px;
+    height: 700px;
   }
 }
-.pie h1 {
-  letter-spacing: 5px;
-}
-.pie ul {
-  padding: 15px;
+.pie .cajaArriba {
   display: flex;
-  flex-direction: column;
-}
-.pie ul li {
-  line-height: 25px;
-}
-.pie ul li a {
-  color: #fff;
-}
-.pie #redes {
-  /*Es la resolución maxima para un movil */
-}
-.pie #redes ul {
-  color: #fff;
-  justify-content: space-evenly;
   flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px; /*Es la resolución maxima para un movil */
+}
+.pie .cajaArriba li {
+  padding: 5px;
+}
+.pie .cajaArriba #logoFooter {
+  width: 50px;
+}
+.pie .cajaArriba #logoFooter img {
+  width: 100%;
 }
 @media only screen and (max-width: 767px) {
-  .pie #redes {
-    /*El contenedor de redes pasa a primer lugar*/
-    order: -1;
+  .pie .cajaArriba {
+    margin-top: 100px;
+    flex-direction: column;
   }
+}
+.pie .cajaAbajo {
+  width: 60%;
+  margin-top: 30px;
+}
+.pie .cajaAbajo #redes ul {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+.pie .cajaAbajo #redes ul li {
+  padding: 20px;
+}
+.pie .cajaAbajo #redes ul a {
+  font-size: 30px;
 }
 
 main {
@@ -207,40 +320,52 @@ main {
 }
 main section {
   margin: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-main .principios {
+main section h2 {
+  color: #D96704;
+  font-size: 40px;
+}
+main section h3 {
+  margin-bottom: 50px;
+}
+main section .principios {
   display: flex;
   padding: 10px;
 }
-main .principios .caja {
+main section .principios .caja {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   margin: 20px;
   background-color: #fff;
-  cursor: default;
-  border: 1px rgb(0, 0, 0) solid;
   padding: 5px;
 }
-main .principios .caja .image {
+main section .principios .caja .image {
   height: 100px;
 }
-main .principios .caja .image picture {
+main section .principios .caja .image picture {
   display: flex;
   justify-content: center;
   border-color: 1px rgb(0, 0, 0) solid;
 }
-main .principios .caja .image picture img {
+main section .principios .caja .image picture img {
   width: 30%;
   border-radius: 10px;
 }
-main .principios .caja .contenido {
+main section .principios .caja .contenido {
   text-align: center;
   padding: 15px;
   height: 200px;
 }
-main .principios .caja .contenido p {
+main section .principios .caja .contenido h4 {
+  color: #D96704;
+}
+main section .principios .caja .contenido p {
   padding: 10px;
 }
 main .clases {
@@ -274,6 +399,85 @@ main .clases .clase .contenido p {
   letter-spacing: 1px;
 }
 
+.contenedor-blogs {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+.contenedor-blogs .swiper {
+  width: 90%;
+  height: 390px;
+}
+.contenedor-blogs .swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor-blogs .swiper .swiper-button-next,
+.contenedor-blogs .swiper .swiper-button-prev {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  right: 10px;
+  padding: 30px;
+  color: #000000 !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+}
+.contenedor-blogs figure {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0px 5px 10px;
+  cursor: pointer;
+}
+.contenedor-blogs figure img {
+  width: 100%;
+  height: 100%;
+  transition: all 500ms ease-out;
+}
+.contenedor-blogs figure .texto {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 103, 123, 0.7);
+  transition: all 500ms ease-out;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+}
+.contenedor-blogs figure .texto h5 {
+  color: #fff;
+  font-weight: 400;
+  transition: all 500ms ease-out;
+  /* margin-top: 30px;*/
+  margin-bottom: 120px;
+}
+.contenedor-blogs figure .texto p {
+  color: #fff;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 220px;
+  margin: auto;
+  text-decoration: none;
+}
+.contenedor-blogs figure:hover > .texto {
+  opacity: 1;
+  visibility: visible;
+}
+.contenedor-blogs figure:hover > .texto h5 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
 .imagen_scroll {
   margin-top: 100px;
   background-image: url(../img/fondoScroll.jpg);
@@ -299,6 +503,96 @@ main .clases .clase .contenido p {
   margin: 200px auto;
   border: 1px rgb(0, 0, 0) solid;
   border-radius: 10%;
+}
+
+/*MAIN del apartado Escríbenos*/
+.formContacto {
+  margin-top: 50px;
+  width: 100%;
+}
+.formContacto h2 {
+  text-align: center;
+  letter-spacing: 3px;
+  color: #474f59;
+  padding: 20px;
+}
+.formContacto .contacto {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 90%;
+  /*Es la resolución maxima para un movil */
+}
+@media only screen and (max-width: 767px) {
+  .formContacto .contacto {
+    flex-direction: column;
+    height: 1000px;
+  }
+}
+.formContacto .contacto #mensaje form {
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #d9c5c1;
+}
+.formContacto .contacto #mensaje form input[type=text],
+.formContacto .contacto #mensaje form input[type=email] {
+  width: 180px;
+  padding: 3px 10px;
+  border: 1px rgb(255, 255, 255) solid;
+  border-radius: 3px;
+  background-color: #fff;
+  margin: 8px 10px;
+  display: inline-block;
+}
+.formContacto .contacto #mensaje form button {
+  width: 100%;
+  padding: 10px 16px;
+  margin-top: 32px;
+  border: 1px rgb(0, 0, 0) solid;
+  border-radius: 5px;
+  display: block;
+  color: #fff;
+  background-color: #000000;
+}
+.formContacto .contacto #mensaje form button:hover {
+  cursor: pointer;
+}
+.formContacto .contacto #mensaje form textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px rgb(255, 255, 255) solid;
+  border-radius: 3px;
+  background-color: #fff;
+  margin: 8px 0;
+  resize: none;
+  display: block;
+}
+.formContacto .contacto #mensaje p {
+  margin: 30px;
+}
+.formContacto .contacto #datos {
+  text-align: center;
+  border: 1px rgb(0, 0, 0) solid;
+  height: 300px;
+  padding: 30px;
+  margin: 20px;
+}
+.formContacto .contacto #datos li {
+  margin: 30px;
+}
+.formContacto .map-container {
+  overflow: hidden;
+  padding-bottom: 10%;
+  position: relative;
+  height: 0;
+  margin-top: 50px;
+}
+.formContacto .map-container iframe {
+  left: 0;
+  top: 0;
+  height: 70%;
+  width: 100%;
+  position: absolute;
 }
 
 .crud {
