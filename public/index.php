@@ -21,14 +21,11 @@ Router::add('GET', '/', function(){
     
 });
 
-
-
-
 /*********************************************** */
 /***********************CLASES***************** */
 
 Router::add('GET', 'clase/clases', function(){
-    return (new ClaseController())->ver();
+    return (new ClaseController())->mostrarClases();
 });
 
 Router::add('GET', 'clase/gestionClase', function(){
@@ -48,7 +45,7 @@ Router::add('POST', 'clase/crear', function(){
 /***********************BLOGS***************** */
 
 Router::add('GET', 'blog/blogs', function(){
-    return (new BlogController())->ver();
+    return (new BlogController())->mostrarBlog();
 });
 
 Router::add('GET', 'blog/gestionBlog', function(){
@@ -62,6 +59,8 @@ Router::add('GET', 'blog/crear', function(){
 Router::add('POST', 'blog/crear', function(){
     return (new BlogController())->save();
 });
+
+
 
 
 /*********************************************** */
@@ -83,6 +82,10 @@ Router::add('POST', 'usuario/login', function(){
     return (new UsuarioController())->login();
 });
 
+Router::add('GET', 'usuario/equipo', function(){
+    return (new UsuarioController())->mostrarEquipo();
+});
+
 
 /***********************NAVEGACION *******************/
 /*************************************************** */
@@ -90,5 +93,8 @@ Router::add('GET', 'navegacion/formulario', function(){
     return (new HomeController())->contacto();
 });
 
+Router::add('GET', 'navegacion/sobreNosotros', function(){
+    return (new HomeController())->sobreNosotros();
+});
 
 Router::dispatch();

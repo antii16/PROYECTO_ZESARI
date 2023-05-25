@@ -2,12 +2,18 @@
 
 main {
 
+    width: 100%;
+
+    .main-contenido {
+        margin: 100px;
+    }
+
         @include movil-max(movil-max) {
             flex-direction: column;
             height: 490px;
         }
         section {
-            margin: 100px;
+            // margin: 100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -145,6 +151,7 @@ main {
         }   
     }
 
+    
     
 
 }

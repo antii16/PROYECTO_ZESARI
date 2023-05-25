@@ -28,7 +28,16 @@ class HomeController{
          * en el main 
          */
         
-        $this->pages->render('navegacion/contacto');
+        $this->pages->render('navegacion/nav-contacto');
+    }
+
+    public function sobreNosotros() {
+        /**
+         * Muestra todas las peliculas en de la base de datos 
+         * en el main 
+         */
+        
+        $this->pages->render('navegacion/nav-sobreNosotros');
     }
 
 }

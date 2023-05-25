@@ -35,14 +35,14 @@ class ClaseController{
         
     // }
 
-    public function ver() {
+    public function mostrarClases() {
         /**
          * Redirige a la vista ver
          * Obtiene los datos de la pelicula que se ha seleccionado
          * y los muestra, para luego comprarla 
          */
         
-         $this->pages->render('clase/clases');
+         $this->pages->render('clase/nav-clases');
         
     }
 

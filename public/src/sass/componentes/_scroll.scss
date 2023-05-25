@@ -12,3 +12,16 @@
     }
 
 }
+
+.imagen_scroll_sobreNosotros {
+    margin-top: 100px;
+    background-image: url(http://localhost/PROYECTO_ZESARI/public/src/img/pilates.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20em;
+
+    @include ordenador-4k(ordenador-4k) {
+        height: 500px;
+
+    }
+}

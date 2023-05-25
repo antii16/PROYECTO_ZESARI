@@ -65,9 +65,15 @@ body {
   color: #fff;
   font: 1.2em;
 }
+.menu .login {
+  background-color: #fff;
+  color: #1c1022;
+  width: 100px;
+  margin: 5px;
+  text-align: center;
+}
 
 .submenu {
-  height: 100vh;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -117,8 +123,8 @@ body {
   }
 }
 .inicio {
-  height: 50vh;
-  background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
+  height: 100vh;
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.5)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoInicio.jpg);
   background-position: bottom;
   background-size: cover;
   width: 100%;
@@ -126,24 +132,6 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 0;
-  /*Es la resolución maxima para un movil */
-  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
-  /*Resolución para resoluciones superiores a 2000px*/
-}
-@media only screen and (max-width: 767px) {
-  .inicio {
-    height: 120vh;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1440px) {
-  .inicio {
-    height: 100vh;
-  }
-}
-@media only screen and (min-width: 2000px) {
-  .inicio {
-    height: 70vh;
-  }
 }
 .inicio .header-contenido {
   color: #fff;
@@ -184,6 +172,7 @@ body {
 }
 .inicio .header-contenido a {
   color: #fff;
+  background-color: aqua;
   letter-spacing: 1px;
   border: 1px rgb(255, 255, 255) solid;
   padding: 10px;
@@ -201,36 +190,31 @@ body {
   }
 }
 
-.secundario {
-  background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
-  /*Resolución para resoluciones superiores a 2000px*/
-  margin-top: 95px;
-  height: 50vh;
+/*HEADERS NAVEGACION*/
+.nav-clases {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+  margin-top: 0px;
+  height: 100vh;
   background-position: bottom;
   background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  background-position: center;
   /*Resolución para resoluciones superiores a 2000px*/
 }
 @media only screen and (min-width: 2000px) {
-  .secundario {
-    background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
-  }
-}
-@media only screen and (min-width: 2000px) {
-  .secundario {
+  .nav-clases {
     height: 500px;
   }
 }
-.secundario .titulo {
+.nav-clases .titulo {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.secundario .titulo h1 {
+.nav-clases .titulo h1 {
   font-size: 4vmin;
   letter-spacing: 5px;
   padding: 10px;
@@ -239,7 +223,155 @@ body {
   text-transform: uppercase;
   word-spacing: 0.25em;
 }
-.secundario .titulo p {
+.nav-clases .titulo p {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.nav-equipo {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoEquipo.jpg);
+  margin-top: 0px;
+  height: 100vh;
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: flex;
+  background-position: center;
+  /*Resolución para resoluciones superiores a 2000px*/
+}
+@media only screen and (min-width: 2000px) {
+  .nav-equipo {
+    height: 500px;
+  }
+}
+.nav-equipo .titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.nav-equipo .titulo h1 {
+  font-size: 4vmin;
+  letter-spacing: 5px;
+  padding: 10px;
+  font-style: italic;
+  color: #fff;
+  text-transform: uppercase;
+  word-spacing: 0.25em;
+}
+.nav-equipo .titulo p {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.imagen-fondo {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoSobreNosotros.jpg);
+  margin-top: 0px;
+  height: 100vh;
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: flex;
+  background-position: center;
+  /*Resolución para resoluciones superiores a 2000px*/
+}
+@media only screen and (min-width: 2000px) {
+  .imagen-fondo {
+    height: 500px;
+  }
+}
+.imagen-fondo .titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.imagen-fondo .titulo h1 {
+  font-size: 4vmin;
+  letter-spacing: 5px;
+  padding: 10px;
+  font-style: italic;
+  color: #fff;
+  text-transform: uppercase;
+  word-spacing: 0.25em;
+}
+.imagen-fondo .titulo p {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.nav-blog {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoBlog.jpg);
+  margin-top: 0px;
+  height: 100vh;
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: flex;
+  background-position: center;
+  /*Resolución para resoluciones superiores a 2000px*/
+}
+@media only screen and (min-width: 2000px) {
+  .nav-blog {
+    height: 500px;
+  }
+}
+.nav-blog .titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.nav-blog .titulo h1 {
+  font-size: 4vmin;
+  letter-spacing: 5px;
+  padding: 10px;
+  font-style: italic;
+  color: #fff;
+  text-transform: uppercase;
+  word-spacing: 0.25em;
+}
+.nav-blog .titulo p {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.nav-contacto {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoContacto.jpg);
+  margin-top: 0px;
+  height: 100vh;
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: flex;
+  background-position: center;
+  /*Resolución para resoluciones superiores a 2000px*/
+}
+@media only screen and (min-width: 2000px) {
+  .nav-contacto {
+    height: 500px;
+  }
+}
+.nav-contacto .titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.nav-contacto .titulo h1 {
+  font-size: 4vmin;
+  letter-spacing: 5px;
+  padding: 10px;
+  font-style: italic;
+  color: #fff;
+  text-transform: uppercase;
+  word-spacing: 0.25em;
+}
+.nav-contacto .titulo p {
   color: #fff;
   letter-spacing: 1px;
 }
@@ -310,7 +442,11 @@ body {
 }
 
 main {
+  width: 100%;
   /*Es la resolución maxima para un movil */
+}
+main .main-contenido {
+  margin: 100px;
 }
 @media only screen and (max-width: 767px) {
   main {
@@ -319,7 +455,6 @@ main {
   }
 }
 main section {
-  margin: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -493,6 +628,20 @@ main .clases .clase .contenido p {
   }
 }
 
+.imagen_scroll_sobreNosotros {
+  margin-top: 100px;
+  background-image: url(http://localhost/PROYECTO_ZESARI/public/src/img/pilates.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20em;
+  /*Resolución para resoluciones superiores a 2000px*/
+}
+@media only screen and (min-width: 2000px) {
+  .imagen_scroll_sobreNosotros {
+    height: 500px;
+  }
+}
+
 .contenedor-login {
   width: 500px;
   display: flex;
@@ -601,4 +750,36 @@ main .clases .clase .contenido p {
 
 .crear {
   margin: 200px auto;
+}
+
+#sobreNosotros {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#sobreNosotros h1 {
+  color: #D96704;
+  font-size: 40px;
+}
+#sobreNosotros .caja {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#sobreNosotros .caja .texto {
+  width: 50%;
+  padding: 20px;
+}
+#sobreNosotros .caja .texto p {
+  line-height: 1.5;
+}
+#sobreNosotros .caja .imagen {
+  width: 50%;
+  padding: 20px;
+}
+#sobreNosotros .caja .imagen img {
+  width: 100%;
 }/*# sourceMappingURL=estilo.css.map */

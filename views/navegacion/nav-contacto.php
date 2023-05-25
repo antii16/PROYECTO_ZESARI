@@ -1,7 +1,7 @@
 
 
     <!--HEADER-->
-    <header class="secundario">
+    <header class="nav-contacto">
         <div class="titulo">
             <h1>Contacto</h1> 
         </div>

@@ -17,8 +17,6 @@
     cursor: pointer;
     font-size: 1.5em;
     width: 100%;
-
-   
 }
 
 .menu , .submenu {
@@ -31,19 +29,35 @@
     width: 100%;
     margin-left: -100%;
     position: absolute;
+    // height: 100vh;
+
+    // .menu-item {
+    //     display: flex;
+    //     align-items: center;
+    // }
 
     .menu-link {
         display: block;
         padding: 10px;
         color: #fff;
         font: 1.2em;
+        
 
+       
+    }
 
+    .login {
+        background-color: #fff;
+        color: #1c1022;
+        width: 100px;
+        margin: 5px;
+        text-align: center;
+        
     }
 }
 
 .submenu {
-    height: 100vh;
+    // height: 100vh;
     overflow: hidden;
     transition: all 0.3s;
     .menu-link {
@@ -77,6 +91,7 @@
         width: 100%;
         padding: 20px;
         justify-content: flex-end;
+       
     }
 
     .container-submenu {

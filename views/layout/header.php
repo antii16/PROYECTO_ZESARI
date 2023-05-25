@@ -23,7 +23,7 @@
 </head>
 <body>
 
-
+<header>
 <span class="nav-bar" id="btnMenu">
     <li class="fas fa-bars">
     </li>
@@ -39,9 +39,9 @@
         <ul class="menu" id="menu">
             
             <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>clase/clases">Clases</a></li>
-            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/ver">Entrenadores</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/equipo">Equipo</a></li>
             <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>navegacion/sobreNosotros">Quiénes somos</a></li>
-            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>blog/ver">Blog</a></li>
+            <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>blog/blogs">Blog</a></li>
             <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>navegacion/formulario">Contacto</a></li>
 
             <!-- ADMINISTRADOR -->
@@ -80,7 +80,7 @@
 
             <!-- LOGIN -->
             <?php if( !isset($_SESSION['identity'])): ?>
-            <li class="menu-item"><a href="<?=$_ENV['base_url']?>usuario/login">Login</a></li>
+            <li class="menu-item"><a class="menu-link login" href="<?=$_ENV['base_url']?>usuario/login">Login</a></li>
             <?php endif; ?>
          </ul>
 
@@ -89,6 +89,7 @@
 
 </div>
    
+            </header>
 <script src="<?=$_ENV['base_url']?>src/js/menu.js"></script>
 
     <!-- Swiper JS -->

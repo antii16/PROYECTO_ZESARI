@@ -1,7 +1,7 @@
 
 .inicio {
-    height: 50vh;
-    background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
+    height: 100vh;
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.50)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoInicio.jpg);
     background-position: bottom;
     background-size: cover;
     width: 100%;
@@ -10,16 +10,16 @@
     align-items: center;
     margin-top: 0;
 
-    @include movil-max(movil-max) {
-        height: 120vh;
-    }
+    // @include movil-max(movil-max) {
+    //     height: 120vh;
+    // }
 
-    @include ordenador-max(tablet-min, portatil-L)  {
-        height: 100vh;
-    }
-    @include ordenador-4k(ordenador-4k) {
-        height: 70vh;
-    }
+    // @include ordenador-max(tablet-min, portatil-L)  {
+    //     height: 100vh;
+    // }
+    // @include ordenador-4k(ordenador-4k) {
+    //     // height: 70vh;
+    // }
     .header-contenido {
         color: $blanco;
         text-align: center;
@@ -52,9 +52,10 @@
             padding: 10px;
         }
         
-
+ 
         a {
             color: $blanco;
+            background-color:aqua;
             letter-spacing: $espaciadoPA;
             border: $bordeBlanco;
             padding: 10px;
@@ -70,21 +71,18 @@
     }   
 }
 
-
-.secundario {
-    background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
-    @include ordenador-4k(ordenador-4k) {
-        background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
-    }
-
-    margin-top: 95px;
-    height: 50vh;
+@mixin secundario {
+    margin-top: 0px;
+    height: 100vh;
     background-position: bottom;
     background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    // background-attachment: fixed;
+    background-position: center;
+    // justify-content: flex-end;
+    // align-items: center;
 
     @include ordenador-4k(ordenador-4k) {
         height: 500px;
@@ -95,6 +93,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        width: 30%;
 
         h1 {
             font-size:$letraTitulo;
@@ -112,7 +111,55 @@
         }
     }
     
+}
 
+/*HEADERS NAVEGACION*/
+.nav-clases {
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+    
+    // @include ordenador-4k(ordenador-4k) {
+    //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+    // }
+    @include secundario();
+    
+}
+
+.nav-equipo {
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoEquipo.jpg);
+    // @include ordenador-4k(ordenador-4k) {
+    //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+    // }
+    @include secundario();
+    
+}
+
+
+    .imagen-fondo {
+        background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoSobreNosotros.jpg);
+        // @include ordenador-4k(ordenador-4k) {
+        //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+        // }
+        @include secundario();
+        
+    }
+
+
+
+.nav-blog {
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoBlog.jpg);
+    // @include ordenador-4k(ordenador-4k) {
+    //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+    // }
+    @include secundario();
+    
+}
+
+.nav-contacto {
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoContacto.jpg);
+    // @include ordenador-4k(ordenador-4k) {
+    //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+    // }
+    @include secundario();
     
 }
 

@@ -35,14 +35,14 @@ class BlogController{
         
     // }
 
-    public function ver() {
+    public function mostrarBlog() {
         /**
          * Redirige a la vista ver
          * Obtiene los datos de la pelicula que se ha seleccionado
          * y los muestra, para luego comprarla 
          */
         
-         $this->pages->render('blog/blogs');
+         $this->pages->render('blog/nav-blog');
         
     }
 

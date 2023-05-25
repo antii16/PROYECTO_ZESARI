@@ -2,8 +2,9 @@
 use Models\Clase;
 ?>
 
-<!-- <header>IMAGEN</header> -->
+<header class="nav-clases"></header>
 
+<main>
 <?php $clases = Clase::obtenerClases(); ?>
     <?php while($clase = $clases->fetch(PDO::FETCH_OBJ)):?>
         <div>
@@ -16,3 +17,5 @@ use Models\Clase;
         </div>
     <?php endwhile?>
 
+
+</main>

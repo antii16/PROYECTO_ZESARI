@@ -2,6 +2,11 @@ DROP DATABASE IF EXISTS proyectozesari;
 CREATE DATABASE proyectozesari;
 USE proyectozesari;
 
+DROP TABLE IF EXISTS `categorias`;
+CREATE TABLE IF NOT EXISTS `categorias`(
+    `id`         int auto_increment not null,
+    `titulo`      varchar(255) COLLATE utf8mb4_unicode_ci not null,
+)
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios`( 
 `id`             int auto_increment not null,
