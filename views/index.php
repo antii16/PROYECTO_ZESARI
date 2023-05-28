@@ -1,11 +1,13 @@
 <?php
-use Models\Clase;
+use Models\Categoria;
 use Models\Usuario;
 use Models\Blog;
 ?>
-<!--HEADER INICIO-->
-<header class="inicio">
-    <div class="header-contenido">
+
+<main>
+
+<div class="inicio">
+ <div class="header-contenido">
         <h1>ZÉSARI</h1>
         <h1>Tu centro de salud y bienestar</h1>
         <hr>
@@ -14,9 +16,7 @@ use Models\Blog;
         </p>
         <a href="<?=$_ENV['base_url']?>navegacion/sobreNosotros">Leer Más</a>
     </div>
-</header>
-
-<main>
+</div>
 
 <section>
 <h2>¿Por qué elegir Zésari?</h2>
@@ -97,23 +97,26 @@ use Models\Blog;
 
 <h2>Nuestras clases</h2>
     <h3>Estas son nuestras clases disponibles</h3>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="clases">
     
-        <?php $clases = Clase::obtenerClases(); ?>
-        <?php while($clase = $clases->fetch(PDO::FETCH_OBJ)):?>
-        <div class="col">
-            <div class="card">
-                <picture>
-                <img class="card-img-top" src="<?=$_ENV['base_url']?>/src/img/<?=$clase->imagen?>" alt="Card image cap">
-                </picture>
-
-            </div>
+        <?php $categorias = Categoria::obtenerCategorias(); ?>
+        <?php while($categoria = $categorias->fetch(PDO::FETCH_OBJ)):?>
+        <div class="caja">
             
-            <div class="card-body">
+        <div class="imagen">
+        <picture>
+                    <img src="<?=$_ENV['base_url']?>/src/img/<?=$categoria->imagen?>" alt="Card image cap">
+                </picture>
+        </div>
+                
+            <div class="contenido">
 
-                <h5 class="card-title"><?=$clase->titulo?></h5>
-                <p class= "card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                <h5><?=$categoria->titulo?></h5>
+              
                 <a href="#">Saber más</a>
+           
+                
+                
             </div>
         </div>
     <?php endwhile?>

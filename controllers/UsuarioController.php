@@ -18,6 +18,10 @@ class UsuarioController{
         $this->pages->render('usuario/nav-equipo');
     }
 
+    public function gestion() {
+        $this->pages->render('usuario/gestion');
+    }
+
     public function registro() {
         /**
          * Se guardan los datos de un nuevo empleado o de un usuario

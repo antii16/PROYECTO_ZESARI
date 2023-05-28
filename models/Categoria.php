@@ -6,21 +6,19 @@ use PDO;
 use PDOException;
 
 
-class Blog{
+class Categoria{
     private string $id;
     private string $titulo;
     private string $descripcion;
-    private string $texto;
-    private string $fecha;
     private string $imagen;
-    private string $id_usuario_empleado;
+
     private BaseDatos $db;
 
     public function __construct()
     {
         $this->db = new BaseDatos();
         $this->errores = [];
-    
+
     }
 
 
@@ -48,22 +46,6 @@ class Blog{
         $this->descripcion = $descripcion;
     }
 
-    public function getTexto(): string{
-        return $this->texto;
-    }
-
-    public function setTexto(string $texto){
-        $this->texto = $texto;
-    }
-
-    public function getFecha(): string{
-        return $this->fecha;
-    }
-
-    public function setFecha(string $fecha){
-        $this->fecha = $fecha;
-    }
-
 
     public function getImagen(): string{
         return $this->imagen;
@@ -72,65 +54,37 @@ class Blog{
     public function setImagen(string $imagen){
         $this->imagen = $imagen;
     }
-   
 
-    public function get_idUsuarioEmpleado(): int{
-        return $this->id_usuario_empleado;
-    }
-
-    public function set_idUsuarioEmpleado(int $id_usuario_empleado){
-        $this->id_usuario_empleado = $id_usuario_empleado;
+    public static function obtenerCategorias(): object {
+        $categoria = new Categoria();
+        $categorias = $categoria->db->query("SELECT * FROM categorias");
+        return $categorias;
     }
 
 
-    public static function obtenerBlogs() {
+    public function save():bool{
         /**
-         * Selecciona todos los peliculas
+         * Guarda los datos del nuevo usuario
+         * Si es correcto devuelve true y si no devuelve false
          */
-        $blog = new Blog();
-        $blogs = $blog->db->query("SELECT * FROM blogs ORDER BY id DESC limit 3;");
-        return $blogs;
-    }
-
-    public function save($datos, $img) {
-        /**
-         * Guarda los datos de la pelicula
-         * que se quiere crear pasandole los datos de la pelicula
-         * y la imagen
-         * Devuelve true si se ha creado y false si no
-         */
-
-        
-
-        $ins = $this->db->prepare("INSERT INTO blogs(titulo, descripcion, texto, fecha, imagen, id_usuario_empleado) 
-        VALUES (:titulo, :descripcion, :texto, CURDATE(), :imagen, :id_usuario_empleado)");
-
+        $ins = $this->db->prepare("INSERT INTO categorias(titulo, descripcion, imagen) VALUES (:titulo, :descripcion, :imagen)");
         $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
         $ins->bindParam( ':descripcion', $descripcion, PDO::PARAM_STR);
-        $ins->bindParam( ':texto', $texto, PDO::PARAM_STR);
-        // $ins->bindParam( ':fecha', $fecha, PDO::PARAM_STR);
         $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
-        $ins->bindParam( ':id_usuario_empleado', $id_usuario_empleado, PDO::PARAM_STR);
-        
-        
-        $titulo = $datos['titulo'];
-        $descripcion = $datos['descripcion'];
-        $texto = $datos['texto'];
-        // $horario = $datos['fecha'];
-        $imagen = $img['name'];
-        $id_usuario_empleado = $_SESSION['identity']->id;
-        
+  
+        $titulo= $this->getTitulo();
+        $descripcion= $this->getDescripcion();
+        $imagen= $this->getImagen();
+
+    
         try{
             $ins->execute();
             $result = true;
         }catch(PDOException $err){
-            $result= false;
-            
+            $result= $err;
         }
-
        return $result;
     }
-
 
     public function validar($datos) {
         /**
@@ -163,11 +117,10 @@ class Blog{
             if(!is_dir('img')) {
                 mkdir('img', 0777);
             }
-            move_uploaded_file($imagen['tmp_name'], 'src/img/blog/'.$nombre);
+            move_uploaded_file($imagen['tmp_name'], 'src/img/'.$nombre);
           
             
         }
     }
-
 
 }

@@ -180,7 +180,7 @@ class Clase{
             if(!is_dir('img')) {
                 mkdir('img', 0777);
             }
-            move_uploaded_file($imagen['tmp_name'], 'src/img/'.$nombre);
+            move_uploaded_file($imagen['tmp_name'], 'src/img/clases/'.$nombre);
           
             
         }

@@ -161,6 +161,12 @@ class Usuario{
         return $profesores;
     }
 
+    public static function obtenerUsuarios(): object {
+        $usuario = new Usuario();
+        $usuarios = $usuario->db->query("SELECT * FROM usuarios ORDER  BY id DESC");
+        return $usuarios;
+    }
+
 
     public function save():bool{
         /**

@@ -1,7 +1,7 @@
 
 .inicio {
     height: 100vh;
-    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.50)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoInicio.jpg);
+    background-image: linear-gradient(rgba(50, 28, 61, 1), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
     background-position: bottom;
     background-size: cover;
     width: 100%;
@@ -55,10 +55,24 @@
  
         a {
             color: $blanco;
-            background-color:aqua;
-            letter-spacing: $espaciadoPA;
-            border: $bordeBlanco;
-            padding: 10px;
+                background-color:rgb(217,103,4);
+                border: solid 2px rgb(217,103,4);
+               
+                letter-spacing: $espaciadoPA;
+                transition: all 0.5s ease;
+                // background-color:rgba(50, 28, 61);
+                // border: solid 2px rgba(50, 28, 61);
+                // font-weight:bold;
+                // border: $bordeBlanco;
+                padding: 15px;
+
+                &:hover {
+                    border: solid 2px rgba(217, 103, 4, 0.719);
+                    background-color:rgba(217, 103, 4, 0.719);
+
+                    // border: solid 2px rgba(50, 28, 61, 0.719);
+                    // background-color:rgba(50, 28, 61, 0.719);
+                }
             @include movil-max(movil-max) {
                 font-size: $letraPequeña;      
             }
@@ -93,7 +107,6 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 30%;
 
         h1 {
             font-size:$letraTitulo;

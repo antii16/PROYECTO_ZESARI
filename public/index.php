@@ -9,6 +9,7 @@ use Controllers\UsuarioController;
 use Controllers\ClaseController;
 use Controllers\HomeController;
 use Controllers\BlogController;
+use Controllers\CategoriaController;
 
 $pages = new Pages();
 $dotenv = Dotenv::createImmutable(__DIR__);
@@ -19,6 +20,21 @@ $dotenv->safeLoad();
 Router::add('GET', '/', function(){
     return (new HomeController())->index();
     
+});
+
+/*********************************************** */
+/***********************CATEGORIAS***************** */
+
+Router::add('GET', 'categoria/gestionCategoria', function(){
+    return (new CategoriaController())->gestion();
+});
+
+Router::add('GET', 'categoria/crear', function(){
+    return (new CategoriaController())->save();
+});
+
+Router::add('POST', 'categoria/crear', function(){
+    return (new CategoriaController())->save();
 });
 
 /*********************************************** */
@@ -65,6 +81,11 @@ Router::add('POST', 'blog/crear', function(){
 
 /*********************************************** */
 /***********************USUARIO***************** */
+
+Router::add('GET', 'usuario/gestionUsuario', function(){
+    return (new UsuarioController())->gestion();
+});
+
 
 Router::add('GET', 'usuario/registro', function(){
     return (new UsuarioController())->registro();

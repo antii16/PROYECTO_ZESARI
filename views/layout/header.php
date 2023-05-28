@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="<?=$_ENV['base_url']?>src/js/cargarFormulario.js"></script>
+    
+    
     <script>
         /*Cuando se cliquea el checkbtn, se despliega el menú*/
         $(document).ready(function () {
@@ -24,14 +28,14 @@
 <body>
 
 <header>
-<span class="nav-bar" id="btnMenu">
-    <li class="fas fa-bars">
-    </li>
-    
-</span>
+    <span class="nav-bar" id="btnMenu">
+        <li class="fas fa-bars">
+        </li>
+        
+    </span>
    
-<div class="logo">
-    <a href="<?=$_ENV['base_url']?>"><img src="<?=$_ENV['base_url']?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
+    <div class="logo">
+        <a href="<?=$_ENV['base_url']?>"><img src="<?=$_ENV['base_url']?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
     </div>
 
     <nav class="main-nav">
@@ -49,10 +53,11 @@
             <li class="menu-item container-submenu">
                 <a href="#" class="menu-link submenu-btn">Administrador <i class="fas fa-chevron-down"></i></a>
                 <ul class="submenu">
-                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/registro">Usuarios</a></li>
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/gestionUsuario">Usuarios</a></li>
                     <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>clase/gestionClase">Clases</a></li>
                     <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>clase/gestionHorario">Horario</a></li>
                     <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>blog/gestionBlog">Blogs</a></li>
+                    <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>categoria/gestionCategoria">Categoría</a></li>
                     <li class="menu-item"><a class="menu-link" href="<?=$_ENV['base_url']?>usuario/logout">Cerrar Sesión</a></li>
                 </ul>
             </li>
@@ -90,7 +95,10 @@
 </div>
    
             </header>
+
+
 <script src="<?=$_ENV['base_url']?>src/js/menu.js"></script>
+
 
     <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

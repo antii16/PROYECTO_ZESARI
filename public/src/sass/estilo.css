@@ -27,104 +27,106 @@ body {
   }
 }
 
-.logo {
+header .logo {
+  margin-top: 10px;
+  z-index: 10000;
   width: 100px;
   display: inline-block;
-  position: absolute;
+  position: fixed;
   margin-left: 100px;
-  margin-top: -60px;
+  /*Es el menú responsive. Utilizado hasta una resolución de 1279px*/
 }
-.logo img {
+@media only screen and (max-width: 1279px) {
+  header .logo {
+    margin-top: -60px;
+    position: absolute;
+  }
+}
+header .logo img {
   width: 100%;
 }
-
-.nav-bar {
-  background-color: #321c3d;
-  color: #fff;
-  display: block;
+header .nav-bar {
+  display: none;
   padding: 20px;
   cursor: pointer;
   font-size: 1.5em;
   width: 100%;
-}
-
-.menu, .submenu {
-  padding: 0;
-  margin: 0;
-}
-
-.menu {
   background-color: #321c3d;
-  width: 100%;
-  margin-left: -100%;
-  position: absolute;
+  color: #fff;
+  z-index: 1000;
+  /*Es el menú responsive. Utilizado hasta una resolución de 1279px*/
 }
-.menu .menu-link {
+@media only screen and (max-width: 1279px) {
+  header .nav-bar {
+    display: block;
+  }
+}
+header .menu {
+  margin-left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  background-color: #321c3d;
+  position: fixed;
+  /*Es el menú responsive. Utilizado hasta una resolución de 1279px*/
+}
+@media only screen and (max-width: 1279px) {
+  header .menu {
+    display: block;
+    margin-left: -100%;
+    height: 100vh;
+  }
+}
+header .menu .menu-link {
   display: block;
-  padding: 10px;
+  padding: 25px;
   color: #fff;
   font: 1.2em;
+  height: 100%;
 }
-.menu .login {
+header .menu .menu-link:hover {
+  color: grey;
+}
+header .menu .login {
   background-color: #fff;
   color: #1c1022;
   width: 100px;
   margin: 5px;
   text-align: center;
 }
-
-.submenu {
-  overflow: hidden;
-  transition: all 0.3s;
+header .menu .container-submenu {
+  position: relative;
 }
-.submenu .menu-link {
+header .menu .container-submenu .submenu {
+  position: absolute;
+  width: 200px;
+  overflow: visible;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  /*Es el menú responsive. Utilizado hasta una resolución de 1279px*/
+}
+@media only screen and (max-width: 1279px) {
+  header .menu .container-submenu .submenu {
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+}
+header .menu .container-submenu .submenu .menu-link {
   background-color: #1c1022;
   padding-left: 40px;
 }
-
-.menu-link:hover {
-  color: grey;
+header .menu .container-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
 }
-
-.mostrar {
+header .mostrar {
   margin-left: 0;
 }
 
-@media (min-width: 1024px) {
-  .nav-bar {
-    display: none;
-  }
-  .logo {
-    margin-top: 10px;
-    z-index: 10000;
-  }
-  .menu {
-    margin-left: 0;
-    display: flex;
-    width: 100%;
-    padding: 20px;
-    justify-content: flex-end;
-  }
-  .container-submenu {
-    position: relative;
-  }
-  .submenu {
-    position: absolute;
-    top: 60px;
-    width: 200px;
-    overflow: visible;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-  }
-  .container-submenu:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-  }
-}
 .inicio {
   height: 100vh;
-  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.5)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoInicio.jpg);
+  background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
   background-position: bottom;
   background-size: cover;
   width: 100%;
@@ -172,12 +174,17 @@ body {
 }
 .inicio .header-contenido a {
   color: #fff;
-  background-color: aqua;
+  background-color: rgb(217, 103, 4);
+  border: solid 2px rgb(217, 103, 4);
   letter-spacing: 1px;
-  border: 1px rgb(255, 255, 255) solid;
-  padding: 10px;
+  transition: all 0.5s ease;
+  padding: 15px;
   /*Es la resolución maxima para un movil */
   /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
+}
+.inicio .header-contenido a:hover {
+  border: solid 2px rgba(217, 103, 4, 0.719);
+  background-color: rgba(217, 103, 4, 0.719);
 }
 @media only screen and (max-width: 767px) {
   .inicio .header-contenido a {
@@ -508,30 +515,39 @@ main .clases {
   padding: 10px;
   grid-template-columns: 1fr 1fr 1fr;
 }
-main .clases .clase {
-  width: 90%;
+main .clases .caja {
+  width: 200px;
+  height: 380px;
   margin: 20px;
   overflow: hidden;
   background-color: #fff;
   cursor: default;
-  border: 1px rgb(0, 0, 0) solid;
   transition: all 400ms ease;
 }
-main .clases .clase .image img {
-  width: 100%;
+main .clases .caja .imagen {
+  height: 250px;
 }
-main .clases .clase .contenido {
+main .clases .caja .imagen img {
+  width: 100%;
+  height: 100%;
+}
+main .clases .caja .contenido {
+  height: 150px;
   text-align: center;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-main .clases .clase .contenido a {
-  border: 1px rgb(0, 0, 0) solid;
-  padding: 5px;
-  color: #000000;
+main .clases .caja .contenido h5 {
+  font-size: 20px;
+  padding-bottom: 20px;
 }
-main .clases .clase .contenido p {
-  padding: 20px;
-  letter-spacing: 1px;
+main .clases .caja .contenido a {
+  background-color: #D96704;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
 }
 
 .contenedor-blogs {
@@ -744,12 +760,37 @@ main .clases .clase .contenido p {
   position: absolute;
 }
 
+#formularioUsuario {
+  height: 800px;
+  background-color: rgb(255, 0, 0);
+}
+#formularioUsuario form {
+  padding: 50px;
+  width: 700px;
+  background-color: aqua;
+}
+#formularioUsuario form fieldset {
+  display: flex;
+  padding: 40px;
+  border: 1px solid black;
+}
+#formularioUsuario form fieldset p {
+  display: flex;
+  flex-direction: column;
+}
+
 .crud {
   margin: 100px auto;
 }
 
 .crear {
   margin: 200px auto;
+}
+
+.imagen-fondo .titulo {
+  margin-top: 10%;
+  background-color: #321c3d;
+  height: 100px;
 }
 
 #sobreNosotros {

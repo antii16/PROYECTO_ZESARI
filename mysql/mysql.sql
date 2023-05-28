@@ -2,11 +2,6 @@ DROP DATABASE IF EXISTS proyectozesari;
 CREATE DATABASE proyectozesari;
 USE proyectozesari;
 
-DROP TABLE IF EXISTS `categorias`;
-CREATE TABLE IF NOT EXISTS `categorias`(
-    `id`         int auto_increment not null,
-    `titulo`      varchar(255) COLLATE utf8mb4_unicode_ci not null,
-)
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios`( 
 `id`             int auto_increment not null,
@@ -43,6 +38,24 @@ CONSTRAINT pk_clases PRIMARY KEY(`id`),
 CONSTRAINT fk_clases_profesor FOREIGN KEY(`id_usuario_profesor`) REFERENCES usuarios(`id`)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `categorias`;
+CREATE TABLE IF NOT EXISTS `categorias`(
+    `id`         int auto_increment not null,
+    `titulo`      varchar(255) COLLATE utf8mb4_unicode_ci not null,
+    `descripcion` text COLLATE utf8mb4_unicode_ci,
+    `imagen` varchar(255) COLLATE utf8mb4_unicode_ci,
+    CONSTRAINT pk_categorias PRIMARY KEY(`id`)
+)ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `categorias_clases`;
+CREATE TABLE IF NOT EXISTS `categorias_clases`(
+    `id`         int auto_increment not null,
+    `id_categoria`        int COLLATE utf8mb4_unicode_ci not null,
+    `id_clase`         int COLLATE utf8mb4_unicode_ci not null,
+CONSTRAINT pk_categorias_clases PRIMARY KEY(`id`),
+CONSTRAINT fk_categorias FOREIGN KEY(`id_categoria`) REFERENCES categorias(`id`),
+CONSTRAINT fk_clases FOREIGN KEY(`id_clase`) REFERENCES clases(`id`)
+)ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `pagos`;
 CREATE TABLE IF NOT EXISTS `pagos`( 
