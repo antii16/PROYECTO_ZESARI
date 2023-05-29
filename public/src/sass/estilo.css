@@ -760,25 +760,6 @@ main .clases .caja .contenido a {
   position: absolute;
 }
 
-#formularioUsuario {
-  height: 800px;
-  background-color: rgb(255, 0, 0);
-}
-#formularioUsuario form {
-  padding: 50px;
-  width: 700px;
-  background-color: aqua;
-}
-#formularioUsuario form fieldset {
-  display: flex;
-  padding: 40px;
-  border: 1px solid black;
-}
-#formularioUsuario form fieldset p {
-  display: flex;
-  flex-direction: column;
-}
-
 .crud {
   margin: 100px auto;
 }

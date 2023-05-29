@@ -88,11 +88,11 @@ Router::add('GET', 'usuario/gestionUsuario', function(){
 
 
 Router::add('GET', 'usuario/registro', function(){
-    return (new UsuarioController())->registro();
+    return (new UsuarioController())->save();
 });
 
 Router::add('POST', 'usuario/registro', function(){
-    return (new UsuarioController())->registro();
+    return (new UsuarioController())->save();
 });
 
 Router::add('GET', 'usuario/login', function(){

@@ -40,7 +40,7 @@ use Utils\Utils;
 
     <p> 
         <label for="password">Contraseña: </label>
-        <input type="password" name="data[password]">
+        <input type="password" name="data[password]" >
     </p>
     </fieldset>
   
@@ -104,12 +104,12 @@ use Utils\Utils;
     </p>
 
     
-    <?php if(isset($_SESSION['identity'])):?>
+    <?php //if(isset($_SESSION['identity'])):?>
         <input type="submit"  name="editar" value="Edita los datos" class="btn btn-success">
         
-    <?php else:?>   
-        <input type="submit" name="registrar"  value="Registrarse" class="btn btn-primary">
-    <?php endif;?>  
+    <?php //else:?>   
+        <input type="submit" name="registrar"  value="Dar de alta" class="btn btn-primary">
+    <?php //endif;?>  
 
    
 

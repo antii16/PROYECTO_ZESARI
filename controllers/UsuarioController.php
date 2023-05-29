@@ -22,7 +22,7 @@ class UsuarioController{
         $this->pages->render('usuario/gestion');
     }
 
-    public function registro() {
+    public function save() {
         /**
          * Se guardan los datos de un nuevo empleado o de un usuario
          * que quiera editar sus datos.
