@@ -42,14 +42,6 @@ class Clase{
         $this->titulo = $titulo;
     }
 
-    public function getDescripcion(): string{
-        return $this->descripcion;
-    }
-
-    public function setDescripcion(string $descripcion){
-        $this->descripcion = $descripcion;
-    }
-
     public function getPrecio(): string{
         return $this->precio;
     }
@@ -81,15 +73,6 @@ class Clase{
     public function setCantidadMes(int $cantidad_mes){
         $this->cantidad_mes = $cantidad_mes;
     }
-
-    public function getImagen(): string{
-        return $this->imagen;
-    }
-
-    public function setImagen(string $imagen){
-        $this->imagen = $imagen;
-    }
-   
 
     public function get_idProfesor(): int{
         return $this->id_usuario_profesor;

@@ -198,39 +198,44 @@ class Usuario{
 
 
     public function validar_y_sanitizarRegistro($password) {
-        /**
-         * Validacion del registro del nombre, apellido, contraseña y del correo 
-         * Nombre y apellido--> empezar por mayuscula y el resto en minuscula
-         **/
-        if(!$this->nombre) {
-            $this->errores[] = "El nombre del usuario es obligatorio";
-        }
+        // /**
+        //  * Validacion del registro del nombre, apellido, contraseña y del correo 
+        //  * Nombre y apellido--> empezar por mayuscula y el resto en minuscula
+        //  **/
+        // if(!$this->nombre) {
+        //     $this->errores[] = "El nombre del usuario es obligatorio";
+        // }
 
-        if((!preg_match('/^[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/', $this->nombre)) ) {
-            $this->errores[] = "Nombre no válido";
-        }
+        // if((!preg_match('/^[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/', $this->nombre)) ) {
+        //     $this->errores[] = "Nombre no válido";
+        // }
 
-        if(!$this->apellidos) {
-            $this->errores[] = "El apellido del usuario es obligatorio";
-        }
+        // if(!$this->apellidos) {
+        //     $this->errores[] = "El apellido del usuario es obligatorio";
+        // }
 
-        if((!preg_match('/^[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/', $this->apellidos)) ) {
-            $this->errores[] = "Apellido no válido";
-        }
+        // if((!preg_match('/^[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/', $this->apellidos)) ) {
+        //     $this->errores[] = "Apellido no válido";
+        // }
 
 
-        if(!$this->email) {
-            $this->errores[] = "El email del usuario es obligatorio";
-        }else{
-            $correo = filter_var($this->email, FILTER_SANITIZE_EMAIL);
-            if(!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-                $this->errores[] = 'El campo email no es correcto';
-            }
-        }
+        // if(!$this->email) {
+        //     $this->errores[] = "El email del usuario es obligatorio";
+        // }else{
+        //     $correo = filter_var($this->email, FILTER_SANITIZE_EMAIL);
+        //     if(!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        //         $this->errores[] = 'El campo email no es correcto';
+        //     }
+        // }
 
-        if(!$password) {
-            $this->errores[] = "La contraseña del usuario es obligatoria";
-        }
+        // //title="Se acepta espacios en blanco. Al menos una minúscula, una mayúscula, un número y un carácter especial ( ! @ # $ % ^ & * _ = + - . ) "
+        // if((!preg_match('/[-\sa-zA-Z0-9!@#$%^&*=+.]+/', $password)) ) {
+        //     $this->errores[] = "Contraseña no válida";
+        // }
+
+        // if(!$password) {
+        //     $this->errores[] = "La contraseña del usuario es obligatoria";
+        // }
 
         return  $this->errores;
     }

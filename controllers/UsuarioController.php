@@ -36,15 +36,23 @@ class UsuarioController{
             if(isset($_POST['data'])) {
                 
                 $registrado = $_POST['data'];
-                $registrado['password'] = password_hash($registrado['password'], PASSWORD_BCRYPT, ['cost'=>4]);
                 
-                $usuario = Usuario::fromArray($registrado);
-                $usuario_validado = $usuario->validar_y_sanitizarRegistro($_POST['data']['password']);
+                $password = $_POST['data']['nombre'].'12!';
+                $registrado['password'] = password_hash($password, PASSWORD_BCRYPT, ['cost'=>4]);
+                
+                $usuario = new Usuario();
+                $usuario_validado = $usuario->validar_y_sanitizarRegistro($password);
 
             
                 if(count($usuario_validado) == 0) {
                     /******************REGISTRAR******************** */
                     if(isset($_POST['registrar'])){
+
+                        $usuario->setNombre($registrado['nombre']);
+                        $usuario->setApellidos($registrado['apellidos']);
+                        $usuario->setEmail($registrado['email']);
+                        $usuario->setPassword($registrado['password']);
+                        $usuario->setRol($registrado['rol']);
                     
                         $save = $usuario->save();
                         if($save) {
