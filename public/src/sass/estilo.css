@@ -61,11 +61,77 @@ header .nav-bar {
     display: block;
   }
 }
+header .icon {
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100px;
+  display: inline-block;
+  position: fixed;
+  margin-left: 90%;
+}
+header .icon:hover {
+  opacity: 0.7;
+}
+header .icon span {
+  background: #f00;
+  padding: 7px;
+  border-radius: 50%;
+  color: #fff;
+  vertical-align: top;
+  margin-left: -25px;
+}
+header .icon img {
+  display: inline-block;
+  width: 40px;
+  margin-top: 20px;
+}
+header .notifi-box {
+  width: 300px;
+  height: 0px;
+  position: absolute;
+  top: 63px;
+  right: 35px;
+  visibility: hidden;
+}
+header .notifi-box h2 {
+  font-size: 14px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  color: #999;
+}
+header .notifi-box h2 span {
+  color: #f00;
+}
+header .notifi-box .notifi-item {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 15px 5px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+header .notifi-box .notifi-item:hover {
+  background-color: #eee;
+}
+header .notifi-box .notifi-item img {
+  display: block;
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+header .notifi-box .notifi-item .text h4 {
+  color: #777;
+  font-size: 16px;
+  margin-top: 10px;
+}
+header .notifi-box .notifi-item .text p {
+  color: #aaa;
+  font-size: 12px;
+}
 header .menu {
   margin-left: 0;
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: center;
   background-color: #321c3d;
   position: fixed;
   /*Es el menú responsive. Utilizado hasta una resolución de 1279px*/
@@ -74,15 +140,14 @@ header .menu {
   header .menu {
     display: block;
     margin-left: -100%;
-    height: 100vh;
   }
 }
 header .menu .menu-link {
-  display: block;
+  display: flex;
   padding: 25px;
   color: #fff;
-  font: 1.2em;
   height: 100%;
+  align-items: center;
 }
 header .menu .menu-link:hover {
   color: grey;
@@ -96,6 +161,15 @@ header .menu .login {
 }
 header .menu .container-submenu {
   position: relative;
+}
+header .menu .container-submenu .icono-sub {
+  width: 40px;
+  padding: 10px;
+  color: #fff;
+}
+header .menu .container-submenu .imagen-user {
+  width: 50px;
+  border-radius: 50%;
 }
 header .menu .container-submenu .submenu {
   position: absolute;
@@ -549,6 +623,64 @@ main .clases .caja .contenido a {
   padding: 10px;
   color: #fff;
 }
+main .equipo {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  /*Es la resolución maxima para un movil */
+  /*Resolución para resoluciones superiores a 2000px*/
+}
+main .equipo .caja {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  width: 300px;
+  height: 380px;
+  margin: 20px;
+  background-color: #fff;
+  cursor: default;
+  transition: all 400ms ease;
+}
+main .equipo .caja .imagen {
+  height: 290px;
+}
+main .equipo .caja .imagen img {
+  width: 100%;
+  height: 100%;
+}
+main .equipo .caja .contenido {
+  text-align: center;
+  padding: 15px;
+}
+main .equipo .caja .contenido p {
+  padding: 10px;
+  letter-spacing: 1px;
+}
+main .equipo .caja .contenido a {
+  padding: 10px;
+  color: #000000;
+  letter-spacing: 1px;
+  border: 1px rgb(0, 0, 0) solid;
+}
+@media only screen and (max-width: 767px) {
+  main .equipo {
+    width: 100%;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  main .equipo .caja {
+    width: 70%;
+    height: 95%;
+  }
+}
+@media only screen and (min-width: 2000px) {
+  main .equipo {
+    margin-top: 100px;
+  }
+}
 
 .contenedor-blogs {
   width: 100%;
@@ -605,14 +737,14 @@ main .clases .caja .contenido a {
   visibility: hidden;
   text-align: center;
 }
-.contenedor-blogs figure .texto h5 {
+.contenedor-blogs figure .texto h3 {
   color: #fff;
   font-weight: 400;
   transition: all 500ms ease-out;
   /* margin-top: 30px;*/
   margin-bottom: 120px;
 }
-.contenedor-blogs figure .texto p {
+.contenedor-blogs figure .texto a {
   color: #fff;
   line-height: 1.5;
   width: 100%;
@@ -624,7 +756,7 @@ main .clases .caja .contenido a {
   opacity: 1;
   visibility: visible;
 }
-.contenedor-blogs figure:hover > .texto h5 {
+.contenedor-blogs figure:hover > .texto h3 {
   margin-top: 10px;
   margin-bottom: 15px;
 }

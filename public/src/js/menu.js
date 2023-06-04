@@ -1,8 +1,10 @@
 const btnMenu = document.querySelector("#btnMenu");
 const menu = document.querySelector("#menu");
+// const body = document.querySelector("body");
 
 btnMenu.addEventListener('click', function(){
     menu.classList.toggle('mostrar');
+
 })
 
 
@@ -16,6 +18,7 @@ for(let i=0; i<subMenuBtn.length; i++) {
             if(subMenu.classList.contains('desplegar')) {
                 subMenu.classList.remove('desplegar');
                 subMenu.removeAttribute('style');
+                
             }else {
                 subMenu.classList.add('desplegar');
                 subMenu.style.height = height + "px";

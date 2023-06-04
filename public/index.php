@@ -107,6 +107,22 @@ Router::add('GET', 'usuario/equipo', function(){
     return (new UsuarioController())->mostrarEquipo();
 });
 
+Router::add('GET', 'logout', function(){
+    return (new UsuarioController())->logout();
+});
+
+Router::add('GET', 'usuario/editar', function(){
+    return (new UsuarioController())->editar();
+});
+Router::add('POST', 'usuario/editar', function(){
+    return (new UsuarioController())->editar();
+});
+
+Router::add('GET', 'perfil', function(){
+    return (new UsuarioController())->perfil();
+});
+
+
 
 /***********************NAVEGACION *******************/
 /*************************************************** */

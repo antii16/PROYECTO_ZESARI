@@ -1,7 +1,7 @@
 <?php 
 use Utils\Utils;
 use Models\Usuario;
-
+use Models\Categoria;
 ?>
 
 <div class="crear"> 
@@ -11,11 +11,6 @@ use Models\Usuario;
         <label for="titulo">Titulo: </label>
         <input type="text" name="data[titulo]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->nombre?>">
     </p>
-    <p> 
-        <label for="descripcion">Descripción: </label>
-        <textarea name="data[descripcion]" id="" cols="30" rows="10"></textarea>
-    </p>
-
     <p> 
         <label for="precio">Precio: </label>
         <input type="text" name="data[precio]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->email?>">
@@ -49,11 +44,19 @@ use Models\Usuario;
 
     </p>
 
+    <?php $categorias = Categoria::obtenerCategorias(); ?>
     <p>
-    <label for="imagen">Imagen: </label>
-    <input type="file" name="imagen">
-</p>
 
+        <label for="categoria">Categoria:</label>
+        <select name="data[id_categoria]">
+        <option value="selecciona">Selecciona una categoría</option>  
+            <?php while($categoria = $categorias->fetch(PDO::FETCH_OBJ)):?>
+                <option value="<?=$categoria->id?>"><?=$categoria->titulo?></option>  
+            <?php endwhile?>
+
+        </select>
+
+    </p>
     
     
 <input type="submit"  name="crear" value="Crear" class="btn btn-success">

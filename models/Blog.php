@@ -88,7 +88,7 @@ class Blog{
          * Selecciona todos los peliculas
          */
         $blog = new Blog();
-        $blogs = $blog->db->query("SELECT * FROM blogs ORDER BY id DESC limit 3;");
+        $blogs = $blog->db->query("SELECT * FROM blogs ORDER BY id DESC");
         return $blogs;
     }
 

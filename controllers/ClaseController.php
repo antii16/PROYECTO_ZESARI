@@ -55,15 +55,13 @@ class ClaseController{
             if(isset($_POST['data']) && isset($_FILES['imagen']) ){
 
                 $datos = $_POST['data'];
-                $img = $_FILES['imagen'];
                 $clase = new Clase();
-                $clase_validada = $clase->validar($datos, $img);
+                $clase_validada = $clase->validar($datos);
 
                 if(count($clase_validada) == 0){
                     //Si el $errores[] está vacío significa que no hay error
 
-                    $save = $clase->save($datos, $img);
-                    $clase->crearCarpeta($img);
+                    $save = $clase->save($datos);
                 
                     if($save) {
                         $_SESSION['crear_clase'] = 'complete';

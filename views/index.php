@@ -103,11 +103,11 @@ use Models\Blog;
         <?php while($categoria = $categorias->fetch(PDO::FETCH_OBJ)):?>
         <div class="caja">
             
-        <div class="imagen">
-        <picture>
+            <div class="imagen">
+                <picture>
                     <img src="<?=$_ENV['base_url']?>/src/img/<?=$categoria->imagen?>" alt="Card image cap">
                 </picture>
-        </div>
+            </div>
                 
             <div class="contenido">
 
@@ -138,29 +138,27 @@ use Models\Blog;
      <h2>Nuestro equipo</h2>
      <h3>Siempre dispuesto a ayudarte</h3>
 
-     <div class="row row-cols-1 row-cols-md-4 g-4">
+     <div class="equipo">
 
      <?php $equipo = Usuario::obtenerProfesor(); ?>
         <?php while($empleado = $equipo->fetch(PDO::FETCH_OBJ)):?>
-        <div class="col">
-            <div class="card">
+        <div class="caja">
+        <div class="imagen">
                 <picture>
 
                 <img class="card-img-top" src="<?=$_ENV['base_url']?>/src/img/<?=$empleado->imagen?>" alt="Card image cap">
                 </picture>
-
-            </div>
-            
-            <div class="card-body">
+        </div>
+            <div class="contenido">
 
                 <h5 class="card-title"><?=$empleado->nombre?><?=$empleado->apellidos?></h5>
                 <p class="card-text">Descripcion del empleado</p>
-                <a href="#">Ver Ficha</a>
+                <a href="<?=$_ENV['base_url']?>verFichaEmpleado">Ver Ficha</a>
             </div>
         </div>
     <?php endwhile?>
-
-        </div>
+    </div>
+      
 
      </section>
 
@@ -171,44 +169,38 @@ use Models\Blog;
      <h2>Últimas noticias</h2>
      <h3>Descubre las últimas noticias de nuestro centro</h3>
 
+     <div class="contenedor-blogs">
+            <div class="swiper blogs">
+                <div class="swiper-wrapper">
 
-     <!-- <div class="contenedor-blogs">
+                <?php $blogs = Blog::obtenerBlogs(); ?>
+                <?php while($blog = $blogs->fetch(PDO::FETCH_OBJ)):?>
+                    <div class="swiper-slide">
+                        <figure>
+                            <picture>
+                                <!-- <source type="image/jpg" media="(max-width: 799px)" srcset="./img/sakura_300.jpg" />
+                                <source type="image/jpg" media="(min-width: 800px) and (max-width: 1199px)" srcset="./img/sakura_500.jpg" />
+                                <source type="image/jpg" media="(min-width: 1200px) and (max-width: 1799px)" srcset="./img/sakura_700.jpg" />
+                                <source type="image/jpg" media="(min-width: 1800px)" srcset="./img/sakura_1000.jpg" /> -->
+                                <img src="<?=$_ENV['base_url']?>/src/img/<?=$blog->imagen?>" alt="Flor sakura">
+                            </picture>
+                            <div class="texto">
+                                <h3><?=$blog->titulo?></h3>
+                                <p><?=$blog->descripcion?></p>
+                                <a href="./html/verBlog.html">Leer</a>
+                            </div>
+                        </figure>
+                    </div>
+                <?php endwhile?>
+                </div>
 
-     <div class="swiper-contenedor-blogs mySwiper">
-        <div class="swiper-wrapper"> -->
-
-            <div class="row row-cols-1 row-cols-md-4 g-4">
-
-<?php $equipo = Blog::ObtenerBlogs(); ?>
-   <?php while($empleado = $equipo->fetch(PDO::FETCH_OBJ)):?>
-   <div class="col">
-       <div class="card">
-           <picture>
-
-           <img class="card-img-top" src="<?=$_ENV['base_url']?>/src/img/<?=$empleado->imagen?>" alt="Card image cap">
-           </picture>
-
-       </div>
-       
-       <div class="card-body">
-
-           <h5 class="card-title"><?=$empleado->titulo?></h5>
-           <p class="card-text">Descripcion del blog</p>
-           <a href="#">Ver Ficha</a>
-       </div>
-   </div>
-<?php endwhile?>
-
-   </div>
-
-
-        <!-- </div>
-        <div class="swiper-button-next"></div>
+                <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
-     </div>
 
-   </div> -->
+            </div>
+        </div>
+
 
      </section>
 

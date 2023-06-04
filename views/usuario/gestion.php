@@ -35,8 +35,8 @@
             <td style="text-align: center;"><?=$usuario->email?></td>
             <td style="text-align: center;"><?=$usuario->rol?></td>
             <td style="text-align: center;">
-                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$usuario->id?>">Borrar</a>
-                <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$usuario->id?>">Editar</a>
+                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>usuario/borrar/<?=$usuario->id?>">Borrar</a>
+                <a class="btn btn-success" href="<?=$_ENV['base_url']?>usuario/editar/<?=$usuario->id?>">Editar</a>
             </td>
         </tr>
      <?php endwhile?>

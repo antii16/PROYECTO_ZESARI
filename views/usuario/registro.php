@@ -38,17 +38,7 @@ use Utils\Utils;
         <option value="admin">Administrador</option>
        </select>
     </p>
-
-    
-    <?php //if(isset($_SESSION['identity'])):?>
-        <input type="submit"  name="editar" value="Edita los datos" class="btn btn-success">
-        
-    <?php //else:?>   
         <input type="submit" name="registrar"  value="Dar de alta" class="btn btn-primary">
-    <?php //endif;?>  
-
-   
-
 </form>
 
 

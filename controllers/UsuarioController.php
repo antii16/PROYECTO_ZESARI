@@ -4,6 +4,7 @@ namespace Controllers;
 use Models\Usuario;
 use Lib\Pages;
 use Lib\Router;
+use Lib\Email;
 
 
 class UsuarioController{
@@ -53,9 +54,16 @@ class UsuarioController{
                         $usuario->setEmail($registrado['email']);
                         $usuario->setPassword($registrado['password']);
                         $usuario->setRol($registrado['rol']);
-                    
                         $save = $usuario->save();
+
+            
+                        $datos = array();
+                        $datos['email'] = $registrado['email'];
+                        $datos['password']= $password;
+                    
                         if($save) {
+                            $email = new Email();
+                            $email->enviarEmail($datos);
                             $_SESSION['register'] = 'complete';
                         }else{
                             $_SESSION['register'] = 'failed';
@@ -111,6 +119,13 @@ class UsuarioController{
                             $_SESSION['admin'] = true;
                           
                         }
+                        else if($identity->rol == 'cliente') {
+                            $_SESSION['cliente'] = true;
+                          
+                        }
+                        else {
+                            $_SESSION['empleado'] = true;
+                        }
                         header('Location:'. $_ENV['base_url']);
                     }else{
                         $_SESSION['login'] = 'failed';
@@ -129,6 +144,91 @@ class UsuarioController{
 }
 
 
+public function perfil() {
+    $this->pages->render('usuario/perfil');
+}
+
+
+public function editar() {
+
+    /**
+         * Se guardan los datos de un nuevo empleado o de un usuario
+         * que quiera editar sus datos.
+         * La contraseña se encripta y se validan los datos. 
+         * Si los datos están validados se crea o se edita el usuario
+         * Si name es registrar, se crea un nuevo usuario
+         * Si la $_SESSION['identity'] existe se edita el usuario
+         */
+           
+         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(isset($_POST['data'])) {
+                
+                $editado = $_POST['data'];
+                $img = $_FILES['imagen'];
+                $usuario = new Usuario();
+            
+                $usuario_validado = $usuario->validar_y_sanitizarRegistro();
+
+                // $data['id'] ?? '',
+                // $data['nombre'] ?? '',
+                // $data['apellidos'] ?? '',
+                // $data['email'] ?? '',
+                // $data['password'] ?? '',
+                // $data['rol'] ?? '',
+            
+                if(count($usuario_validado) == 0) {
+                    
+                        $usuario->setNombre($editado['nombre']);
+                        $usuario->setApellidos($editado['apellidos']);
+                        $usuario->setEmail($editado['email']);
+                        
+                        if(isset($_POST['data']['password'])) {
+                            $usuario->setPassword($editado['password']['passwordNew']);
+                           
+                        }
+                        
+                        //$usuario->setRol($registrado['rol']);
+                        $usuario->setFecha_nacimiento($editado['fecha_nacimiento']);
+                        $usuario->setLugar_nacimiento($editado['lugar_nacimiento']);
+                        $usuario->setDireccion($editado['direccion']);
+                        $usuario->setTelefono($editado['telefono']);
+                        $usuario->setTelefono2($editado['telefono2']);
+                        $usuario->setSexo($editado['sexo']);
+                        $usuario->setPatologias($editado['patologias']);
+                        $usuario->setImagen($img['name']);
+                        $edit = $usuario->edit();
+                        $_SESSION['identity'] = $usuario->datosSession();
+                        var_dump($_SESSION['identity'] );
+                        die();
+                        $usuario->crearCarpeta($img);
+            
+                        //$datos = array();
+                        //$datos['email'] = $registrado['email'];
+                        //$datos['password']= $password;
+                    
+                        if($edit) {
+                            // $email = new Email();
+                            // $email->enviarEmail($datos);
+                            
+                            $_SESSION['edit'] = 'complete';
+                        }else{
+                            $_SESSION['edit'] = 'failed';
+                        }
+                    
+
+            
+                }else{
+                    $_SESSION['edit'] = 'failed';
+                } 
+            }
+        }
+        
+        $this->pages->render('usuario/editar');
+
+}
+
+
+
     public function logout(){
         /**
          * Se cierra la sesión del usuario, del admin y del carrito
@@ -142,12 +242,15 @@ class UsuarioController{
             unset($_SESSION['admin']);
         }
 
-        if(isset($_SESSION['carrito'])) {
-            unset($_SESSION['carrito']);
+        if(isset($_SESSION['empleado'])) {
+            unset($_SESSION['empleado']);
         }
-       
 
-        header('Location: http://localhost/PROYECTO_FIN/public/');
+        if(isset($_SESSION['cliente'])) {
+            unset($_SESSION['cliente']);
+        }
+
+        header('Location:'. $_ENV['base_url']);
     }
 
 }

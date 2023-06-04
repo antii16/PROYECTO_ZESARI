@@ -17,7 +17,6 @@ class Usuario{
     private string $direccion;
     private string $telefono;
     private string $telefono2;
-    private string $n_seguridad_social;
     private string $sexo;
     private string $patologias;
     private string $imagen;
@@ -115,14 +114,6 @@ class Usuario{
         $this->telefono2 = $telefono2;
     }
 
-    public function getN_seguridad_social(): string{
-        return $this->n_seguridad_social;
-    }
-
-    public function setN_seguridad_social(string $n_seguridad_social){
-        $this->n_seguridad_social = $n_seguridad_social;
-    }
-
     public function getSexo(): string{
         return $this->sexo;
     }
@@ -173,6 +164,8 @@ class Usuario{
          * Guarda los datos del nuevo usuario
          * Si es correcto devuelve true y si no devuelve false
          */
+
+        $result = false;
         $ins = $this->db->prepare("INSERT INTO usuarios(nombre, apellidos, email, password, rol) VALUES (:nombre, :apellidos, :email, :password, :rol)");
         $ins->bindParam( ':nombre', $nombre, PDO::PARAM_STR);
         $ins->bindParam( ':apellidos', $apellidos, PDO::PARAM_STR);
@@ -181,23 +174,25 @@ class Usuario{
         $ins->bindParam( ':rol', $rol, PDO::PARAM_STR);
        
         
+        
         $nombre= $this->getNombre();
         $apellidos= $this->getApellidos();
         $email= $this->getEmail();
         $password= $this->getPassword();
         $rol = $this->getRol();
-    
+
+        
         try{
             $ins->execute();
             $result = true;
         }catch(PDOException $err){
-            $result= $err;
+            $result= false;
         }
        return $result;
     }
 
 
-    public function validar_y_sanitizarRegistro($password) {
+    public function validar_y_sanitizarRegistro() {
         // /**
         //  * Validacion del registro del nombre, apellido, contraseña y del correo 
         //  * Nombre y apellido--> empezar por mayuscula y el resto en minuscula
@@ -279,6 +274,21 @@ class Usuario{
         return $result;
     }
 
+    public function datosSession() {
+        $result = false;
+        $cons = $this->db->prepare("SELECT * FROM usuarios WHERE id = :id");
+        $cons->bindParam(':id', $_SESSION['identity']->id, PDO::PARAM_STR);
+        try{
+            $cons->execute();
+            if($cons && $cons->rowCount() ==1) {
+                $result = $cons->fetch(PDO::FETCH_OBJ);
+            }
+        }catch(PDOException $err) {
+            $result = false;
+        }
+        return $result;
+    }
+
     public function validar_y_sanitizarLogin() {
         /**
          * Validacion del login, comprobando que los campos estén
@@ -298,5 +308,118 @@ class Usuario{
         }
 
         return  $this->errores;
+    }
+
+
+    public function edit() {
+        $result = false;
+        $ins = $this->db->prepare("UPDATE usuarios
+        SET nombre = :nombre, 
+        apellidos = :apellidos, 
+        email = :email, 
+        password = :password, 
+
+        fecha_nacimiento = :fecha_nacimiento, 
+        lugar_nacimiento = :lugar_nacimiento, 
+        direccion = :direccion, 
+        telefono = :telefono, 
+        telefono2 = :telefono2, 
+        sexo = :sexo, 
+        patologias = :patologias, 
+        imagen = :imagen 
+        WHERE id = :id");
+
+
+        $ins->bindParam( ':id', $id, PDO::PARAM_STR);
+        $ins->bindParam( ':nombre', $nombre, PDO::PARAM_STR);
+        $ins->bindParam( ':apellidos', $apellidos, PDO::PARAM_STR);
+        $ins->bindParam( ':email', $email, PDO::PARAM_STR);
+        $ins->bindParam( ':password', $password, PDO::PARAM_STR);
+        $ins->bindParam( ':fecha_nacimiento', $fecha_nacimiento, PDO::PARAM_STR);
+        $ins->bindParam( ':lugar_nacimiento', $lugar_nacimiento, PDO::PARAM_STR);
+        $ins->bindParam( ':direccion', $direccion, PDO::PARAM_STR);
+        $ins->bindParam( ':telefono', $telefono, PDO::PARAM_STR);
+        $ins->bindParam( ':telefono2', $telefono2, PDO::PARAM_STR);
+        $ins->bindParam( ':sexo', $sexo, PDO::PARAM_STR);
+        $ins->bindParam( ':patologias', $patologias, PDO::PARAM_STR);
+        $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
+       
+        
+        $id = $_SESSION['identity']->id;
+        $nombre= $this->getNombre();
+        $apellidos= $this->getApellidos();
+        $email= $this->getEmail();
+        
+        // $rol = $this->getRol();
+        $fecha_nacimiento= $this->getFecha_nacimiento();
+        $lugar_nacimiento= $this->getLugar_nacimiento();
+        $direccion= $this->getDireccion();
+        $telefono= $this->getTelefono();
+        $telefono2 = $this->getTelefono2();
+        $sexo= $this->getSexo();
+        $patologias= $this->getPatologias();
+
+        if($this->getImagen()== NULL) {
+            //Devuelve la imagen de la pelicula según el id de ésta
+            $im = $this->setImagenUsuario($id);
+            $imagen = $im->imagen;
+
+        }else{
+            $imagen = $this->getImagen();   
+        }
+
+    
+        /**Primero se comfirma que es la contraseña de la persona */
+        if(isset($_POST['data']['password']['passwordOld'])) {
+            $oldPassword = $_POST['data']['password']['passwordOld'];
+            $usuarioDatos = $this->datosSession();
+            $password = $usuarioDatos->password;
+            $verify = password_verify($oldPassword, $password);
+
+            if($verify) {
+                $passwordNueva = $this->getPassword();
+                $password = password_hash($passwordNueva, PASSWORD_BCRYPT, ['cost'=>4]);
+                
+            }else {
+                $this->errores[] = "Contraseña incorrecta";
+            }
+            
+        }
+       
+
+        try{
+            $ins->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+        
+       return $result;
+    }
+
+    public function setImagenUsuario($id) {
+        //Devuelve la imagen de una entrada
+        $usuario = $this->db->query("SELECT imagen FROM usuarios 
+        WHERE id={$id} ORDER BY id DESC;");
+        return $usuario->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function crearCarpeta($imagen) {
+        /**
+         * Guarda la imagen y crea la carpeta si no existe
+         * La imagen debe ser de tipo jpg, jpeg o png
+         */
+        $nombre = $imagen['name'];
+        $tipo = $imagen['type'];
+      
+        if($tipo == 'image/jpg' || $tipo == 'image/jpeg' || $tipo == 'image/png') {
+            if(!is_dir('img')) {
+                mkdir('img', 0777);
+            }
+            move_uploaded_file($imagen['tmp_name'], 'src/img/'.$nombre);
+          
+            
+        }
     }
 }

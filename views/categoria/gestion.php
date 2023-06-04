@@ -7,21 +7,18 @@
 
 <h1>Gestión de Categorias</h1>
 
-<form action="">
-    <label for="buscar">Buscar</label>
-    <input type="text" name="">
-</form>
-
 <p>
-    <a href="<?=$_ENV['base_url']?>categoria/crear" class="btn btn-primary">Crear Categoria</a>
+    <a href="<?=$_ENV['base_url']?>categoria/crear">Crear Categoria</a>
 </p>
-<table>
+
+<table id="myTable">
     <thead>
         <tr>
             <th>ID</th>
             <th>Titulo</th>
             <th>Descripcion</th>
             <th>Imagen</th>
+            <th>Opción</th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +30,7 @@
             <td style="text-align: center;"><?=$categoria->descripcion?></td>
             <td style="text-align: center;"><?=$categoria->imagen?></td>
             <td style="text-align: center;">
-                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$categoria->id?>">Borrar</a>
+                <a class="btn btn-primary" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$categoria->id?>">Borrar</a>
                 <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$categoria->id?>">Editar</a>
             </td>
         </tr>
