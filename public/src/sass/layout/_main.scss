@@ -1,9 +1,9 @@
 main {
 
-    width: 100%;
+    // width: 100%;
 
     .main-contenido {
-        margin: 100px;
+        margin-top: 100px;
     }
 
     @include movil-max(movil-max) {

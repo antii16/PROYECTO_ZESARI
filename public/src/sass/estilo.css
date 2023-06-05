@@ -198,6 +198,9 @@ header .mostrar {
   margin-left: 0;
 }
 
+/*MAIN DE RESTO DE PÁGINAS
+* .inicio es el div de la pagina principal
+*/
 .inicio {
   height: 100vh;
   background-image: linear-gradient(rgb(50, 28, 61), rgba(0, 0, 0, 0.7)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
@@ -271,190 +274,71 @@ header .mostrar {
   }
 }
 
-/*HEADERS NAVEGACION*/
-.nav-clases {
-  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+/*MAIN DE RESTO DE PÁGINAS*/
+.header-secundario-sobreNosotros {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoSobreNosotros.jpg);
   margin-top: 0px;
-  height: 100vh;
-  background-position: bottom;
+  z-index: -1000;
+  text-align: center;
+  width: 100%;
+  height: 500px;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
-  display: flex;
-  background-position: center;
-  /*Resolución para resoluciones superiores a 2000px*/
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 85% 85%/30%;
 }
-@media only screen and (min-width: 2000px) {
-  .nav-clases {
-    height: 500px;
-  }
-}
-.nav-clases .titulo {
+.header-secundario-sobreNosotros .overlay {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 100px;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4));
 }
-.nav-clases .titulo h1 {
-  font-size: 4vmin;
-  letter-spacing: 5px;
-  padding: 10px;
-  font-style: italic;
-  color: #fff;
-  text-transform: uppercase;
-  word-spacing: 0.25em;
+.header-secundario-sobreNosotros .overlay h1 {
+  font-size: 80px;
+  margin-bottom: 30px;
 }
-.nav-clases .titulo p {
-  color: #fff;
-  letter-spacing: 1px;
+.header-secundario-sobreNosotros .overlay h3, .header-secundario-sobreNosotros .overlay p {
+  margin-bottom: 30px;
 }
 
-.nav-equipo {
-  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoEquipo.jpg);
+.header-secundario-contacto {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
   margin-top: 0px;
-  height: 100vh;
-  background-position: bottom;
+  z-index: -1000;
+  text-align: center;
+  width: 100%;
+  height: 500px;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
-  display: flex;
-  background-position: center;
-  /*Resolución para resoluciones superiores a 2000px*/
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 85% 85%/30%;
 }
-@media only screen and (min-width: 2000px) {
-  .nav-equipo {
-    height: 500px;
-  }
-}
-.nav-equipo .titulo {
+.header-secundario-contacto .overlay {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
-.nav-equipo .titulo h1 {
-  font-size: 4vmin;
-  letter-spacing: 5px;
-  padding: 10px;
-  font-style: italic;
-  color: #fff;
-  text-transform: uppercase;
-  word-spacing: 0.25em;
-}
-.nav-equipo .titulo p {
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.imagen-fondo {
-  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoSobreNosotros.jpg);
-  margin-top: 0px;
-  height: 100vh;
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  display: flex;
-  background-position: center;
-  /*Resolución para resoluciones superiores a 2000px*/
-}
-@media only screen and (min-width: 2000px) {
-  .imagen-fondo {
-    height: 500px;
-  }
-}
-.imagen-fondo .titulo {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.imagen-fondo .titulo h1 {
-  font-size: 4vmin;
-  letter-spacing: 5px;
-  padding: 10px;
-  font-style: italic;
-  color: #fff;
-  text-transform: uppercase;
-  word-spacing: 0.25em;
-}
-.imagen-fondo .titulo p {
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.nav-blog {
-  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoBlog.jpg);
-  margin-top: 0px;
-  height: 100vh;
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
   width: 100%;
-  display: flex;
-  background-position: center;
-  /*Resolución para resoluciones superiores a 2000px*/
+  height: 100%;
+  padding: 100px;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4));
 }
-@media only screen and (min-width: 2000px) {
-  .nav-blog {
-    height: 500px;
-  }
+.header-secundario-contacto .overlay h1 {
+  font-size: 80px;
+  margin-bottom: 30px;
 }
-.nav-blog .titulo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.nav-blog .titulo h1 {
-  font-size: 4vmin;
-  letter-spacing: 5px;
-  padding: 10px;
-  font-style: italic;
-  color: #fff;
-  text-transform: uppercase;
-  word-spacing: 0.25em;
-}
-.nav-blog .titulo p {
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.nav-contacto {
-  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoContacto.jpg);
-  margin-top: 0px;
-  height: 100vh;
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  display: flex;
-  background-position: center;
-  /*Resolución para resoluciones superiores a 2000px*/
-}
-@media only screen and (min-width: 2000px) {
-  .nav-contacto {
-    height: 500px;
-  }
-}
-.nav-contacto .titulo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.nav-contacto .titulo h1 {
-  font-size: 4vmin;
-  letter-spacing: 5px;
-  padding: 10px;
-  font-style: italic;
-  color: #fff;
-  text-transform: uppercase;
-  word-spacing: 0.25em;
-}
-.nav-contacto .titulo p {
-  color: #fff;
-  letter-spacing: 1px;
+.header-secundario-contacto .overlay h3, .header-secundario-contacto .overlay p {
+  margin-bottom: 30px;
 }
 
 .pie {
@@ -487,9 +371,20 @@ header .mostrar {
   align-items: center;
   width: 100%;
   margin-top: 30px; /*Es la resolución maxima para un movil */
+  /*UBICACIÓN DE LA EMPRESA*/
+}
+@media only screen and (max-width: 767px) {
+  .pie .cajaArriba {
+    margin-top: 100px;
+    flex-direction: column;
+  }
 }
 .pie .cajaArriba li {
   padding: 5px;
+}
+.pie .cajaArriba li:last-child a {
+  padding: 10px;
+  font-size: 30px;
 }
 .pie .cajaArriba #logoFooter {
   width: 50px;
@@ -497,11 +392,9 @@ header .mostrar {
 .pie .cajaArriba #logoFooter img {
   width: 100%;
 }
-@media only screen and (max-width: 767px) {
-  .pie .cajaArriba {
-    margin-top: 100px;
-    flex-direction: column;
-  }
+.pie .cajaArriba .map-container {
+  overflow: hidden;
+  position: relative;
 }
 .pie .cajaAbajo {
   width: 60%;
@@ -523,11 +416,10 @@ header .mostrar {
 }
 
 main {
-  width: 100%;
   /*Es la resolución maxima para un movil */
 }
 main .main-contenido {
-  margin: 100px;
+  margin-top: 100px;
 }
 @media only screen and (max-width: 767px) {
   main {
@@ -803,36 +695,33 @@ main .equipo .caja .contenido a {
 }
 
 /*MAIN del apartado Escríbenos*/
-.formContacto {
-  margin-top: 50px;
-  width: 100%;
-}
-.formContacto h2 {
+h1 {
+  padding: 50px;
   text-align: center;
-  letter-spacing: 3px;
-  color: #474f59;
-  padding: 20px;
 }
-.formContacto .contacto {
+
+#contact {
   display: flex;
   justify-content: center;
+  padding: 90px;
   margin: auto;
-  width: 90%;
+  width: 100%;
+  background-color: grey;
   /*Es la resolución maxima para un movil */
 }
 @media only screen and (max-width: 767px) {
-  .formContacto .contacto {
+  #contact {
     flex-direction: column;
     height: 1000px;
   }
 }
-.formContacto .contacto #mensaje form {
+#contact #mensaje form {
   padding: 5px;
   border-radius: 10px;
   background-color: #d9c5c1;
 }
-.formContacto .contacto #mensaje form input[type=text],
-.formContacto .contacto #mensaje form input[type=email] {
+#contact #mensaje form input[type=text],
+#contact #mensaje form input[type=email] {
   width: 180px;
   padding: 3px 10px;
   border: 1px rgb(255, 255, 255) solid;
@@ -841,7 +730,7 @@ main .equipo .caja .contenido a {
   margin: 8px 10px;
   display: inline-block;
 }
-.formContacto .contacto #mensaje form button {
+#contact #mensaje form button {
   width: 100%;
   padding: 10px 16px;
   margin-top: 32px;
@@ -851,10 +740,10 @@ main .equipo .caja .contenido a {
   color: #fff;
   background-color: #000000;
 }
-.formContacto .contacto #mensaje form button:hover {
+#contact #mensaje form button:hover {
   cursor: pointer;
 }
-.formContacto .contacto #mensaje form textarea {
+#contact #mensaje form textarea {
   width: 100%;
   height: 100px;
   border: 1px rgb(255, 255, 255) solid;
@@ -864,32 +753,19 @@ main .equipo .caja .contenido a {
   resize: none;
   display: block;
 }
-.formContacto .contacto #mensaje p {
+#contact #mensaje p {
   margin: 30px;
 }
-.formContacto .contacto #datos {
+#contact #datos {
+  background-color: #fff;
   text-align: center;
   border: 1px rgb(0, 0, 0) solid;
   height: 300px;
   padding: 30px;
   margin: 20px;
 }
-.formContacto .contacto #datos li {
+#contact #datos li {
   margin: 30px;
-}
-.formContacto .map-container {
-  overflow: hidden;
-  padding-bottom: 10%;
-  position: relative;
-  height: 0;
-  margin-top: 50px;
-}
-.formContacto .map-container iframe {
-  left: 0;
-  top: 0;
-  height: 70%;
-  width: 100%;
-  position: absolute;
 }
 
 .crud {
@@ -898,12 +774,6 @@ main .equipo .caja .contenido a {
 
 .crear {
   margin: 200px auto;
-}
-
-.imagen-fondo .titulo {
-  margin-top: 10%;
-  background-color: #321c3d;
-  height: 100px;
 }
 
 #sobreNosotros {
@@ -918,22 +788,34 @@ main .equipo .caja .contenido a {
   font-size: 40px;
 }
 #sobreNosotros .caja {
+  margin-bottom: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 #sobreNosotros .caja .texto {
   width: 50%;
   padding: 20px;
 }
 #sobreNosotros .caja .texto p {
+  margin-bottom: 50px;
   line-height: 1.5;
 }
 #sobreNosotros .caja .imagen {
-  width: 50%;
+  width: 500px;
   padding: 20px;
 }
 #sobreNosotros .caja .imagen img {
   width: 100%;
+}
+#sobreNosotros .caja:nth-child(3) {
+  text-align: center;
+}
+#sobreNosotros .caja:nth-child(3) blockquote {
+  width: 78%;
+  border-top: 3px solid #D96704;
+  border-bottom: 3px solid #D96704;
+  padding: 50px;
 }/*# sourceMappingURL=estilo.css.map */

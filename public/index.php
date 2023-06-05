@@ -10,6 +10,7 @@ use Controllers\ClaseController;
 use Controllers\HomeController;
 use Controllers\BlogController;
 use Controllers\CategoriaController;
+use Controllers\PagoController;
 
 $pages = new Pages();
 $dotenv = Dotenv::createImmutable(__DIR__);
@@ -132,6 +133,17 @@ Router::add('GET', 'navegacion/formulario', function(){
 
 Router::add('GET', 'navegacion/sobreNosotros', function(){
     return (new HomeController())->sobreNosotros();
+});
+
+
+/*********************************************** */
+/***********************CATEGORIAS***************** */
+Router::add('GET', 'pagar/:id', function($id){
+    return (new PagoController())->pagar($id);
+});
+
+Router::add('POST', 'pagar', function(){
+    return (new PagoController())->save();
 });
 
 Router::dispatch();

@@ -27,9 +27,22 @@
         align-items: center;
         width: 100%;
         margin-top: 30px;
+        @include movil-max(movil-max) {
+            margin-top: 100px;
+            flex-direction: column;
+            
+        }
 
         li {
             padding: 5px;
+
+            &:last-child {
+                a {
+                    padding: 10px;
+                    font-size: 30px;
+                }
+            }
+            
            }
         #logoFooter {
             width: 50px;
@@ -38,12 +51,21 @@
                 width: 100%;
             }
         }
+    /*UBICACIÓN DE LA EMPRESA*/
 
-        @include movil-max(movil-max) {
-            margin-top: 100px;
-            flex-direction: column;
-            
-        }
+    .map-container {
+        overflow: hidden;
+        position: relative;
+        // margin-top: 50px;
+    }
+    
+    // .map-container iframe {
+    //     left: 0;
+    //     top: 0;
+    //     height: 70%;
+    //     width: 50%;
+    //     position: absolute;
+    // }
     }
 
 
@@ -76,4 +98,5 @@
 
     }
 
+ 
 }

@@ -1,20 +1,12 @@
-<?php use Models\Usuario;?>
-<h1>Usuario</h1>
+<?php use Models\Pago;?>
+<h1>Pagp</h1>
 
 
 <div class="crud">
 
 
-<h1>Gestión de Usuarios</h1>
+<h1>Gestión de Pagos</h1>
 
-<form action="">
-    <label for="buscar">Buscar</label>
-    <input type="text" name="">
-</form>
-
-<p>
-    <a href="<?=$_ENV['base_url']?>usuario/registro" class="btn btn-primary">Crear Usuario</a>
-</p>
 <table>
     <thead>
         <tr>
@@ -26,8 +18,8 @@
         </tr>
     </thead>
     <tbody>
-   <?php $usuarios = Usuario::obtenerUsuarios(); ?>
-    <?php while($usuario = $usuarios->fetch(PDO::FETCH_OBJ)):?>
+   <?php $pagos = Pago::obtenerPagos(); ?>
+    <?php while($pago = $pagos->fetch(PDO::FETCH_OBJ)):?>
         <tr>
             <td style="text-align: center;"><?=$usuario->id?></td>
             <td style="text-align: center;"><?=$usuario->nombre?></td>

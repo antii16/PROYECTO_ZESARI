@@ -62,9 +62,11 @@ CREATE TABLE IF NOT EXISTS `pagos`(
 `cantidad`       float(100,2) COLLATE utf8mb4_unicode_ci not null,
 `id_cliente`       int COLLATE utf8mb4_unicode_ci,
 `id_empleado_anota`       int COLLATE utf8mb4_unicode_ci,
+`id_clase`         int COLLATE utf8mb4_unicode_ci not null,
 CONSTRAINT pk_pagos PRIMARY KEY(`id`),
 CONSTRAINT fk_pagos_clientes FOREIGN KEY(`id_cliente`) REFERENCES usuarios(`id`),
-CONSTRAINT fk_pagos_empleados FOREIGN KEY(`id_empleado_anota`) REFERENCES usuarios(`id`)
+CONSTRAINT fk_pagos_empleados FOREIGN KEY(`id_empleado_anota`) REFERENCES usuarios(`id`),
+CONSTRAINT fk_pagos_clases FOREIGN KEY(`id_clase`) REFERENCES clases(`id`)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 

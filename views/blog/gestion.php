@@ -22,7 +22,7 @@
             <th>Titulo</th>
             <th>Descripcion</th>
             <!-- <th>Texto</th> -->
-            <th>Fecha</th>
+            <!-- <th>Fecha</th> -->
             <th>Imagen</th>
             <th>Empleado</th>
         </tr>
@@ -35,7 +35,7 @@
             <td style="text-align: center;"><?=$blog->titulo?></td>
             <td style="text-align: center;"><?=$blog->descripcion?></td>
             <td style="text-align: center;"><?=$blog->imagen?></td>
-            <td style="text-align: center;"><?=$blog->id_usuario_profesor?></td>
+            <td style="text-align: center;"><?=$blog->id_usuario_empleado?></td>
             <td style="text-align: center;">
                 <a class="btn btn-danger" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$blog->id?>">Borrar</a>
                 <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$blog->id?>">Editar</a>

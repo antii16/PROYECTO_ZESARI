@@ -1,3 +1,6 @@
+/*MAIN DE RESTO DE PÁGINAS
+* .inicio es el div de la pagina principal
+*/
 
 .inicio {
     height: 100vh;
@@ -28,151 +31,192 @@
 
         @include movil-max(movil-max) {
             width: 80%;
-            margin-top: 150px;    
+            margin-top: 150px;
         }
-        
+
         p {
             padding: 20px;
             line-height: 50px;
             color: $blanco;
             letter-spacing: $espaciadoPA;
-         
+
             @include movil-max(movil-max) {
-                font-size: $letraPequeña;       
+                font-size: $letraPequeña;
             }
-            @include ordenador-max(tablet-min, portatil-L) {
-                font-size: $letraMediana;      
-            }
-        }
 
-        h1 {
-            text-transform: uppercase;
-            letter-spacing: $espaciadoH1;
-            word-spacing: 0.25em;
-            padding: 10px;
-        }
-        
- 
-        a {
-            color: $blanco;
-                background-color:rgb(217,103,4);
-                border: solid 2px rgb(217,103,4);
-               
-                letter-spacing: $espaciadoPA;
-                transition: all 0.5s ease;
-                // background-color:rgba(50, 28, 61);
-                // border: solid 2px rgba(50, 28, 61);
-                // font-weight:bold;
-                // border: $bordeBlanco;
-                padding: 15px;
-
-                &:hover {
-                    border: solid 2px rgba(217, 103, 4, 0.719);
-                    background-color:rgba(217, 103, 4, 0.719);
-
-                    // border: solid 2px rgba(50, 28, 61, 0.719);
-                    // background-color:rgba(50, 28, 61, 0.719);
-                }
-            @include movil-max(movil-max) {
-                font-size: $letraPequeña;      
-            }
             @include ordenador-max(tablet-min, portatil-L) {
                 font-size: $letraMediana;
-           
             }
-            
         }
-    }   
-}
-
-@mixin secundario {
-    margin-top: 0px;
-    height: 100vh;
-    background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    display: flex;
-    // background-attachment: fixed;
-    background-position: center;
-    // justify-content: flex-end;
-    // align-items: center;
-
-    @include ordenador-4k(ordenador-4k) {
-        height: 500px;
-    }
-
-    .titulo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
 
         h1 {
-            font-size:$letraTitulo;
-            letter-spacing: $espaciadoH1;
-            padding: 10px;
-            font-style: italic;
-            color: $blanco;
             text-transform: uppercase;
+            letter-spacing: $espaciadoH1;
             word-spacing: 0.25em;
+            padding: 10px;
         }
 
-        p{
+
+        a {
             color: $blanco;
+            background-color: rgb(217, 103, 4);
+            border: solid 2px rgb(217, 103, 4);
+
             letter-spacing: $espaciadoPA;
+            transition: all 0.5s ease;
+            // background-color:rgba(50, 28, 61);
+            // border: solid 2px rgba(50, 28, 61);
+            // font-weight:bold;
+            // border: $bordeBlanco;
+            padding: 15px;
+
+            &:hover {
+                border: solid 2px rgba(217, 103, 4, 0.719);
+                background-color: rgba(217, 103, 4, 0.719);
+
+                // border: solid 2px rgba(50, 28, 61, 0.719);
+                // background-color:rgba(50, 28, 61, 0.719);
+            }
+
+            @include movil-max(movil-max) {
+                font-size: $letraPequeña;
+            }
+
+            @include ordenador-max(tablet-min, portatil-L) {
+                font-size: $letraMediana;
+
+            }
+
         }
     }
-    
 }
 
-/*HEADERS NAVEGACION*/
-.nav-clases {
-    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+
+
+/*MAIN DE RESTO DE PÁGINAS*/
+
+@mixin secundario {
+     margin-top: 0px;
+     z-index: -1000;
+    // background-position: bottom;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // width: 100%;
+    // display: flex;
+    // // background-attachment: fixed;
+    // background-position: center;
+    // // justify-content: flex-end;
+    // // align-items: center;
+
+    text-align: center;
+	width: 100%;
+	height: 500px;
+	background-size: cover;
+    background-repeat: no-repeat;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0 0 85% 85% / 30%;
     
     // @include ordenador-4k(ordenador-4k) {
-    //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+    //     height: 500px;
     // }
-    @include secundario();
-    
-}
 
-.nav-equipo {
-    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoEquipo.jpg);
-    // @include ordenador-4k(ordenador-4k) {
-    //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+    // .titulo {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     flex-direction: column;
+
+    //     h1 {
+    //         font-size: $letraTitulo;
+    //         letter-spacing: $espaciadoH1;
+    //         padding: 10px;
+    //         font-style: italic;
+    //         color: $blanco;
+    //         text-transform: uppercase;
+    //         word-spacing: 0.25em;
+    //     }
+
+    //     p {
+    //         color: $blanco;
+    //         letter-spacing: $espaciadoPA;
+    //     }
     // }
-    @include secundario();
-    
-}
 
-
-    .imagen-fondo {
-        background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoSobreNosotros.jpg);
-        // @include ordenador-4k(ordenador-4k) {
-        //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
-        // }
-        @include secundario();
+    .overlay{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 100px;
+        color: #FFF;
+        text-shadow: 1px 1px 1px #333;
+        background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40));
         
+        h1 {
+            font-size: 80px;
+	        margin-bottom: 30px;
+        }
+
+        h3,p{
+            margin-bottom: 30px;
+        }
     }
 
+}
+
+.header-secundario-sobreNosotros {
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoSobreNosotros.jpg);
+    @include secundario();
+}
+// /*HEADERS NAVEGACION*/
+// .nav-clases {
+//     background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+
+//     // @include ordenador-4k(ordenador-4k) {
+//     //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+//     // }
+//     @include secundario();
+
+// }
+
+// .nav-equipo {
+//     background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoEquipo.jpg);
+//     // @include ordenador-4k(ordenador-4k) {
+//     //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+//     // }
+//     @include secundario();
+
+// }
 
 
-.nav-blog {
-    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoBlog.jpg);
+// .imagen-fondo {
+//     background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoSobreNosotros.jpg);
+//     // @include ordenador-4k(ordenador-4k) {
+//     //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+//     // }
+//     @include secundario();
+
+// }
+
+
+
+// .nav-blog {
+//     background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoBlog.jpg);
+//     // @include ordenador-4k(ordenador-4k) {
+//     //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
+//     // }
+//     @include secundario();
+
+// }
+
+.header-secundario-contacto {
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
     // @include ordenador-4k(ordenador-4k) {
     //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
     // }
     @include secundario();
-    
-}
 
-.nav-contacto {
-    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoContacto.jpg);
-    // @include ordenador-4k(ordenador-4k) {
-    //     background-image: linear-gradient(rgba(50,28,61), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI-main/public/src/img/fondoClases.jpg);
-    // }
-    @include secundario();
-    
 }
-
