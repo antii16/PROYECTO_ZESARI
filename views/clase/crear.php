@@ -4,6 +4,9 @@ use Models\Usuario;
 use Models\Categoria;
 ?>
 
+<main>
+<div class="main-contenido">
+
 <div class="crear"> 
 
 <form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
@@ -64,3 +67,5 @@ use Models\Categoria;
 </form>
 
 </div>
+</div>
+</main>

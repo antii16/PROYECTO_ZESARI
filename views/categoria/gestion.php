@@ -1,17 +1,16 @@
 <?php use Models\Categoria;?>
-<h1>Categorias</h1>
 
 
+<main>
+<div class="main-contenido">
+<h1>Gestión de Categorias</h1>
 <div class="crud">
 
+<div class="añadir">
+        <a  href="<?= $_ENV['base_url'] ?>usuario/registro">Añadir <i class="fa-solid fa-pen"></i></a>
+    </div>
 
-<h1>Gestión de Categorias</h1>
-
-<p>
-    <a href="<?=$_ENV['base_url']?>categoria/crear">Crear Categoria</a>
-</p>
-
-<table id="myTable">
+<table id="tabla" class="display" style="width:100%">
     <thead>
         <tr>
             <th>ID</th>
@@ -39,3 +38,6 @@
 </table>
 
 </div>
+
+</div>
+</main>

@@ -2,7 +2,7 @@
 
 
 <main>
-
+<div class="main-contenido">
 <h1>Tu perfil</h1>
 
 <div class="cajaPerfil">
@@ -42,5 +42,5 @@
 
 </div>
 
-
+</div>
 </main>

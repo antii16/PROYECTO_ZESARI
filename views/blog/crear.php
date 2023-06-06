@@ -4,6 +4,8 @@ use Models\Blog;
 
 ?>
 
+<main>
+<div class="main-contenido">
 <div class="crear"> 
 
 <h1>Crear Blog</h1>
@@ -40,3 +42,5 @@ use Models\Blog;
 </form>
 
 </div>
+</div>
+</main>

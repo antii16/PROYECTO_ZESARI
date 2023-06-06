@@ -41,9 +41,6 @@ Router::add('POST', 'categoria/crear', function(){
 /*********************************************** */
 /***********************CLASES***************** */
 
-Router::add('GET', 'clase/clases', function(){
-    return (new ClaseController())->mostrarClases();
-});
 
 Router::add('GET', 'clase/gestionClase', function(){
     return (new ClaseController())->gestion();
@@ -61,9 +58,6 @@ Router::add('POST', 'clase/crear', function(){
 /*********************************************** */
 /***********************BLOGS***************** */
 
-Router::add('GET', 'blog/blogs', function(){
-    return (new BlogController())->mostrarBlog();
-});
 
 Router::add('GET', 'blog/gestionBlog', function(){
     return (new BlogController())->gestion();
@@ -127,23 +121,42 @@ Router::add('GET', 'perfil', function(){
 
 /***********************NAVEGACION *******************/
 /*************************************************** */
-Router::add('GET', 'navegacion/formulario', function(){
-    return (new HomeController())->contacto();
+
+
+Router::add('GET', 'clases', function(){
+    return (new ClaseController())->mostrarClases();
 });
 
-Router::add('GET', 'navegacion/sobreNosotros', function(){
+Router::add('GET', 'equipo', function(){
+    return (new UsuarioController())->mostrarEquipo();
+});
+
+Router::add('GET', 'blogs', function(){
+    return (new BlogController())->mostrarBlog();
+});
+Router::add('GET', 'sobreNosotros', function(){
     return (new HomeController())->sobreNosotros();
+});
+
+Router::add('GET', 'contacto', function(){
+    return (new HomeController())->contacto();
 });
 
 
 /*********************************************** */
-/***********************CATEGORIAS***************** */
+/***********************PAGO***************** */
 Router::add('GET', 'pagar/:id', function($id){
     return (new PagoController())->pagar($id);
 });
 
 Router::add('POST', 'pagar', function(){
     return (new PagoController())->save();
+});
+
+/*********************************************** */
+/***********************HORARIO***************** */
+Router::add('GET', 'clase/gestionHorario', function(){
+    return (new ClaseController())->gestionHorario();
 });
 
 Router::dispatch();

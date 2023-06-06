@@ -1,16 +1,19 @@
 <?php use Models\Clase;?>
-<h1>Clases</h1>
 
 
+
+<main>
+<div class="main-contenido">
+<h1>Gestión de Clases</h1>
 <div class="crud">
 
 
-<h1>Gestión de Clases</h1>
 
-<p>
-    <a href="<?=$_ENV['base_url']?>clase/crear" class="btn btn-primary">Crear Clase</a>
-</p>
-<table>
+
+<div class="añadir">
+        <a  href="<?= $_ENV['base_url'] ?>usuario/registro">Añadir<i class="fa-solid fa-person-chalkboard"></i></a>
+    </div>
+<table id="tabla" class="display responsive nowrap" style="width:100%">
     <thead>
         <tr>
             <th>ID</th>
@@ -44,3 +47,5 @@
 </table>
 
 </div>
+</div>
+</main>

@@ -168,13 +168,6 @@ public function editar() {
                 $usuario = new Usuario();
             
                 $usuario_validado = $usuario->validar_y_sanitizarRegistro();
-
-                // $data['id'] ?? '',
-                // $data['nombre'] ?? '',
-                // $data['apellidos'] ?? '',
-                // $data['email'] ?? '',
-                // $data['password'] ?? '',
-                // $data['rol'] ?? '',
             
                 if(count($usuario_validado) == 0) {
                     

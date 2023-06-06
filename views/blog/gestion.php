@@ -1,21 +1,18 @@
 <?php use Models\Blog;?>
-<h1>blogs</h1>
 
 
+<main>
+<div class="main-contenido">
+<h1>Gestión de Blogs</h1>
 <div class="crud">
 
 
-<h1>Gestión de Blogs</h1>
 
-<form action="">
-    <label for="buscar">Buscar</label>
-    <input type="text" name="">
-</form>
 
-<p>
-    <a href="<?=$_ENV['base_url']?>blog/crear" class="btn btn-primary">Crear Blog</a>
-</p>
-<table>
+<div class="añadir">
+        <a  href="<?= $_ENV['base_url'] ?>usuario/registro">Añadir <i class="fa-brands fa-blogger"></i></i></a>
+    </div>
+<table id="tabla" class="display responsive nowrap" style="width:100%">
     <thead>
         <tr>
             <th>ID</th>
@@ -46,3 +43,6 @@
 </table>
 
 </div>
+
+</div>
+    </main>

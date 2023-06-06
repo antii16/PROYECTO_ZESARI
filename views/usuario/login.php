@@ -1,6 +1,7 @@
 <?php  use Utils\Utils; ?>
 
 <main>
+<div class="main-contenido">
 <div class="contenedor-login">
     <h1>Iniciar Sesión</h1>
     <form action="<?=$_ENV['base_url']?>usuario/login" method="POST" enctype="multipart/form-data">
@@ -16,5 +17,5 @@
     </form>
 
 <div>
-
+</div>
 </main>

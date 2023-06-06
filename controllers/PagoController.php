@@ -57,17 +57,23 @@ class PagoController{
                 $pago = new Pago();
                 $pago_validado = $pago->validar($datos);
 
-                if(count($blog_validado) == 0){
+                if(count($pago_validado) == 0){
                     //Si el $errores[] está vacío significa que no hay error
+                   
+                   $pago->setTipo($datos['tipo']);
+                   $pago->setEstado($datos['estado']);
+                   $pago->setPrecio($datos['precio']);
+                   $pago->set_idCliente($datos['id_cliente']);
+                   $pago->set_idClase($datos['id_clase']);
                     $save = $pago->save();
                 
                     if($save) {
-                        $_SESSION['crear_blog'] = 'complete';
+                        $_SESSION['crear_pago'] = 'complete';
                     }else{
-                        $_SESSION['crear_blog'] = 'failed';
+                        $_SESSION['crear_pago'] = 'failed';
                     }
                 }else{
-                        $_SESSION['crear_blog'] = 'failed';
+                        $_SESSION['crear_pago'] = 'failed';
                 }
                 
             }

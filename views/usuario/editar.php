@@ -3,6 +3,8 @@ use Utils\Utils;
 ?>
 
 
+<main>
+<div class="main-contenido">
 <div class="crear"> 
 
 <h1>Editar usuario</h1>
@@ -96,6 +98,8 @@ use Utils\Utils;
 
 
 </div>
+        </div>
+        </main>
 
 
 <?php

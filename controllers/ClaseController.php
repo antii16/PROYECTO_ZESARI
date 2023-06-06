@@ -24,6 +24,17 @@ class ClaseController{
         $this->pages->render('clase/gestion');
     }
 
+    public function gestionHorario(){
+        /**
+         * Muestra todos los peliculas que existen. 
+         * Esto solo está disponible para el admin
+         * Redirigue al Gestionar películas
+         */
+        //Utils::isAdmin();
+        
+        $this->pages->render('clase/gestionHorario');
+    }
+
     // public function index() {
     //     /**
     //      * Muestra todas las peliculas en de la base de datos 

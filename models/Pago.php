@@ -10,7 +10,7 @@ class Pago{
     private string $fecha;
     private string $tipo;
     private string $estado;
-    private string $cantidad;
+    private string $precio;
     private string $id_cliente;
     private string $id_empleado_anota;
     private string $id_clase;
@@ -56,11 +56,11 @@ class Pago{
         $this->estado = $estado;
     }
 
-    public function getCantidad(): string{
+    public function getPrecio(): string{
         return $this->cantidad;
     }
 
-    public function setCantidad(string $cantidad){
+    public function setPrecio(string $cantidad){
         $this->cantidad = $cantidad;
     }
 
@@ -93,7 +93,11 @@ class Pago{
          * Selecciona todos los peliculas
          */
         $pago = new Pago();
-        $pagos = $pago->db->query("SELECT * FROM pagos ORDER BY id DESC;");
+        $pagos = $pago->db->query("SELECT * FROM pagos 
+        INNER JOIN usuarios ON pagos.id_cliente = usuarios.id 
+        INNER JOIN clases ON usuarios.id = clases.id 
+        WHERE rol = 'cliente'
+        ORDER BY id DESC;");
         return $pagos;
     }
 
@@ -115,12 +119,12 @@ class Pago{
         $ins->bindParam( ':id_empleado_anota', $id_empleado_anota, PDO::PARAM_STR);
         $ins->bindParam( ':id_clase', $id_clase, PDO::PARAM_STR);
         
-        $tipo = $datos['fecha'];
-        $estado = $datos['descripcion'];
-        $precio = $datos['precio'];
-        $id_cliente = $datos['id_cliente'];
-        $id_empleado_anota = $_SESSION[];
-        $id_clase = $datos['cantidad_mes'];
+        $tipo = $this->getTipo();
+        $estado = $this->getEstado();
+        $precio = $this->getPrecio();
+        $id_cliente = $this->get_idCliente();
+        $id_empleado_anota = $_SESSION['identity']->id;
+        $id_clase = $this->get_idClase();
         
         try{
             $ins->execute();
@@ -143,9 +147,9 @@ class Pago{
             $this->errores[] = "El precio debe ser un número";
         }
 
-        if(!is_numeric($datos['aforo'])) {
-            $this->errores[] = "El aforo debe ser un número";
-        }
+        // if(!is_numeric($datos['aforo'])) {
+        //     $this->errores[] = "El aforo debe ser un número";
+        // }
 
 
         return  $this->errores;

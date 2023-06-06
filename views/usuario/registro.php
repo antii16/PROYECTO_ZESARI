@@ -3,10 +3,12 @@ use Utils\Utils;
 
 ?>
 
-
+<main>
+<div class="main-contenido">
+<h1>Crear usuario</h1>
 <div class="crear"> 
 
-<h1>Crear usuario</h1>
+
 <div id="formularioUsuario">
 <form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>usuario/registro" method="POST" enctype="multipart/form-data">
    <div class="caja">
@@ -14,16 +16,16 @@ use Utils\Utils;
     <legend>Datos obligatorios:</legend>
     <p> 
         <label for="nombre">Nombre: </label>
-        <input type="text" name="data[nombre]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->nombre?>">
+        <input type="text" name="data[nombre]" >
     </p>
     <p> 
         <label for="apellidos">Apellidos: </label>
-        <input type="text" name="data[apellidos]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->apellidos?>">
+        <input type="text" name="data[apellidos]">
     </p>
 
     <p> 
         <label for="email">Email: </label>
-        <input type="text" name="data[email]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->email?>">
+        <input type="text" name="data[email]">
     </p>
 
     </fieldset>
@@ -34,7 +36,7 @@ use Utils\Utils;
         <p> 
        <select name="data[rol]" id="">
         <option value="empleado">Empleado</option>
-        <option value="cliente">Cliente</option>
+        <option value="cliente"  selected="true">Cliente</option>
         <option value="admin">Administrador</option>
        </select>
     </p>
@@ -43,3 +45,5 @@ use Utils\Utils;
 
 
 </div>
+</div>
+</main>

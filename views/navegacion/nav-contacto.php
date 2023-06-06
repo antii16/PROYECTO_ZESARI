@@ -1,8 +1,6 @@
 <main>
-
-
     <div class="main-contenido">
-    <h1>Contacta con nosotros</h1>
+        <h1>Contacta con nosotros</h1>
         <div id="contact">
             <div id="mensaje">
                 <form action="#">
@@ -23,7 +21,7 @@
             </div>
 
             <div>
-                
+
                 <div id="datos">
 
                     <ul>
@@ -39,5 +37,5 @@
 
 
 
-  
+
 </main>
