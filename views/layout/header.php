@@ -6,10 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="<?= $_ENV['base_url'] ?>src/sass/estilo.css">
+    <!-- CKEditor -->
+    <script type="text/javascript" src="/PROYECTO_ZESARI/ckeditor/ckeditor.js"></script>
     <!-- jquery -->
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- CARROUSEL -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- SLIDER
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
     <!-- FUENTE -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,7 +22,9 @@
     <link rel="stylesheet" href="http://localhost/PROYECTO_ZESARI/DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
     <link href="http://localhost/PROYECTO_ZESARI/DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="http://localhost/PROYECTO_ZESARI/DataTables/Responsive-2.4.1/css/responsive.dataTables.min.css">
-  
+
+    
+
     <title>Zésari</title>
 </head>
 
@@ -33,11 +38,12 @@
 
         </span>
 
-        <div class="logo">
-            <a href="<?= $_ENV['base_url'] ?>"><img src="<?= $_ENV['base_url'] ?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
-        </div>
+        
 
         <nav class="main-nav">
+            <div class="logo">
+                <a href="<?= $_ENV['base_url'] ?>"><img src="<?= $_ENV['base_url'] ?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
+            </div>
 
             <ul class="menu" id="menu">
 
@@ -113,7 +119,9 @@
     <script src="<?= $_ENV['base_url'] ?>src/js/script.js"></script>
     <script src="<?= $_ENV['base_url'] ?>src/js/contraseña.js"></script>
     <script src="<?=$_ENV['base_url']?>src/js/dataTable.js"></script>
-
+    <script src="<?=$_ENV['base_url']?>src/js/horario.js"></script>
+    <script src="<?=$_ENV['base_url']?>src/js/textareaCKeditor.js"></script>
+   
     <!--DATATABLE -->
     <!-- <script src="http://localhost/PROYECTO_ZESARI/DataTables/dataTables.min.js"></script> -->
     <script src="http://localhost/PROYECTO_ZESARI/DataTables/JSZip-2.5.0/jszip.min.js"></script>
@@ -124,59 +132,10 @@
     <script src="http://localhost/PROYECTO_ZESARI/DataTables/Buttons-2.3.6/js/buttons.html5.min.js"></script>
     <script src="http://localhost/PROYECTO_ZESARI/DataTables/Buttons-2.3.6/js/buttons.print.min.js"></script>
     <script src="http://localhost/PROYECTO_ZESARI/DataTables/Responsive-2.4.1/js/dataTables.responsive.min.js"></script>
- 
-    <!-- Swiper JS -->
-    <script src="<?= $_ENV['base_url'] ?>src/js/carrousel.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <!-- Initialize Swiper -->
-    <script type="text/JavaScript">
-        var swiper = new Swiper('.swiper', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        },
-        slidesPerView: 1,
-        spaceBetween: 10,
-        // init: false,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-
-        /*Puntos donde quiebre*/
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 40,
-            },
-
-            620: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-            },
-
-            800: {
-                slidesPerView: 1.75,
-                spaceBetween: 40,
-            },
-
-            920: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-            },
-            1000: {
-                slidesPerView: 2.5,
-                spaceBetween: 40,
-            },
-            1240: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-            },
-        }
-    });
-
-</script>
-
+    
+    
+  
+    
 
 </body>
 

@@ -165,3 +165,139 @@
 
 </div>  
 </footer>
+
+<style>
+     .clases {
+        display: grid;
+        padding: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .caja {
+            width: 200px;
+            height: 380px;
+            margin: 20px;
+            overflow: hidden;
+            background-color: $blanco;
+            cursor: default;
+            // border: 5px solid #321c3d;
+            transition: all 400ms ease;
+
+            .imagen {
+                height: 250px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+
+
+            .contenido {
+                height: 150px;
+                text-align: center;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                h5 {
+                    font-size: 20px;
+                    padding-bottom: 20px;
+                }
+
+               
+                
+                    a {
+                        background-color: #D96704;
+                        border-radius: 10px;
+                        padding: 10px;
+                        color: #fff;
+                    }
+                
+                
+                
+            }
+
+
+            // &:hover {
+            //     box-shadow: 5px 5px 20px;
+            //     transform: translateY(-3%);
+            // }
+        }
+    }
+
+
+
+    .equipo {
+        display: grid;
+        padding: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .caja {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            width: 300px;
+            height: 380px;
+            margin: 20px;
+            background-color: $blanco;
+            cursor: default;
+            // border: $bordeNegro;
+            transition: all 400ms ease;
+
+            .imagen {
+                height: 290px;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                }}
+
+            .contenido {
+                text-align: center;
+                padding: 15px;
+
+                p {
+                    padding: 10px;
+                    letter-spacing: $espaciadoPA
+                }
+
+                a {
+                    padding: 10px;
+                    color: $negro;
+                    letter-spacing: 1px;
+                    border: $bordeNegro;
+                }
+            }
+
+        }
+
+        // .caja:hover {
+        //     box-shadow: 5px 5px 20px;
+        //     transform: translateY(-3%);
+        // }
+
+
+        @include movil-max(movil-max) {
+            width: 100%;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            .caja {
+                width: 70%;
+                height: 95%;
+            }
+        }
+
+
+        @include ordenador-4k(ordenador-4k) {
+            margin-top: 100px;
+
+        }
+
+    }
+</style>

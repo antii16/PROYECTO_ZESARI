@@ -1,6 +1,14 @@
 <main>
-    <div class="main-contenido">
+    <!-- HEADER CONTENIDO -->
+    <!-- <div class="header-secundario-blog">
+        <div class="overlay">
         <h1>Contacta con nosotros</h1>
+
+        </div>
+
+    </div> -->
+    <div class="main-contenido">
+        
         <div id="contact">
             <div id="mensaje">
                 <form action="#">

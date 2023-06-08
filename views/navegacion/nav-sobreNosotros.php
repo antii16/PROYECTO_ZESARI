@@ -7,7 +7,6 @@
             <h2>Zésari es mucho más que un estudio de Pilates</h2>
 
         </div>
-
     </div>
 
     <!-- MAIN CONTENIDO -->

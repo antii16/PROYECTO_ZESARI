@@ -18,10 +18,10 @@ use Models\Blog;
     </div>
 </div>
 
+<div class="main-contenido">
 <section>
-<h2>¿Por qué elegir Zésari?</h2>
+    <h2>¿Por qué elegir Zésari?</h2>
     <h3>Estas son algunas de nuestras razones</h3>
-
     <div class="principios">
         <div class="caja">
             <div class="image">
@@ -92,8 +92,24 @@ use Models\Blog;
 
 </section>
 
+ <!--IMAGEN SCROLL-->
 
+ <!-- <div class="imagen_scroll"></div> -->
+ 
 
+ <section id="contactaIndex">
+ <div class="caja">
+    <img src="<?=$_ENV['base_url']?>src/img/recepcion.jpg" alt="">
+ </div>
+
+ <div class="caja">
+    <h2>Contacta con nosotros</h2>
+    <h3>Para cualquier duda escríbenos</h3>
+    <a href="<?=$_ENV['base_url']?>contacto">Contacto</a>
+ </div>
+
+ </section>
+ </div>
 </main>
 
 

@@ -4,25 +4,26 @@ use Models\Categoria;
 ?>
 
 <main>
-    <div class="main-contenido">
-        <h1>Nuestras clases</h1>
-        <div class="filtro">
+    
+           <!-- HEADER CONTENIDO -->
+           <div class="header-secundario-blog">
+        <div class="overlay">
+            <h1>Nuestras clases</h1>
 
         </div>
+
+    </div>
+ 
+    <div class="main-contenido">
         <div class="clases">
             <?php $categorias = Categoria::obtenerCategorias(); ?>
             <?php while ($categoria = $categorias->fetch(PDO::FETCH_OBJ)) : ?>
                 <div class="caja">
-                    <div class="imagen">
-                        <picture>
-                            <img src="<?= $_ENV['base_url'] ?>/src/img/<?= $categoria->imagen ?>" alt="Card image cap">
-                        </picture>
-                    </div>
-
+                    <img src="<?= $_ENV['base_url'] ?>/src/img/<?=$categoria->imagen?>" alt="Card image cap">
                     <div class="contenido">
-                        <h5><?= $categoria->titulo ?></h5>
-                        <a href="#">Saber más</a>
-
+                        <p class="post-title"><?=$categoria->titulo?></p>
+                        <p class="post-description"><?=$categoria->descripcion?></p>
+                        <a href="<?= $_ENV['base_url'] ?>clase/ver/<?=$categoria->id?>" class="post-saber">Saber Más</a>
                     </div>
                 </div>
             <?php endwhile ?>

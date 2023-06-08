@@ -13,13 +13,14 @@
     align-items: center;
     margin-top: 0;
 
-    // @include movil-max(movil-max) {
-    //     height: 120vh;
-    // }
+    @include movil-max(movil-max) {
+        height: 120vh;
 
-    // @include ordenador-max(tablet-min, portatil-L)  {
-    //     height: 100vh;
-    // }
+    }
+
+    @include ordenador-max(tablet-min, portatil-L)  {
+        height: 100vh;
+    }
     // @include ordenador-4k(ordenador-4k) {
     //     // height: 70vh;
     // }
@@ -31,7 +32,7 @@
 
         @include movil-max(movil-max) {
             width: 80%;
-            margin-top: 150px;
+            margin-top: 90px;
         }
 
         p {
@@ -168,6 +169,11 @@
 }
 
 .header-secundario-sobreNosotros {
+    background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoSobreNosotros.jpg);
+    @include secundario();
+}
+
+.header-secundario-blog {
     background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoSobreNosotros.jpg);
     @include secundario();
 }

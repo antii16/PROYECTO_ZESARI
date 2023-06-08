@@ -17,12 +17,17 @@ use Models\Blog;
     </p>
     <p> 
         <label for="descripcion">Descripción: </label>
-        <textarea name="data[descripcion]" id="" cols="30" rows="10"></textarea>
+        <textarea name="data[descripcion]" id="descripcion" cols="30" rows="10"></textarea>
     </p>
 
     <p> 
         <label for="texto">Texto: </label>
-        <textarea name="data[texto]" id="" cols="30" rows="10"></textarea>
+        <textarea  name="data[texto]" id="contenido" cols="30" rows="10"></textarea>
+   
+        <script type="text/javascript">
+            CKEDITOR.replace( 'contenido')
+        </script>
+        
     </p>
 
     <p> 

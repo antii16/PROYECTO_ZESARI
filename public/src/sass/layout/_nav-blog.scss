@@ -1,0 +1,177 @@
+.blogs, .clases {
+    display: grid;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .caja {
+        width: 350px;
+        height: 490px;
+        margin: 20px;
+        // overflow: hidden;
+        // background-color: $blanco;
+        // cursor: default;
+        // border: 1px solid #321c3d;
+        padding: 15px;
+        background-color: rgb(243, 240, 240);
+        box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
+        border-radius: 0.5rem;
+
+            img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 0.5rem;
+            }
+      
+        .contenido {
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            // h5 {
+            //     font-size: 20px;
+            //     padding-bottom: 20px;
+            // }
+
+           
+            
+            //     a {
+            //         // background-color: #D96704;
+            //         border-radius: 10px;
+            //         padding: 10px;
+            //         color: #000000;
+            //     }
+            
+            .post-title {
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: black;
+                display: -webkit-box;
+                -webkit-line-clamp:2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .post-saber {
+                background-color: #D96704;
+                        border-radius: 10px;
+                        padding: 10px;
+                        color: #fff;
+            }
+            .post-date {
+                display: flex;
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                font-weight: 400;
+                margin-top: 4px;
+            }
+
+            .post-description {
+                font-size: 0.9rem;
+                line-height: 1.5rem;
+                margin: 5px 0 10px;
+                display: -webkit-box;
+                -webkit-line-clamp:3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .profile {
+                display: flex;
+                align-items: center;
+                gap:10px;
+
+                .profile-img {
+                    width:35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: center;
+                    border: 2px solid black;
+                }
+            }
+            
+        }
+
+
+        // &:hover {
+        //     box-shadow: 5px 5px 20px;
+        //     transform: translateY(-3%);
+        // }
+    }
+}
+
+
+/*VER BLOG*/
+
+.migas {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    a, span {
+        font-size: 30px;
+        padding: 10px;
+        color: #000000;
+    }
+
+}
+
+.post-header {
+    // margin-top: 300px;
+    width: 100%;
+    height: 500px;
+    background-color: #321c3d;
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+        margin-top: 4rem !important;
+
+        .back-home {
+            color: rgb(0, 0, 0);
+            font-size: 0.9rem;
+
+        }
+
+        .header-title {
+            width: 90%;
+            font-size: 2.6rem;
+            color: aliceblue;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .header-img {
+            width: 90%;
+            height: 420px;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
+
+.post-container {
+    max-width: 800px;
+    margin: auto;
+    width: 100%;
+}
+
+.post-content {
+    margin-top: 10rem !important;
+    padding: 50px;
+}
+
+.sub-heading {
+    font-size: 1.2rem;
+}
+
+.post-text {
+    font-size: 1rem;
+    line-height: 1.7rem;
+    margin: 1rem 0;
+    text-align: justify;
+}

@@ -10,7 +10,7 @@
 
 
 <div class="añadir">
-        <a  href="<?= $_ENV['base_url'] ?>usuario/registro">Añadir <i class="fa-brands fa-blogger"></i></i></a>
+        <a  href="<?=$_ENV['base_url'] ?>blog/crear">Añadir <i class="fa-brands fa-blogger"></i></i></a>
     </div>
 <table id="tabla" class="display responsive nowrap" style="width:100%">
     <thead>

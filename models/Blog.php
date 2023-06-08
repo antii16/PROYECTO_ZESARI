@@ -92,6 +92,11 @@ class Blog{
         return $blogs;
     }
 
+    public function getOneBlog() {
+        $blog =  $this->db->query("SELECT * FROM blogs WHERE id = {$this->id}");
+        return $blog;
+    }
+
     public function save($datos, $img) {
         /**
          * Guarda los datos de la pelicula
@@ -163,7 +168,7 @@ class Blog{
             if(!is_dir('img')) {
                 mkdir('img', 0777);
             }
-            move_uploaded_file($imagen['tmp_name'], 'src/img/blog/'.$nombre);
+            move_uploaded_file($imagen['tmp_name'], 'img/blog/'.$nombre);
           
             
         }

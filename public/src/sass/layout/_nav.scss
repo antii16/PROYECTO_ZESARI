@@ -29,6 +29,7 @@ header {
 
         @include menu-nav-tablet(nav-menu) {
             display: block;
+            
         }
     }
 
@@ -39,12 +40,13 @@ header {
         justify-content: center;
         background-color: #321c3d;
         position: fixed;
-
+        z-index: 1000;
+        
         @include menu-nav-tablet(nav-menu) {
             display: block;
             margin-left: -100%;
-            
-
+            width: 70%;
+            height: 100%;
         }
 
         .menu-link {

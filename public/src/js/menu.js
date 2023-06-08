@@ -1,15 +1,11 @@
 const btnMenu = document.querySelector("#btnMenu");
 const menu = document.querySelector("#menu");
-// const body = document.querySelector("body");
 
 btnMenu.addEventListener('click', function(){
     menu.classList.toggle('mostrar');
-
 })
 
-
 const subMenuBtn = document.querySelectorAll(".submenu-btn");
-
 for(let i=0; i<subMenuBtn.length; i++) {
     subMenuBtn[i].addEventListener('click', function(){
         if(window.innerWidth < 1024) {
@@ -22,9 +18,7 @@ for(let i=0; i<subMenuBtn.length; i++) {
             }else {
                 subMenu.classList.add('desplegar');
                 subMenu.style.height = height + "px";
-            }
-            
-           
+            }       
         }
     });
 }

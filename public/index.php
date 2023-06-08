@@ -71,6 +71,9 @@ Router::add('POST', 'blog/crear', function(){
     return (new BlogController())->save();
 });
 
+Router::add('GET', 'blog/ver/:id', function($id){
+    return (new BlogController())->ver($id);
+});
 
 
 

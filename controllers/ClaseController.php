@@ -53,7 +53,7 @@ class ClaseController{
          * y los muestra, para luego comprarla 
          */
         
-         $this->pages->render('clase/nav-clases');
+         $this->pages->render('navegacion/nav-clases');
         
     }
 

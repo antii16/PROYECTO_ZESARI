@@ -5,8 +5,6 @@ use Models\Usuario; ?>
 <div class="main-contenido">
 <h1>Gestión de Usuarios</h1>
 <div class="crud">
-    
-   
     <div class="añadir">
         <a  href="<?= $_ENV['base_url'] ?>usuario/registro">Añadir <i class="fa-sharp fa-solid fa-user-plus"></i></a>
     </div>

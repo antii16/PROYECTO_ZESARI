@@ -12,7 +12,6 @@ class Clase{
     private string $precio;
     private string $horario;
     private string $aforo;
-    private string $cantidad_mes;
     private int $id_usuario_profesor;
     private int $id_categoria;
     private BaseDatos $db;
@@ -99,6 +98,14 @@ class Clase{
         return $clases;
     }
 
+    public function comprobarAforo() {
+        $consulta = "SELECT titulo,horario, aforo FROM clases 
+        INNER JOIN pagos ON clases.id = pagos.id_cliente
+        INNER JOIN usuarios ON pagos.id_cliente = usuarios.id
+        WHERE rol = 'cliente'";
+        $this->db->query($consulta);
+      
+    }
     public function save($datos) {
         /**
          * Guarda los datos de la pelicula
@@ -119,7 +126,6 @@ class Clase{
         $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
         
         $titulo = $datos['titulo'];
-        $descripcion = $datos['descripcion'];
         $precio = $datos['precio'];
         $horario = $datos['horario'];
         $aforo = $datos['aforo'];

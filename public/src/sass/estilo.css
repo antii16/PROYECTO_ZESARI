@@ -68,12 +68,15 @@ header .menu {
   justify-content: center;
   background-color: #321c3d;
   position: fixed;
+  z-index: 1000;
   /*Es el menú responsive. Utilizado hasta una resolución de 1279px*/
 }
 @media only screen and (max-width: 1279px) {
   header .menu {
     display: block;
     margin-left: -100%;
+    width: 70%;
+    height: 100%;
   }
 }
 header .menu .menu-link {
@@ -152,6 +155,18 @@ header .mostrar {
   justify-content: center;
   align-items: center;
   margin-top: 0;
+  /*Es la resolución maxima para un movil */
+  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
+}
+@media only screen and (max-width: 767px) {
+  .inicio {
+    height: 120vh;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1440px) {
+  .inicio {
+    height: 100vh;
+  }
 }
 .inicio .header-contenido {
   color: #fff;
@@ -163,7 +178,7 @@ header .mostrar {
 @media only screen and (max-width: 767px) {
   .inicio .header-contenido {
     width: 80%;
-    margin-top: 150px;
+    margin-top: 90px;
   }
 }
 .inicio .header-contenido p {
@@ -249,6 +264,39 @@ header .mostrar {
   margin-bottom: 30px;
 }
 
+.header-secundario-blog {
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoSobreNosotros.jpg);
+  margin-top: 0px;
+  z-index: -1000;
+  text-align: center;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 85% 85%/30%;
+}
+.header-secundario-blog .overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 100px;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4));
+}
+.header-secundario-blog .overlay h1 {
+  font-size: 80px;
+  margin-bottom: 30px;
+}
+.header-secundario-blog .overlay h3, .header-secundario-blog .overlay p {
+  margin-bottom: 30px;
+}
+
 .header-secundario-contacto {
   background-image: linear-gradient(rgba(50, 28, 61, 0.4), rgba(0, 0, 0, 0.4)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
   margin-top: 0px;
@@ -295,15 +343,14 @@ header .mostrar {
   padding: 50px;
   /*Es la resolución maxima para un movil */
 }
-.pie a {
-  color: #fff;
-}
 @media only screen and (max-width: 767px) {
   .pie {
-    margin-top: 1100px;
     flex-direction: column;
-    height: 700px;
+    height: 1000px;
   }
+}
+.pie a {
+  color: #fff;
 }
 .pie .cajaArriba {
   display: flex;
@@ -311,7 +358,8 @@ header .mostrar {
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  margin-top: 30px; /*Es la resolución maxima para un movil */
+  margin-top: 30px;
+  /*Es la resolución maxima para un movil */
   /*UBICACIÓN DE LA EMPRESA*/
 }
 @media only screen and (max-width: 767px) {
@@ -359,266 +407,151 @@ header .mostrar {
 main {
   /*Es la resolución maxima para un movil */
 }
-main .main-contenido {
-  margin-top: 100px;
-}
 @media only screen and (max-width: 767px) {
   main {
     flex-direction: column;
-    height: 490px;
+    height: 100%;
+    text-align: center;
   }
 }
-main section {
+main .main-contenido {
+  margin: 70px;
+}
+main .main-contenido section {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-main section h2 {
+main .main-contenido section h2 {
   color: #D96704;
   font-size: 40px;
 }
-main section h3 {
+main .main-contenido section h3 {
   margin-bottom: 50px;
 }
-main section .principios {
-  display: flex;
+main .main-contenido section .principios {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px;
+  /*Es la resolución maxima para un movil */
+  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
 }
-main section .principios .caja {
+@media only screen and (max-width: 767px) {
+  main .main-contenido section .principios {
+    grid-template-columns: 1fr;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+  main .main-contenido section .principios {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+main .main-contenido section .principios .caja {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 200px;
   margin: 20px;
   background-color: #fff;
   padding: 5px;
 }
-main section .principios .caja .image {
+main .main-contenido section .principios .caja .image {
   height: 100px;
 }
-main section .principios .caja .image picture {
+main .main-contenido section .principios .caja .image picture {
   display: flex;
   justify-content: center;
   border-color: 1px rgb(0, 0, 0) solid;
 }
-main section .principios .caja .image picture img {
+main .main-contenido section .principios .caja .image picture img {
   width: 30%;
   border-radius: 10px;
 }
-main section .principios .caja .contenido {
+main .main-contenido section .principios .caja .contenido {
   text-align: center;
   padding: 15px;
   height: 200px;
 }
-main section .principios .caja .contenido h4 {
+main .main-contenido section .principios .caja .contenido h4 {
   color: #D96704;
 }
-main section .principios .caja .contenido p {
+main .main-contenido section .principios .caja .contenido p {
   padding: 10px;
 }
-main .clases {
+main .main-contenido #contactaIndex {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-main .clases .caja {
-  width: 200px;
-  height: 380px;
-  margin: 20px;
-  overflow: hidden;
-  background-color: #fff;
-  cursor: default;
-  transition: all 400ms ease;
-}
-main .clases .caja .imagen {
-  height: 250px;
-}
-main .clases .caja .imagen img {
-  width: 100%;
-  height: 100%;
-}
-main .clases .caja .contenido {
-  height: 150px;
-  text-align: center;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-main .clases .caja .contenido h5 {
-  font-size: 20px;
-  padding-bottom: 20px;
-}
-main .clases .caja .contenido a {
-  background-color: #D96704;
-  border-radius: 10px;
-  padding: 10px;
-  color: #fff;
-}
-main .equipo {
-  display: grid;
-  padding: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
   /*Es la resolución maxima para un movil */
-  /*Resolución para resoluciones superiores a 2000px*/
-}
-main .equipo .caja {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  width: 300px;
-  height: 380px;
-  margin: 20px;
-  background-color: #fff;
-  cursor: default;
-  transition: all 400ms ease;
-}
-main .equipo .caja .imagen {
-  height: 290px;
-}
-main .equipo .caja .imagen img {
-  width: 100%;
-  height: 100%;
-}
-main .equipo .caja .contenido {
-  text-align: center;
-  padding: 15px;
-}
-main .equipo .caja .contenido p {
-  padding: 10px;
-  letter-spacing: 1px;
-}
-main .equipo .caja .contenido a {
-  padding: 10px;
-  color: #000000;
-  letter-spacing: 1px;
-  border: 1px rgb(0, 0, 0) solid;
 }
 @media only screen and (max-width: 767px) {
-  main .equipo {
-    width: 100%;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  main .equipo .caja {
-    width: 70%;
-    height: 95%;
+  main .main-contenido #contactaIndex {
+    grid-template-columns: 1fr;
   }
 }
-@media only screen and (min-width: 2000px) {
-  main .equipo {
-    margin-top: 100px;
+main .main-contenido #contactaIndex .caja {
+  width: 500px;
+  padding: 40px;
+  text-align: center;
+  /*Es la resolución maxima para un movil */
+  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
+}
+@media only screen and (max-width: 767px) {
+  main .main-contenido #contactaIndex .caja {
+    width: 300px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1440px) {
+  main .main-contenido #contactaIndex .caja {
+    width: 400px;
+  }
+}
+main .main-contenido #contactaIndex .caja img {
+  width: 100%;
+}
+main .main-contenido #contactaIndex .caja a {
+  color: #fff;
+  background-color: rgb(217, 103, 4);
+  border: solid 2px rgb(217, 103, 4);
+  letter-spacing: 1px;
+  transition: all 0.5s ease;
+  padding: 15px;
+  /*Es la resolución maxima para un movil */
+  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
+}
+main .main-contenido #contactaIndex .caja a:hover {
+  border: solid 2px rgba(217, 103, 4, 0.719);
+  background-color: rgba(217, 103, 4, 0.719);
+}
+@media only screen and (max-width: 767px) {
+  main .main-contenido #contactaIndex .caja a {
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1440px) {
+  main .main-contenido #contactaIndex .caja a {
+    font-size: 20px;
   }
 }
 
-.contenedor-blogs {
+.card-img-top {
   width: 100%;
-  padding: 5px;
-  margin-bottom: 50px;
-  margin-top: 10px;
-}
-.contenedor-blogs .swiper {
-  width: 90%;
-  height: 390px;
-}
-.contenedor-blogs .swiper .swiper-slide {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.contenedor-blogs .swiper .swiper-button-next,
-.contenedor-blogs .swiper .swiper-button-prev {
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, 0.5);
-  right: 10px;
-  padding: 30px;
-  color: #000000 !important;
-  fill: #000000 !important;
-  stroke: #000000 !important;
-}
-.contenedor-blogs figure {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 2px;
-  box-shadow: 0px 5px 10px;
-  cursor: pointer;
-}
-.contenedor-blogs figure img {
-  width: 100%;
-  height: 100%;
-  transition: all 500ms ease-out;
-}
-.contenedor-blogs figure .texto {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 103, 123, 0.7);
-  transition: all 500ms ease-out;
-  opacity: 0;
-  visibility: hidden;
-  text-align: center;
-}
-.contenedor-blogs figure .texto h3 {
-  color: #fff;
-  font-weight: 400;
-  transition: all 500ms ease-out;
-  /* margin-top: 30px;*/
-  margin-bottom: 120px;
-}
-.contenedor-blogs figure .texto a {
-  color: #fff;
-  line-height: 1.5;
-  width: 100%;
-  max-width: 220px;
-  margin: auto;
-  text-decoration: none;
-}
-.contenedor-blogs figure:hover > .texto {
-  opacity: 1;
-  visibility: visible;
-}
-.contenedor-blogs figure:hover > .texto h3 {
-  margin-top: 10px;
-  margin-bottom: 15px;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
 }
 
 .imagen_scroll {
   margin-top: 100px;
-  background-image: url(../img/fondoScroll.jpg);
+  background-image: url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoEntrenadores.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
   height: 20em;
   /*Resolución para resoluciones superiores a 2000px*/
 }
 @media only screen and (min-width: 2000px) {
   .imagen_scroll {
-    height: 500px;
-  }
-}
-
-.imagen_scroll_sobreNosotros {
-  margin-top: 100px;
-  background-image: url(http://localhost/PROYECTO_ZESARI/public/src/img/pilates.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 20em;
-  /*Resolución para resoluciones superiores a 2000px*/
-}
-@media only screen and (min-width: 2000px) {
-  .imagen_scroll_sobreNosotros {
     height: 500px;
   }
 }
@@ -800,4 +733,147 @@ h1 {
   border-top: 3px solid #D96704;
   border-bottom: 3px solid #D96704;
   padding: 50px;
+}
+
+.blogs, .clases {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.blogs .caja, .clases .caja {
+  width: 350px;
+  height: 490px;
+  margin: 20px;
+  padding: 15px;
+  background-color: rgb(243, 240, 240);
+  box-shadow: 0 4px 14px hsla(355, 25%, 15%, 0.1);
+  border-radius: 0.5rem;
+}
+.blogs .caja img, .clases .caja img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 0.5rem;
+}
+.blogs .caja .contenido, .clases .caja .contenido {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.blogs .caja .contenido .post-title, .clases .caja .contenido .post-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: black;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blogs .caja .contenido .post-saber, .clases .caja .contenido .post-saber {
+  background-color: #D96704;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
+.blogs .caja .contenido .post-date, .clases .caja .contenido .post-date {
+  display: flex;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.blogs .caja .contenido .post-description, .clases .caja .contenido .post-description {
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  margin: 5px 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blogs .caja .contenido .profile, .clases .caja .contenido .profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.blogs .caja .contenido .profile .profile-img, .clases .caja .contenido .profile .profile-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border: 2px solid black;
+}
+
+/*VER BLOG*/
+.migas {
+  background-color: rgb(255, 255, 255);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+}
+.migas a, .migas span {
+  font-size: 30px;
+  padding: 10px;
+  color: #000000;
+}
+
+.post-header {
+  width: 100%;
+  height: 500px;
+  background-color: #321c3d;
+}
+.post-header .header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem !important;
+}
+.post-header .header-content .back-home {
+  color: rgb(0, 0, 0);
+  font-size: 0.9rem;
+}
+.post-header .header-content .header-title {
+  width: 90%;
+  font-size: 2.6rem;
+  color: aliceblue;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.post-header .header-content .header-img {
+  width: 90%;
+  height: 420px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.post-container {
+  max-width: 800px;
+  margin: auto;
+  width: 100%;
+}
+
+.post-content {
+  margin-top: 10rem !important;
+  padding: 50px;
+}
+
+.sub-heading {
+  font-size: 1.2rem;
+}
+
+.post-text {
+  font-size: 1rem;
+  line-height: 1.7rem;
+  margin: 1rem 0;
+  text-align: justify;
 }/*# sourceMappingURL=estilo.css.map */

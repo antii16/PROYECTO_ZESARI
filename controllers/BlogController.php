@@ -42,8 +42,15 @@ class BlogController{
          * y los muestra, para luego comprarla 
          */
         
-         $this->pages->render('blog/nav-blog');
+         $this->pages->render('navegacion/nav-blog');
         
+    }
+
+    public function ver($id) {
+        $blog = new Blog();
+        $blog->setId($id);
+        $blogs = $blog->getOneBlog();
+        $this->pages->render('blog/verBlog', ['blogs' => $blogs]);
     }
 
     public function save() {
