@@ -2,6 +2,7 @@
 
 namespace Models;
 use Lib\BaseDatos;
+use Models\Categoria;
 use PDO;
 use PDOException;
 
@@ -13,7 +14,7 @@ class Clase{
     private string $horario;
     private string $aforo;
     private int $id_usuario_profesor;
-    private int $id_categoria;
+    private Categoria $id_categoria;
     private BaseDatos $db;
 
     public function __construct()
@@ -80,11 +81,11 @@ class Clase{
         $this->id_usuario_profesor = $id_usuario_profesor;
     }
 
-    public function get_idCategoria(): int{
+    public function get_idCategoria(): Categoria{
         return $this->id_categoria;
     }
 
-    public function set_idCategoria(int $id_categoria){
+    public function set_idCategoria(Categoria $id_categoria){
         $this->id_categoria = $id_categoria;
     }
 

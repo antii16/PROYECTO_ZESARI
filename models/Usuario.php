@@ -158,6 +158,10 @@ class Usuario{
         return $usuarios;
     }
 
+    public function obtenerUsuario($id): object {
+        $usuario = $this->db->query("SELECT * FROM usuarios WHERE id = $id");
+        return $usuario;
+    }
 
     public function save():bool{
         /**
@@ -421,5 +425,24 @@ class Usuario{
           
             
         }
+    }
+
+    public function borrar($id) {
+        /**
+         * Borra una pelicula según el id 
+         * que se le pasa 
+         * Si se ha borrado devuelve true y si no devuelve false
+         */
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $resul =  $this->db->prepare($sql);
+        $resul->bindParam(':id', $id, PDO::PARAM_STR);
+        try{
+            $resul->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
     }
 }

@@ -9,21 +9,16 @@
     <!-- CKEditor -->
     <script type="text/javascript" src="/PROYECTO_ZESARI/ckeditor/ckeditor.js"></script>
     <!-- jquery -->
-   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- SLIDER
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
     <!-- FUENTE -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- DATA TABLE -->
-    <!-- <link rel="stylesheet" href="http://localhost/PROYECTO_ZESARI/DataTables/datatables.min.css"> -->
     <link rel="stylesheet" href="http://localhost/PROYECTO_ZESARI/DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
     <link href="http://localhost/PROYECTO_ZESARI/DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="http://localhost/PROYECTO_ZESARI/DataTables/Responsive-2.4.1/css/responsive.dataTables.min.css">
-
     
+  
 
     <title>Zésari</title>
 </head>

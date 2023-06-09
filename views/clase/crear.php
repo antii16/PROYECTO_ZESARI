@@ -2,6 +2,7 @@
 use Utils\Utils;
 use Models\Usuario;
 use Models\Categoria;
+
 ?>
 
 <main>
@@ -12,16 +13,16 @@ use Models\Categoria;
 <form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
     <p> 
         <label for="titulo">Titulo: </label>
-        <input type="text" name="data[titulo]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->nombre?>">
+        <input type="text" name="data[titulo]">
     </p>
     <p> 
         <label for="precio">Precio: </label>
-        <input type="text" name="data[precio]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->email?>">
+        <input type="text" name="data[precio]">
     </p>
 
     <p> 
-        <label for="horario">Horario: </label>
-        <input type="datetime-local" name="data[horario]">
+        <label for="dia">Dia: </label>
+        <input type="text" name="data[dia]" value="">
     </p>
 
     <p>
@@ -69,3 +70,5 @@ use Models\Categoria;
 </div>
 </div>
 </main>
+
+<?php var_dump($datos);?>

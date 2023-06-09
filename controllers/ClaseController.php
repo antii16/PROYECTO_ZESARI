@@ -57,11 +57,15 @@ class ClaseController{
         
     }
 
-    public function save() {
+    public function save($dia, $horaInicio, $horaFin) {
         /**
          * Guarda el pelicula que se ha creado.
          * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
          */
+        $datos = array();
+        $datos['dia'] = $dia;
+        $datos['horaInicio'] = $horaInicio;
+        $datos['horaFin'] = $horaFin;
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['data']) && isset($_FILES['imagen']) ){
 
@@ -86,7 +90,7 @@ class ClaseController{
             }
         }
         
-        $this->pages->render('clase/crear');
+        $this->pages->render('clase/crear', ['datos' => $datos]);
     }
 
 

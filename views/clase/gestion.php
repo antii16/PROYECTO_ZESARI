@@ -18,12 +18,12 @@
         <tr>
             <th>ID</th>
             <th>Titulo</th>
-            <th>Descripcion</th>
             <th>Precio</th>
             <th>Horario</th>
             <th>Aforo</th>
-            <th>Imagen</th>
             <th>Profesor</th>
+            <th>Categoria</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -38,8 +38,8 @@
             <td style="text-align: center;"><?=$clase->id_usuario_profesor?></td>
             <td style="text-align: center;"><?=$clase->id_categoria?></td>
             <td style="text-align: center;">
-                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$clase->id?>">Borrar</a>
-                <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$clase->id?>">Editar</a>
+                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>clase/borrar/<?=$clase->id?>"><i class="fa-solid fa-trash"></i></a>
+                <a class="btn btn-success" href="<?=$_ENV['base_url']?>clase/editar/<?=$clase->id?>"><i class="fa-solid fa-pen-to-square"></i></a>
             </td>
         </tr>
      <?php endwhile?>

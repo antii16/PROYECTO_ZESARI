@@ -220,7 +220,23 @@ public function editar() {
 
 }
 
+public function seleccionar($id){
+    $usuario = new Usuario();
+    $datos = $usuario->obtenerUsuario($id);
+    $this->pages->render('usuario/ver',  ['datos' => $datos]);
+    
+}
 
+public function delete($id){
+    /**
+     * Borra la pelicula seleccionada
+     * con el id que se le pasa
+     */
+    
+    $usuario = new Usuario();
+    $delete = $usuario->borrar($id);
+    $this->pages->render('usuario/gestion');
+}
 
     public function logout(){
         /**

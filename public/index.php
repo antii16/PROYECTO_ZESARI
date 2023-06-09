@@ -41,15 +41,14 @@ Router::add('POST', 'categoria/crear', function(){
 /*********************************************** */
 /***********************CLASES***************** */
 
-
 Router::add('GET', 'clase/gestionClase', function(){
     return (new ClaseController())->gestion();
 });
 
-Router::add('GET', 'clase/crear', function(){
-    return (new ClaseController())->save();
-});
+Router::add('GET', 'clase/crear/:dia/:horaInicio/:horaFin', function($dia, $horaInicio, $horaFin){
 
+    return (new ClaseController())->save($dia, $horaInicio, $horaFin);
+});
 Router::add('POST', 'clase/crear', function(){
     return (new ClaseController())->save();
 });
@@ -84,15 +83,6 @@ Router::add('GET', 'usuario/gestionUsuario', function(){
     return (new UsuarioController())->gestion();
 });
 
-
-Router::add('GET', 'usuario/registro', function(){
-    return (new UsuarioController())->save();
-});
-
-Router::add('POST', 'usuario/registro', function(){
-    return (new UsuarioController())->save();
-});
-
 Router::add('GET', 'usuario/login', function(){
     return (new UsuarioController())->login();
 });
@@ -109,17 +99,32 @@ Router::add('GET', 'logout', function(){
     return (new UsuarioController())->logout();
 });
 
+Router::add('GET', 'perfil', function(){
+    return (new UsuarioController())->perfil();
+});
+
+//CRUD
+
+Router::add('GET', 'usuario/registro', function(){
+    return (new UsuarioController())->save();
+});
+
+Router::add('POST', 'usuario/registro', function(){
+    return (new UsuarioController())->save();
+});
 Router::add('GET', 'usuario/editar', function(){
     return (new UsuarioController())->editar();
 });
 Router::add('POST', 'usuario/editar', function(){
     return (new UsuarioController())->editar();
 });
-
-Router::add('GET', 'perfil', function(){
-    return (new UsuarioController())->perfil();
+Router::add('GET', 'usuario/ver/:id', function($id){
+    return (new UsuarioController())->seleccionar($id);
 });
 
+Router::add('GET', 'usuario/borrar/:id', function($id){
+    return (new UsuarioController())->delete($id);
+});
 
 
 /***********************NAVEGACION *******************/

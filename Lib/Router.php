@@ -1,49 +1,42 @@
 <?php
+
 namespace Lib;
-// para almacenar las rutas que configuremos desde el archivo index.php
 
 class Router {
-
     private static array $routes = [];
-    //para ir añadiendo los métodos y las rutas en el tercer parámetro.
-    public static function add(string $method, string $action, Callable $controller):void{
-        //die($action);
 
+    public static function add(string $method, string $action, Callable $controller): void {
         $action = trim($action, '/');
-       
         self::$routes[$method][$action] = $controller;   
     }
-   
-    // Este método se encarga de obtener el sufijo de la URL que permitirá seleccionar
-    // la ruta y mostrar el resultado de ejecutar la función pasada al metodo add para esa ruta
-    // usando call_user_func()
 
-    public static function dispatch():void {
-        $method = $_SERVER['REQUEST_METHOD']; 
-        //print_r($_SERVER);die($method);
-        //'/\/PROYECTO_FINAL\/public\/'
-        $action = preg_replace('/PROYECTO_ZESARI\/public/','',$_SERVER['REQUEST_URI']);
-       //$_SERVER['REQUEST_URI'] almacena la cadena de texto que hay después del nombre del host en la URL
+    public static function dispatch(): void {
+        $method = $_SERVER['REQUEST_METHOD'];
+        $action = preg_replace('/PROYECTO_ZESARI\/public/', '', $_SERVER['REQUEST_URI']);
         $action = trim($action, '/');
-        $param = null;
-        preg_match('/[0-9]+$/', $action, $match);
-       
-        if(!empty($match)){
-            
-            $param = $match[0];
-            $param =preg_replace("/\//",'',$param);
-            $action=preg_replace('/'.$match[0].'/',':id',$action);//quitamos la primera parte que se repite siempre (clinicarouter)
-        }
-        
-        $fn = self::$routes[$method][$action] ?? null;
+        $params = [];
 
-        if($fn) {
-            $callback = self::$routes[$method][$action];
-            echo call_user_func($callback, $param);
-        }else{
+        $routeFound = false;
+        foreach (self::$routes[$method] as $route => $controller) {
+            $pattern = self::generatePattern($route);
+            if (preg_match($pattern, $action, $matches)) {
+                $params = array_slice($matches, 1);
+                $routeFound = true;
+                break;
+            }
+        }
+
+        if ($routeFound) {
+            $callback = self::$routes[$method][$route];
+            echo call_user_func_array($callback, $params);
+        } else {
             echo 'Página no encontrada';
         }
-       
-        
+    }
+
+    private static function generatePattern(string $route): string {
+        $pattern = '/^' . preg_quote($route, '/') . '$/';
+        $pattern = preg_replace('/\\\:[A-Za-z0-9\_\-]+/', '([^\/]+)', $pattern);
+        return $pattern;
     }
 }

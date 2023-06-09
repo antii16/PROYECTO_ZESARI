@@ -31,8 +31,8 @@ use Models\Usuario; ?>
                     <td style="text-align: center;"><?= $usuario->rol ?></td>
                     <td style="text-align: center;">
                     
-                        <a class="btn btn-danger" href="<?= $_ENV['base_url'] ?>usuario/borrar/<?= $usuario->id ?>"><i style="color:red" class="fa-solid fa-trash"></i></a>
-                        <a class="btn btn-success" href="<?= $_ENV['base_url'] ?>usuario/editar/<?= $usuario->id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        
+                        <a class="btn btn-success" href="<?= $_ENV['base_url'] ?>usuario/ver/<?=$usuario->id?>"><i class="fa-solid fa-eye"></i></a>
                         <a class="btn btn-success" href="<?= $_ENV['base_url'] ?>pagar/<?= $usuario->id ?>"><i class="fa-solid fa-comment-dollar"></i></a>
                     </td>
                 </tr>

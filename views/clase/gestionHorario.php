@@ -20,20 +20,12 @@ tabla += "<table id='horario' style='width:100%'>";
 tabla += "<thead>";
 tabla += "<tr>";
 tabla += "<th>Dias\/Hora</th>";
-tabla += "<th>8:00 - 9:00</th>";
-tabla += "<th>9:00 - 10:00</th>";
-tabla += "<th>10:00 - 11:0</th>";
-tabla += "<th>11:00 - 12:00</th>";
-tabla += "<th>12:00 - 13:00</th>";
-tabla += "<th>13:00 - 14:00</th>";
-tabla += "<th>14:00 - 15:00</th>";
-tabla += "<th>15:00 - 16:00</th>";
-tabla += "<th>16:00 - 17:00</th>";
-tabla += "<th>17:00 - 18:00</th>";
-tabla += "<th>18:00 - 19:00</th>";
-tabla += "<th>19:00 - 20:00</th>";
-tabla += "<th>20:00 - 21:00</th>";
-tabla += "<th>21:00 - 22:00</th>";
+for (var hora = 8; hora <= 21; hora++) {
+    var horaInicio = hora.toString().padStart(2, '0');
+    var horaFin = (hora + 1).toString().padStart(2, '0');
+    tabla += `<th>${horaInicio}:00 - ${horaFin}:00</th>`;
+}
+tabla += "</tr>";
 tabla += "</thead>";
 
 tabla += "<tbody>";
@@ -43,20 +35,11 @@ for (var dia = 1; dia <= diasMes; dia++) {
 
     tabla += "<tr>";
     tabla += `<td>${diasSemana[indice]} ${dia}</td>`; //rellenar con clases
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
-    tabla += `<td></td>`;
+    for (var i = 0; i < 14; i++) {
+                var horaInicio = (i + 8).toString().padStart(2, '0');
+                var horaFin = (i + 9).toString().padStart(2, '0');
+                tabla += `<td><a href="${getUrl(dia, horaInicio, horaFin)}">Crear</a></td>`;
+            }
 
     tabla += "</tr>";
   console.log(`El día número ${dia} del mes ${mes} del año ${year} es ${diasSemana[indice]}`);
@@ -69,5 +52,11 @@ const tablaHorario = document.getElementById("tablaHorario");
 
 tablaHorario.innerHTML += tabla;
 
-// document.write(tabla);
+function getUrl(dia, hora) {
+    var envValue = "<?php echo $_ENV['base_url']; ?>";
+    var url = envValue + `clase/crear/${dia}/${horaInicio}/${horaFin}`;
+    return url;
+}
 </script>
+
+
