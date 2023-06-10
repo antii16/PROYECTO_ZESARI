@@ -46,8 +46,7 @@ Router::add('GET', 'clase/gestionClase', function(){
 });
 
 Router::add('GET', 'clase/crear/:dia/:horaInicio/:horaFin', function($dia, $horaInicio, $horaFin){
-
-    return (new ClaseController())->save($dia, $horaInicio, $horaFin);
+    return (new ClaseController())->formularioClase($dia, $horaInicio, $horaFin);
 });
 Router::add('POST', 'clase/crear', function(){
     return (new ClaseController())->save();
@@ -159,6 +158,10 @@ Router::add('GET', 'pagar/:id', function($id){
 
 Router::add('POST', 'pagar', function(){
     return (new PagoController())->save();
+});
+
+Router::add('GET', 'pago/gestionPago', function(){
+    return (new PagoController())->gestion();
 });
 
 /*********************************************** */

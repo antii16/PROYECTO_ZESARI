@@ -10,7 +10,7 @@ class Pago{
     private string $fecha;
     private string $tipo;
     private string $estado;
-    private string $precio;
+    private string $cantidad;
     private string $id_cliente;
     private string $id_empleado_anota;
     private string $id_clase;
@@ -56,11 +56,11 @@ class Pago{
         $this->estado = $estado;
     }
 
-    public function getPrecio(): string{
+    public function getCantidad(): string{
         return $this->cantidad;
     }
 
-    public function setPrecio(string $cantidad){
+    public function setCantidad(string $cantidad){
         $this->cantidad = $cantidad;
     }
 
@@ -93,11 +93,11 @@ class Pago{
          * Selecciona todos los peliculas
          */
         $pago = new Pago();
-        $pagos = $pago->db->query("SELECT * FROM pagos 
-        INNER JOIN usuarios ON pagos.id_cliente = usuarios.id 
-        INNER JOIN clases ON usuarios.id = clases.id 
-        WHERE rol = 'cliente'
-        ORDER BY id DESC;");
+        $pagos = $pago->db->query("SELECT * FROM pagos ORDER BY id DESC;");
+
+// INNER JOIN usuarios ON pagos.id_cliente = usuarios.id 
+// INNER JOIN clases ON pagos.id_clase = clases.id 
+// WHERE rol = 'cliente'
         return $pagos;
     }
 
@@ -109,19 +109,19 @@ class Pago{
          * Devuelve true si se ha creado y false si no
          */
 
-        $ins = $this->db->prepare("INSERT INTO pagos(now(), tipo, estado, precio, , id_cliente, id_empleado_anota, id_clase) 
-        VALUES (now(), :tipo, :estado, :precio, , :id_cliente, :id_empleado_anota, :id_clase)");
+        $ins = $this->db->prepare("INSERT INTO pagos(fecha, tipo, estado, cantidad,id_cliente, id_empleado_anota, id_clase) 
+        VALUES (now(), :tipo, :estado, :cantidad, :id_cliente, :id_empleado_anota, :id_clase)");
 
         $ins->bindParam( ':tipo', $tipo, PDO::PARAM_STR);
         $ins->bindParam( ':estado', $estado, PDO::PARAM_STR);
-        $ins->bindParam( ':precio', $precio, PDO::PARAM_STR);
+        $ins->bindParam( ':cantidad', $cantidad, PDO::PARAM_STR);
         $ins->bindParam( ':id_cliente', $id_cliente, PDO::PARAM_STR);
         $ins->bindParam( ':id_empleado_anota', $id_empleado_anota, PDO::PARAM_STR);
         $ins->bindParam( ':id_clase', $id_clase, PDO::PARAM_STR);
         
         $tipo = $this->getTipo();
         $estado = $this->getEstado();
-        $precio = $this->getPrecio();
+        $cantidad = $this->getCantidad();
         $id_cliente = $this->get_idCliente();
         $id_empleado_anota = $_SESSION['identity']->id;
         $id_clase = $this->get_idClase();
@@ -130,7 +130,9 @@ class Pago{
             $ins->execute();
             $result = true;
         }catch(PDOException $err){
-            $result= false;
+            $result= $err;
+            var_dump($result);
+            die();
             
         }
 
@@ -143,7 +145,7 @@ class Pago{
          * Valida el si los campos no están vacíos y que el stock y el precio son números
          * y no letras
          **/
-        if(!is_numeric($datos['precio'])) {
+        if(!is_numeric($datos['cantidad'])) {
             $this->errores[] = "El precio debe ser un número";
         }
 

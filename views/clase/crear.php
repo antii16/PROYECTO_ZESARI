@@ -2,7 +2,7 @@
 use Utils\Utils;
 use Models\Usuario;
 use Models\Categoria;
-
+//<br /><b>Warning</b>:  Undefined variable $datos in <b>C:\xampp\htdocs\PROYECTO_ZESARI\views\clase\crear.php</b> on line <b>21</b><br /><br /><b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\xampp\htdocs\PROYECTO_ZESARI\views\clase\crear.php</b> on line <b>21</b><br />
 ?>
 
 <main>
@@ -11,7 +11,20 @@ use Models\Categoria;
 <div class="crear"> 
 
 <form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
+    
+<p> 
+        <label for="dia">Dia: </label>
+        <input type="text" name="data[dia]" value="<?=$datos['dia']?>">
+    </p>
     <p> 
+        <label for="horaInicio">Hora inicio: </label>
+        <input type="text" name="data[horaInicio]" value="<?=$datos['horaInicio']?>">
+    </p>
+    <p> 
+        <label for="horaFin">Hora fin: </label>
+        <input type="text" name="data[horaFin]" value="<?=$datos['horaFin']?>">
+    </p>
+<p> 
         <label for="titulo">Titulo: </label>
         <input type="text" name="data[titulo]">
     </p>
@@ -20,20 +33,11 @@ use Models\Categoria;
         <input type="text" name="data[precio]">
     </p>
 
-    <p> 
-        <label for="dia">Dia: </label>
-        <input type="text" name="data[dia]" value="">
-    </p>
-
     <p>
         <label for="aforo">Aforo</label>
         <input type="number" name="data[aforo]">
     </p>
 
-    <p>
-        <label for="cantidad">Clases al mes: </label>
-        <input type="number" name="data[cantidad_mes]">
-    </p>
     <?php $profesores = Usuario::obtenerProfesor(); ?>
     <p>
 
@@ -71,4 +75,4 @@ use Models\Categoria;
 </div>
 </main>
 
-<?php var_dump($datos);?>
+<?php //var_dump($datos);?>

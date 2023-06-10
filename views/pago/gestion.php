@@ -11,25 +11,27 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Email</th>
-            <th>Rol</th>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Clase</th>
+            <th>Estado</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
    <?php $pagos = Pago::obtenerPagos(); ?>
     <?php while($pago = $pagos->fetch(PDO::FETCH_OBJ)):?>
         <tr>
-            <td style="text-align: center;"><?=$usuario->id?></td>
-            <td style="text-align: center;"><?=$usuario->nombre?></td>
-            <td style="text-align: center;"><?=$usuario->apellidos?></td>
-            <td style="text-align: center;"><?=$usuario->email?></td>
-            <td style="text-align: center;"><?=$usuario->rol?></td>
+            <td style="text-align: center;"><?=$pago->id?></td>
+            <td style="text-align: center;"><?=$pago->id_cliente?></td>
+            <td style="text-align: center;"><?=$pago->fecha?></td>
+            <td style="text-align: center;"><?=$pago->tipo?></td>
+            <td style="text-align: center;"><?=$pago->id_clase?></td>
+            <td style="text-align: center;"><?=$pago->estado?></td>
             <td style="text-align: center;">
-                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>usuario/borrar/<?=$usuario->id?>">Borrar</a>
                 <a class="btn btn-success" href="<?=$_ENV['base_url']?>usuario/editar/<?=$usuario->id?>">Editar</a>
-                <a class="btn btn-success" href="<?=$_ENV['base_url']?>pagar/<?=$usuario->id?>">Pagar</a>
+
             </td>
         </tr>
      <?php endwhile?>

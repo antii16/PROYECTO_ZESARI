@@ -89,7 +89,15 @@ class Clase{
         $this->id_categoria = $id_categoria;
     }
 
+    public function obtenerClasesHorario() {
+        $sql = "SELECT * FROM clases";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
 
+        // Array para almacenar los datos de las clases
+        $clases = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $clases;
+    }
     public static function obtenerClases() {
         /**
          * Selecciona todos los peliculas
@@ -115,24 +123,26 @@ class Clase{
          * Devuelve true si se ha creado y false si no
          */
 
-        $ins = $this->db->prepare("INSERT INTO clases(titulo, precio, horario, aforo, cantidad_mes, id_usuario_profesor, id_categoria) 
-        VALUES (:titulo, :precio, :horario, :aforo, :cantidad_mes, :id_usuario_profesor, :id_categoria)");
+        $ins = $this->db->prepare("INSERT INTO clases(titulo, precio, dia, horaInicio, horaFin, aforo, id_usuario_profesor, id_categoria) 
+        VALUES (:titulo, :precio, :dia, :horaInicio, :horaFin, :aforo, :id_usuario_profesor, :id_categoria)");
 
         $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
         $ins->bindParam( ':precio', $precio, PDO::PARAM_STR);
-        $ins->bindParam( ':horario', $horario, PDO::PARAM_STR);
+        $ins->bindParam( ':dia', $dia, PDO::PARAM_STR);
+        $ins->bindParam( ':horaInicio', $horaInicio, PDO::PARAM_STR);
+        $ins->bindParam( ':horaFin', $horaFin, PDO::PARAM_STR);
         $ins->bindParam( ':aforo', $aforo, PDO::PARAM_STR);
-        $ins->bindParam( ':cantidad_mes', $cantidad_mes, PDO::PARAM_STR);
         $ins->bindParam( ':id_usuario_profesor', $id_usuario_profesor, PDO::PARAM_STR);
         $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
         
         $titulo = $datos['titulo'];
         $precio = $datos['precio'];
-        $horario = $datos['horario'];
+        $dia = $datos['dia'];
+        $horaInicio = $datos['horaInicio'];
+        $horaFin = $datos['horaFin'];
         $aforo = $datos['aforo'];
-        $cantidad_mes = $datos['cantidad_mes'];
         $id_usuario_profesor = $datos['id_usuario_profesor'];
-        $id_usuario_profesor = $datos['id_categoria'];
+        $id_categoria = $datos['id_categoria'];
         
         try{
             $ins->execute();

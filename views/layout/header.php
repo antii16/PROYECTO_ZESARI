@@ -64,6 +64,7 @@
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>clase/gestionHorario">Horario</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>blog/gestionBlog">Blogs</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>categoria/gestionCategoria">Categoría</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>pago/gestionPago">Pago</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-right-from-bracket"></i></a></li>
                             
                         </ul>

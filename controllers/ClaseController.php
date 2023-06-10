@@ -32,7 +32,12 @@ class ClaseController{
          */
         //Utils::isAdmin();
         
-        $this->pages->render('clase/gestionHorario');
+        $clase = new Clase();
+        $clases = $clase->obtenerClasesHorario();
+        // var_dump(gettype($clases));
+        // die();
+        // $clases = json_encode($clases);
+        $this->pages->render('clase/gestionHorario', ['clases' => $clases]);
     }
 
     // public function index() {
@@ -57,7 +62,7 @@ class ClaseController{
         
     }
 
-    public function save($dia, $horaInicio, $horaFin) {
+    public function formularioClase($dia, $horaInicio, $horaFin) {
         /**
          * Guarda el pelicula que se ha creado.
          * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
@@ -66,11 +71,21 @@ class ClaseController{
         $datos['dia'] = $dia;
         $datos['horaInicio'] = $horaInicio;
         $datos['horaFin'] = $horaFin;
+        
+        $this->pages->render('clase/crear', ['datos' => $datos]);
+    }
+
+    public function save() {
+        /**
+         * Guarda el pelicula que se ha creado.
+         * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
+         */
+        $clase = new Clase();
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if(isset($_POST['data']) && isset($_FILES['imagen']) ){
+            if(isset($_POST['data'])){
 
                 $datos = $_POST['data'];
-                $clase = new Clase();
+                // $clase = new Clase();
                 $clase_validada = $clase->validar($datos);
 
                 if(count($clase_validada) == 0){
@@ -89,11 +104,13 @@ class ClaseController{
                 
             }
         }
-        
-        $this->pages->render('clase/crear', ['datos' => $datos]);
+        // $clases = $clase->obtenerClasesHorario();
+        // $clases = json_encode($clases);
+        // var_dump($clases);
+        // die();
+        $this->pages->render('clase/gestionHorario');
+        // $this->pages->render('clase/gestionHorario');
     }
-
-
     
 
 }

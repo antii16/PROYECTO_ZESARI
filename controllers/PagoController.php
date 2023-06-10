@@ -21,7 +21,7 @@ class PagoController{
          */
         //Utils::isAdmin();
         
-        $this->pages->render('blog/gestion');
+        $this->pages->render('pago/gestion');
     }
 
     // public function index() {
@@ -62,7 +62,7 @@ class PagoController{
                    
                    $pago->setTipo($datos['tipo']);
                    $pago->setEstado($datos['estado']);
-                   $pago->setPrecio($datos['precio']);
+                   $pago->setCantidad($datos['cantidad']);
                    $pago->set_idCliente($datos['id_cliente']);
                    $pago->set_idClase($datos['id_clase']);
                     $save = $pago->save();
