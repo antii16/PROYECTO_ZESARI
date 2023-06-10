@@ -4,46 +4,53 @@ use Utils\Utils;
 ?>
 
 <main>
-<div class="main-contenido">
-<h1>Crear usuario</h1>
-<div class="crear"> 
+    <!-- HEADER CONTENIDO -->
+    <div class="header-submenu">
+        <div class="overlay">
+            <h1>Crear usuario</h1>
+        </div>
+    </div>
 
+    <!-- MAIN CONTENIDO -->
 
-<div id="formularioUsuario">
-<form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>usuario/registro" method="POST" enctype="multipart/form-data">
-   <div class="caja">
-    <fieldset>
-    <legend>Datos obligatorios:</legend>
-    <p> 
-        <label for="nombre">Nombre: </label>
-        <input type="text" name="data[nombre]" >
-    </p>
-    <p> 
-        <label for="apellidos">Apellidos: </label>
-        <input type="text" name="data[apellidos]">
-    </p>
+    <div class="main-contenido">
+        
+        <div class="crear"> 
+            <form  id="formularioCrearUsuario" action="<?=$_ENV['base_url']?>usuario/registro" method="POST" enctype="multipart/form-data">
+            <div class="caja">
+                <fieldset>
+                    <legend> Datos obligatorios </legend>
+                    <p> 
+                        <label for="nombre">Nombre: </label>
+                        <input type="text" name="data[nombre]" required>
+                    </p>
+                    <p> 
+                        <label for="apellidos">Apellidos: </label>
+                        <input type="text" name="data[apellidos]" required>
+                    </p>
 
-    <p> 
-        <label for="email">Email: </label>
-        <input type="text" name="data[email]">
-    </p>
+                    <p> 
+                        <label for="email">Email: </label>
+                        <input type="email" name="data[email]" required>
+                    </p>
 
-    </fieldset>
-  
+                    <p>
+                        <label for="rol">Rol: </label>
+                        <select name="data[rol]" id="">
+                            <option value="empleado">Empleado</option>
+                            <option value="cliente"  selected="true">Cliente</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </p>
 
-   </div> 
+                </fieldset>
+            </div>    
+            <div class="caja">
+                <input type="submit" name="registrar"  value="Dar de alta" class="btn btn-primary">
+                <a href="<?=$_ENV['base_url']?>usuario/gestion">Volver</a>
+            </div>  
+            </form>
 
-        <p> 
-       <select name="data[rol]" id="">
-        <option value="empleado">Empleado</option>
-        <option value="cliente"  selected="true">Cliente</option>
-        <option value="admin">Administrador</option>
-       </select>
-    </p>
-        <input type="submit" name="registrar"  value="Dar de alta" class="btn btn-primary">
-</form>
-
-
-</div>
-</div>
+        </div>
+    </div>
 </main>

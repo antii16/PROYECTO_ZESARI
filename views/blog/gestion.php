@@ -22,6 +22,7 @@
             <!-- <th>Fecha</th> -->
             <th>Imagen</th>
             <th>Empleado</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -34,8 +35,8 @@
             <td style="text-align: center;"><?=$blog->imagen?></td>
             <td style="text-align: center;"><?=$blog->id_usuario_empleado?></td>
             <td style="text-align: center;">
-                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$blog->id?>">Borrar</a>
-                <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$blog->id?>">Editar</a>
+                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>blog/borrar/<?=$blog->id?>"><i class="fa-solid fa-trash"></i></a>
+                <a class="btn btn-success" href="<?=$_ENV['base_url']?>blog/editar/<?=$blog->id?>"><i class="fa-solid fa-pen-to-square"></i></a>
             </td>
         </tr>
      <?php endwhile?>

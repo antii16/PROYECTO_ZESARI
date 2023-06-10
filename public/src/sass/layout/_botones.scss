@@ -1,0 +1,105 @@
+@mixin estiloGeneralCrud {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100px;
+    transition: all 0.5s ease;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+}
+
+/*Boton añadir en el CRUD*/
+.añadir {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100px;
+    background-color: rgb(217, 103, 4);
+    border: solid 2px rgb(217, 103, 4);
+    transition: all 0.5s ease;
+    text-align: center;
+    border-radius: 5px;
+
+    &:hover {
+        border: solid 2px rgba(217, 103, 4, 0.719);
+        background-color: rgba(217, 103, 4, 0.719);
+    }
+
+    .add {
+
+        color: $blanco;
+    }
+}
+
+.ver {
+    background-color: blue;
+    border: solid 2px blue;
+
+    &:hover {
+        border: solid 2px rgba(0, 0, 255, 0.719);
+        background-color: rgba(0, 0, 255, 0.719);
+    }
+
+    @include estiloGeneralCrud;
+}
+
+.pagar {
+    background-color: green;
+    border: solid 2px green;
+
+    &:hover {
+        border: solid 2px rgba(0, 128, 0, 0.719);
+        background-color: rgba(0, 128, 0, 0.719);
+    }
+
+    @include estiloGeneralCrud;
+}
+
+.editar {
+    background-color: grey;
+    border: solid 2px grey;
+    &:hover {
+        border: solid 2px rgba(128, 128, 128, 0.719);
+        background-color: rgba(128, 128, 128, 0.719);
+    }
+    @include estiloGeneralCrud;
+}
+
+
+/*BOTON VER USUARIO*/
+
+#botones {
+    margin: 20px;
+}
+
+.borrar {
+    background-color: red;
+    border: solid 2px red;
+    &:hover {
+        border: solid 2px rgba(255, 0, 0, 0.719);
+        background-color: rgba(255, 0, 0, 0.719);
+    }
+    @include estiloGeneralCrud;
+}
+
+.volver {
+    background-color: black;
+    border: solid 2px black;
+    &:hover {
+        border: solid 2px rgba(0, 0, 0, 0.719);
+        background-color: rgba(0, 0, 0, 0.719);
+    }
+
+    @include estiloGeneralCrud;
+}
+
+.insertarDato {
+    background-color: rgb(217, 103, 4);
+    border: solid 2px rgb(217, 103, 4);
+    &:hover {
+        border: solid 2px rgba(217, 103, 4, 0.719);
+        background-color: rgba(217, 103, 4, 0.719);
+    }
+
+    @include estiloGeneralCrud;
+}

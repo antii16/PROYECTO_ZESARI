@@ -30,10 +30,9 @@ CONSTRAINT uq_email UNIQUE(`email`)
 DROP TABLE IF EXISTS `clases`;
 CREATE TABLE IF NOT EXISTS `clases`( 
 `id`             int auto_increment not null,
-`nombre`         varchar(255) not null,
+`titulo`         varchar(255) not null,
 `precio`       decimal COLLATE utf8mb4_unicode_ci,
-`horario`       datetime COLLATE utf8mb4_unicode_ci,
-`aforo`       varchar(255) COLLATE utf8mb4_unicode_ci,
+`cantidad`       int COLLATE utf8mb4_unicode_ci,
 `id_usuario_profesor`       int COLLATE utf8mb4_unicode_ci not null,
 `id_categoria`       int COLLATE utf8mb4_unicode_ci not null,
 CONSTRAINT pk_clases PRIMARY KEY(`id`),
@@ -67,14 +66,14 @@ CONSTRAINT fk_pagos_clases FOREIGN KEY(`id_clase`) REFERENCES clases(`id`)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-DROP TABLE IF EXISTS `matriculado`;
-CREATE TABLE IF NOT EXISTS `matriculado`( 
+DROP TABLE IF EXISTS `apuntado`;
+CREATE TABLE IF NOT EXISTS `apuntado`( 
 `id`             int auto_increment not null,
 `id_cliente`        int COLLATE utf8mb4_unicode_ci not null,
-`id_clase`         int COLLATE utf8mb4_unicode_ci not null,
-CONSTRAINT pk_matricula PRIMARY KEY(`id`),
-CONSTRAINT fk_matricula_clientes FOREIGN KEY(`id_cliente`) REFERENCES usuarios(`id`),
-CONSTRAINT fk_matricula_clases FOREIGN KEY(`id_clase`) REFERENCES clases(`id`)
+`id_horario`         int COLLATE utf8mb4_unicode_ci not null,
+CONSTRAINT pk_apuntado PRIMARY KEY(`id`),
+CONSTRAINT fk_apuntado_cliente FOREIGN KEY(`id_cliente`) REFERENCES usuarios(`id`),
+CONSTRAINT fk_apuntado_horario FOREIGN KEY(`id_horario`) REFERENCES horario(`id`)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -91,6 +90,15 @@ CONSTRAINT pk_clases PRIMARY KEY(`id`),
 CONSTRAINT fk_usuario_blog FOREIGN KEY(`id_usuario_empleado`) REFERENCES usuarios(`id`)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `horario`;
+CREATE TABLE IF NOT EXISTS `horario`( 
+`id`             int auto_increment not null,
+`aforo_disponible` int not null,
+`fecha`       date COLLATE utf8mb4_unicode_ci,
+`id_categoria`       int COLLATE utf8mb4_unicode_ci not null,
+CONSTRAINT pk_horario PRIMARY KEY(`id`),
+CONSTRAINT fk_categoria_horario FOREIGN KEY(`id_categoria`) REFERENCES categorias(`id`)
+)ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- INICIACION PILATES
 INSERT INTO `clases` (`titulo`, `precio`, `aforo`, `cantidad_clases`, `id_usuario_profesor`, `id_categoria`) VALUES ('4 sesiones individuales (IP)', 115, 1,4, 10, 16);

@@ -16,7 +16,7 @@ class UsuarioController{
     }
 
     public function mostrarEquipo() {
-        $this->pages->render('usuario/nav-equipo');
+        $this->pages->render('navegacion/nav-equipo');
     }
 
     public function gestion() {
@@ -180,7 +180,14 @@ public function editar() {
                            
                         }
                         
-                        //$usuario->setRol($registrado['rol']);
+                        if(isset($_POST['data']['profesion']) && isset($_POST['data']['experiencia'])) {
+                            $usuario->setProfesion($editado['profesion']);
+                            $usuario->setExperiencia($editado['experiencia']);
+                        }else{
+                            $usuario->setProfesion('');
+                            $usuario->setExperiencia('');
+                        }
+                    
                         $usuario->setFecha_nacimiento($editado['fecha_nacimiento']);
                         $usuario->setLugar_nacimiento($editado['lugar_nacimiento']);
                         $usuario->setDireccion($editado['direccion']);
@@ -188,11 +195,11 @@ public function editar() {
                         $usuario->setTelefono2($editado['telefono2']);
                         $usuario->setSexo($editado['sexo']);
                         $usuario->setPatologias($editado['patologias']);
+                        
                         $usuario->setImagen($img['name']);
                         $edit = $usuario->edit();
                         $_SESSION['identity'] = $usuario->datosSession();
-                        var_dump($_SESSION['identity'] );
-                        die();
+  
                         $usuario->crearCarpeta($img);
             
                         //$datos = array();

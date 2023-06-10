@@ -22,6 +22,16 @@ class Utils{
         }
     }
 
+    public static function isAdminOrEmpleado() {
+        if(!isset($_SESSION['admin']) || !isset($_SESSION['empleado'])) {
+            header('Location: '. $_ENV['base_url']);
+
+        }
+        else{
+            return true;
+        }
+    }
+
 
     public static function isIdentity() {
         if(!isset($_SESSION['identity'])) {

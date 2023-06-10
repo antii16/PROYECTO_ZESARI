@@ -19,37 +19,21 @@ class ClaseController{
          * Esto solo está disponible para el admin
          * Redirigue al Gestionar películas
          */
-        //Utils::isAdmin();
-        
         $this->pages->render('clase/gestion');
     }
 
-    public function gestionHorario(){
+    public function obtenerDatosClase($id){
         /**
          * Muestra todos los peliculas que existen. 
          * Esto solo está disponible para el admin
          * Redirigue al Gestionar películas
          */
         //Utils::isAdmin();
-        
         $clase = new Clase();
-        $clases = $clase->obtenerClasesHorario();
-        // var_dump(gettype($clases));
-        // die();
-        // $clases = json_encode($clases);
-        $this->pages->render('clase/gestionHorario', ['clases' => $clases]);
+        $clase->setId($id);
+        $datos = $clase->getOneClaseDatos();
+        echo json_encode($datos);   
     }
-
-    // public function index() {
-    //     /**
-    //      * Muestra todas las peliculas en de la base de datos 
-    //      * en el main 
-    //      */
-    //     $clase = new Clase();
-    //     $clase = $clase->getAll();
-    //     $this->pages->render('layout/main', ['clase' => $clase]);
-        
-    // }
 
     public function mostrarClases() {
         /**
@@ -85,12 +69,16 @@ class ClaseController{
             if(isset($_POST['data'])){
 
                 $datos = $_POST['data'];
-                // $clase = new Clase();
                 $clase_validada = $clase->validar($datos);
 
                 if(count($clase_validada) == 0){
                     //Si el $errores[] está vacío significa que no hay error
 
+                    $clase->setTitulo($datos['titulo']);
+                    $clase->setPrecio($datos['precio']);
+                    $clase->setCantidad($datos['cantidad']);
+                    $clase->set_idProfesor($datos['id_usuario_profesor']);
+                    $clase->set_idCategoria($datos['id_categoria']);
                     $save = $clase->save($datos);
                 
                     if($save) {
@@ -103,14 +91,75 @@ class ClaseController{
                 }
                 
             }
+        }else{
+            $this->pages->render('clase/crear');
         }
-        // $clases = $clase->obtenerClasesHorario();
-        // $clases = json_encode($clases);
-        // var_dump($clases);
-        // die();
-        $this->pages->render('clase/gestionHorario');
-        // $this->pages->render('clase/gestionHorario');
     }
     
+    public function editar($id) {
+
+        /**
+             * Se guardan los datos de un nuevo empleado o de un usuario
+             * que quiera editar sus datos.
+             * La contraseña se encripta y se validan los datos. 
+             * Si los datos están validados se crea o se edita el usuario
+             * Si name es registrar, se crea un nuevo usuario
+             * Si la $_SESSION['identity'] existe se edita el usuario
+             */
+            $clase = new Clase();
+            $clase->setId($id);
+             if($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if(isset($_POST['data'])) {
+                    $editado = $_POST['data'];
+                    $clase->setTitulo($editado['titulo']);
+                    $clase->setPrecio($editado['precio']);
+                    $clase->set_idProfesor($editado['id_usuario_profesor']);
+                    $clase->set_idCategoria($editado['id_categoria']);
+                    $edit = $clase->edit();
+                
+                    if($edit) {   
+                        $_SESSION['edit_clase'] = 'complete';
+                    }else{
+                        $_SESSION['edit_clase'] = 'failed';
+                    }
+                }
+
+                $this->pages->render('clase/gestion');
+            }else {
+                $datos = $clase->getOneClase();
+                $this->pages->render('clase/editar', ['datos' => $datos]);
+            }
+    }
+
+    public function delete($id){
+        /**
+         * Borra la pelicula seleccionada
+         * con el id que se le pasa
+         */
+        
+        $clase = new Clase();
+        $delete = $clase->borrar($id);
+        $this->pages->render('clase/gestion');
+    }
+
+    public function duplicar($id){
+        /**
+         * Borra la pelicula seleccionada
+         * con el id que se le pasa
+         */
+        
+        $clase = new Clase();
+        $clase->setId($id);
+        $datos = $clase->getOneClase();
+        $duplicar = $clase->duplicar($datos);
+        
+        if($duplicar) {   
+            $_SESSION['duplicar_clase'] = 'complete';
+        }else{
+            $_SESSION['duplicar_clase'] = 'failed';
+        }
+        
+        $this->pages->render('clase/gestion');
+    }
 
 }

@@ -24,10 +24,6 @@
     <h2 class="sub-heading"><?= $blog->descripcion?></h2>
     <p class="post-text"><?= $blog->texto?></p>
     
-    <h2 class="sub-heading">Subtitle</h2>
-    <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum labore ex maxime officiis quo earum. Ipsam harum modi unde dolore doloremque! Itaque dicta enim veritatis explicabo et rem. Vitae, nihil.</p>
-    <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum labore ex maxime officiis quo earum. Ipsam harum modi unde dolore doloremque! Itaque dicta enim veritatis explicabo et rem. Vitae, nihil.</p>
-    
 </section>
 
 <?php endwhile?>

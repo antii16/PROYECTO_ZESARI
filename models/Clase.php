@@ -11,8 +11,7 @@ class Clase{
     private int $id;
     private string $titulo;
     private string $precio;
-    private string $horario;
-    private string $aforo;
+    private string $cantidad;
     private int $id_usuario_profesor;
     private Categoria $id_categoria;
     private BaseDatos $db;
@@ -49,28 +48,12 @@ class Clase{
         $this->precio = $precio;
     }
 
-    public function getHorario(): string{
-        return $this->horario;
+    public function getCantidad(): int{
+        return $this->cantidad;
     }
 
-    public function setHorario(string $horario){
-        $this->horario = $horario;
-    }
-
-    public function getAforo(): int{
-        return $this->aforo;
-    }
-
-    public function setAforo(int $aforo){
-        $this->aforo = $aforo;
-    }
-
-    public function getCantidadMes(): int{
-        return $this->cantidad_mes;
-    }
-
-    public function setCantidadMes(int $cantidad_mes){
-        $this->cantidad_mes = $cantidad_mes;
+    public function setCantidad(int $cantidad){
+        $this->cantidad = $cantidad;
     }
 
     public function get_idProfesor(): int{
@@ -107,6 +90,18 @@ class Clase{
         return $clases;
     }
 
+    public function getOneClase() {
+        $clase =  $this->db->query("SELECT * FROM clases WHERE id = {$this->id}");
+        return $clase;
+    }
+
+    public function getOneClaseDatos() {
+        //Devuelve la imagen de una entrada
+        $clase = $this->db->query("SELECT * FROM clases WHERE id={$this->id};");
+
+        return $clase->fetch(PDO::FETCH_OBJ);
+    }
+
     public function comprobarAforo() {
         $consulta = "SELECT titulo,horario, aforo FROM clases 
         INNER JOIN pagos ON clases.id = pagos.id_cliente
@@ -115,7 +110,7 @@ class Clase{
         $this->db->query($consulta);
       
     }
-    public function save($datos) {
+    public function save() {
         /**
          * Guarda los datos de la pelicula
          * que se quiere crear pasandole los datos de la pelicula
@@ -123,26 +118,20 @@ class Clase{
          * Devuelve true si se ha creado y false si no
          */
 
-        $ins = $this->db->prepare("INSERT INTO clases(titulo, precio, dia, horaInicio, horaFin, aforo, id_usuario_profesor, id_categoria) 
-        VALUES (:titulo, :precio, :dia, :horaInicio, :horaFin, :aforo, :id_usuario_profesor, :id_categoria)");
+        $ins = $this->db->prepare("INSERT INTO clases(titulo, precio, cantidad, id_usuario_profesor, id_categoria) 
+        VALUES (:titulo, :precio, :cantidad, :id_usuario_profesor, :id_categoria)");
 
         $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
         $ins->bindParam( ':precio', $precio, PDO::PARAM_STR);
-        $ins->bindParam( ':dia', $dia, PDO::PARAM_STR);
-        $ins->bindParam( ':horaInicio', $horaInicio, PDO::PARAM_STR);
-        $ins->bindParam( ':horaFin', $horaFin, PDO::PARAM_STR);
-        $ins->bindParam( ':aforo', $aforo, PDO::PARAM_STR);
+        $ins->bindParam( ':cantidad', $cantidad, PDO::PARAM_STR);
         $ins->bindParam( ':id_usuario_profesor', $id_usuario_profesor, PDO::PARAM_STR);
         $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
         
-        $titulo = $datos['titulo'];
-        $precio = $datos['precio'];
-        $dia = $datos['dia'];
-        $horaInicio = $datos['horaInicio'];
-        $horaFin = $datos['horaFin'];
-        $aforo = $datos['aforo'];
-        $id_usuario_profesor = $datos['id_usuario_profesor'];
-        $id_categoria = $datos['id_categoria'];
+        $titulo = $this->getTitulo();
+        $precio = $this->getPrecio();
+        $cantidad = $this->getCantidad();
+        $id_usuario_profesor = $this->get_idProfesor();
+        $id_categoria = $this->get_idCategoria();
         
         try{
             $ins->execute();
@@ -191,4 +180,38 @@ class Clase{
         }
     }
    
+    public function duplicar($datos) {
+/**
+         * Guarda los datos de la pelicula
+         * que se quiere crear pasandole los datos de la pelicula
+         * y la imagen
+         * Devuelve true si se ha creado y false si no
+         */
+
+         $ins = $this->db->prepare("INSERT INTO clases(titulo, precio, cantidad,id_usuario_profesor, id_categoria) 
+         VALUES (:titulo, :precio, :cantidad, :id_usuario_profesor, :id_categoria)");
+ 
+         $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
+         $ins->bindParam( ':precio', $precio, PDO::PARAM_STR);
+         $ins->bindParam( ':cantidad', $cantidad, PDO::PARAM_STR);
+         $ins->bindParam( ':id_usuario_profesor', $id_usuario_profesor, PDO::PARAM_STR);
+         $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
+        while($clase = $datos->fetch(PDO::FETCH_OBJ)){
+            $titulo = $clase->titulo;
+            $precio = $clase->precio;
+            $cantidad =$clase->cantidad;
+            $id_usuario_profesor = $clase->id_usuario_profesor;
+            $id_categoria = $clase->id_categoria;
+        }
+        
+         try{
+             $ins->execute();
+             $result = true;
+         }catch(PDOException $err){
+             $result= false;
+             
+         }
+ 
+        return $result;
+    }
 }

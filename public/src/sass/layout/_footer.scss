@@ -11,7 +11,6 @@
     padding: 50px;
 
     @include movil-max(movil-max) {
-
         flex-direction: column;
         height: 1000px;
     }
@@ -89,15 +88,6 @@
                     font-size: 30px;
                 }
             }
-
-            // @include movil-max(movil-max) {
-            //     /*El contenedor de redes pasa a primer lugar*/
-            //     order: -1;
-            // }
         }
-
-
     }
-
- 
 }

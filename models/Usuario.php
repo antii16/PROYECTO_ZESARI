@@ -21,6 +21,8 @@ class Usuario{
     private string $patologias;
     private string $imagen;
     private string $rol;
+    private string $profesion;
+    private string $experiencia;
 
     private BaseDatos $db;
 
@@ -123,7 +125,7 @@ class Usuario{
     }
 
     public function getPatologias(): string{
-        return $this->patologias;
+        return $this->patologias ?? NULL;
     }
 
     public function setPatologias(string $patologias){
@@ -145,6 +147,21 @@ class Usuario{
     public function setRol(string $rol){
         $this->rol = $rol;
     } 
+    public function getProfesion(): string{
+        return $this->profesion;
+    }
+
+    public function setProfesion(string $profesion){
+        $this->profesion = $profesion;
+    } 
+    public function getExperiencia(): string{
+        return $this->experiencia;
+    }
+
+    public function setExperiencia(string $experiencia){
+        $this->experiencia = $experiencia;
+    } 
+    
 
     public static function obtenerProfesor(): object {
         $profesor = new Usuario();
@@ -322,7 +339,6 @@ class Usuario{
         apellidos = :apellidos, 
         email = :email, 
         password = :password, 
-
         fecha_nacimiento = :fecha_nacimiento, 
         lugar_nacimiento = :lugar_nacimiento, 
         direccion = :direccion, 
@@ -330,7 +346,9 @@ class Usuario{
         telefono2 = :telefono2, 
         sexo = :sexo, 
         patologias = :patologias, 
-        imagen = :imagen 
+        imagen = :imagen, 
+        profesion = :profesion,
+        experiencia = :experiencia
         WHERE id = :id");
 
 
@@ -347,14 +365,14 @@ class Usuario{
         $ins->bindParam( ':sexo', $sexo, PDO::PARAM_STR);
         $ins->bindParam( ':patologias', $patologias, PDO::PARAM_STR);
         $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
+        $ins->bindParam( ':profesion', $profesion, PDO::PARAM_STR);
+        $ins->bindParam( ':experiencia', $experiencia, PDO::PARAM_STR);
        
         
         $id = $_SESSION['identity']->id;
         $nombre= $this->getNombre();
         $apellidos= $this->getApellidos();
         $email= $this->getEmail();
-        
-        // $rol = $this->getRol();
         $fecha_nacimiento= $this->getFecha_nacimiento();
         $lugar_nacimiento= $this->getLugar_nacimiento();
         $direccion= $this->getDireccion();
@@ -362,6 +380,8 @@ class Usuario{
         $telefono2 = $this->getTelefono2();
         $sexo= $this->getSexo();
         $patologias= $this->getPatologias();
+        $profesion= $this->getProfesion();
+        $experiencia= $this->getExperiencia();
 
         if($this->getImagen()== NULL) {
             //Devuelve la imagen de la pelicula según el id de ésta

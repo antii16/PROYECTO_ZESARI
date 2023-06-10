@@ -1,0 +1,154 @@
+.crear {
+    width: 100%;
+}
+
+#formularioCrearUsuario {
+    margin: auto;
+    height: 100%;
+    width: 600px;
+    background-color: #84778C;
+    padding: 30px;
+    box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
+    border-radius: 0.5rem;
+
+    .caja {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border: 9px solid #fff;
+            border-radius: 7px;
+
+
+            p {
+                display: flex;
+                flex-direction: column;
+
+            }
+
+            input[type="text"],
+            input[type="email"] {
+                width: 200px;
+                padding: 3px 10px;
+                border: none;
+                border-radius: 3px;
+                background-color: #f6f6f6;
+                margin: 8px 0;
+                display: inline-block;
+            }
+
+            label {
+                width: 72px;
+                font-weight: bold;
+            }
+
+            select {
+                border-radius: 3px;
+                padding: 3px 10px;
+                width: 200px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            legend {
+                font-size: 30px;
+                font-weight: bold;
+                padding: 5px;
+            }
+        }
+
+        &:nth-child(2) {
+            flex-direction: row;
+
+            input[type="submit"],
+            a {
+                font-size: 16px;
+                width: 100px;
+                padding: 10px;
+                margin: 10px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                display: block;
+                color: #fff;
+                background-color: #000;
+            }
+
+            a {
+                text-align: center;
+                background-color: #fff;
+                color: #000;
+                border: 1px solid #ffffff;
+            }
+
+        }
+
+    }
+}
+
+#formularioCrear {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    background-color: #84778C;
+    padding: 30px;
+    box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
+    border-radius: 0.5rem;
+
+    .contenedor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include movil-max(movil-max) {
+            flex-direction: column;
+        }
+        .caja {
+            padding: 20px;
+            p {
+                padding: 10px;
+            }
+            input[type="text"],
+            input[type="number"],
+            input[type="datetime-local"] {
+                width: 200px;
+                padding: 3px 10px;
+                border: none;
+                border-radius: 3px;
+                background-color: #f6f6f6;
+                margin: 8px 0;
+                display: inline-block;
+            }
+    
+            label {
+                width: 75px;
+                font-weight: bold;
+            }
+    
+            select {
+                border-radius: 3px;
+                padding: 3px 10px;
+                width: 200px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        .volver {
+            margin-left: 20px;
+        }
+    }  
+}

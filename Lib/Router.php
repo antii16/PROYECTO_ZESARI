@@ -1,6 +1,7 @@
 <?php
 
 namespace Lib;
+use Lib\Pages;
 
 class Router {
     private static array $routes = [];
@@ -30,7 +31,9 @@ class Router {
             $callback = self::$routes[$method][$route];
             echo call_user_func_array($callback, $params);
         } else {
-            echo 'Página no encontrada';
+            $pages = new Pages();
+            $pages->render('navegacion/paginaNoEncontrada');
+            // echo 'Página no encontrada';
         }
     }
 

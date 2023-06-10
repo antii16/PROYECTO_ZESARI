@@ -86,7 +86,56 @@ class BlogController{
         $this->pages->render('blog/crear');
     }
 
+    public function editar($id) {
 
-    
+        /**
+             * Se guardan los datos de un nuevo empleado o de un usuario
+             * que quiera editar sus datos.
+             * La contraseña se encripta y se validan los datos. 
+             * Si los datos están validados se crea o se edita el usuario
+             * Si name es registrar, se crea un nuevo usuario
+             * Si la $_SESSION['identity'] existe se edita el usuario
+             */
+               
+             if($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if(isset($_POST['data'])) {
+                    
+                    $editado = $_POST['data'];
+                    $img = $_FILES['imagen'];
+                    $blog = new Blog();
+                
+                    $blog->setId($id);
+                    $blog->setTitulo($editado['titulo']);
+                    $blog->setDescripcion($editado['descripcion']);
+                    $blog->setTexto($editado['texto']);
+                    $blog->setImagen($img['name']);
+                    $edit = $blog->edit();
+                    $blog->crearCarpeta($img);
+                
+                    if($edit) {   
+                        $_SESSION['edit_blog'] = 'complete';
+                    }else{
+                        $_SESSION['edit_blog'] = 'failed';
+                    }
+                }
 
+                $this->pages->render('blog/gestion');
+            }else {
+                $blog = new Blog();
+                $blog->setId($id);
+                $datos = $blog->getOneBlog();
+                $this->pages->render('blog/editar', ['datos' => $datos]);
+            }
+    }
+
+    public function delete($id){
+        /**
+         * Borra la pelicula seleccionada
+         * con el id que se le pasa
+         */
+        
+        $blog = new Blog();
+        $delete = $blog->borrar($id);
+        $this->pages->render('blog/gestion');
+    }
 }

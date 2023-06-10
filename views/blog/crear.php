@@ -5,43 +5,43 @@ use Models\Blog;
 ?>
 
 <main>
-<div class="main-contenido">
-<div class="crear"> 
+      <!-- HEADER CONTENIDO -->
+      <div class="header-submenu">
+        <div class="overlay">
+        <h1>Crear Blog</h1>
+        </div>
+    </div>
+     <!-- MAIN CONTENIDO -->
+    <div class="main-contenido">
+        <div class="crear"> 
 
-<h1>Crear Blog</h1>
 
-<form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>blog/crear" method="POST" enctype="multipart/form-data">
+
+<form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>blog/crear" method="POST" enctype="multipart/form-data">
     <p> 
         <label for="titulo">Titulo: </label>
-        <input type="text" name="data[titulo]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->nombre?>">
+        <input type="text" name="data[titulo]" required>
     </p>
     <p> 
         <label for="descripcion">Descripción: </label>
-        <textarea name="data[descripcion]" id="descripcion" cols="30" rows="10"></textarea>
+        <textarea name="data[descripcion]" id="descripcion" cols="30" rows="10" required></textarea>
     </p>
 
     <p> 
         <label for="texto">Texto: </label>
-        <textarea  name="data[texto]" id="contenido" cols="30" rows="10"></textarea>
+        <textarea  name="data[texto]" id="contenido" cols="30" rows="10" required></textarea>
    
         <script type="text/javascript">
             CKEDITOR.replace( 'contenido')
         </script>
         
     </p>
-
-    <p> 
-        <label for="fecha">Fecha: </label>
-        <input type="date" name="data[fecha]">
-    </p>
-
     <p>
     <label for="imagen">Imagen: </label>
-    <input type="file" name="imagen">
+    <input type="file" name="imagen" required>
 </p>
 
-    
-    
+   
 <input type="submit"  name="crear" value="Crear" class="btn btn-success">
         
 </form>

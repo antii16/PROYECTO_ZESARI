@@ -1,10 +1,8 @@
 <main>
     <div class="main-contenido">
     <?php while($dato = $datos->fetch(PDO::FETCH_OBJ)):?>
-    <h1><?=$dato->nombre?> <?=$dato->apellidos?></h1>
+        <h1><?=$dato->nombre?> <?=$dato->apellidos?></h1>
         <div id="verUsuario">
-      
-       
         <div class="caja">
             <div id="imagenVerUsuario">
             <?php if($dato->imagen != NULL):?>
@@ -26,8 +24,8 @@
                 
             </div>
             <div id="botones">
-            <a href="<?= $_ENV['base_url'] ?>usuario/borrar/<?= $dato->id?>">Borrar</a>
-            <a href="<?= $_ENV['base_url'] ?>usuario/gestionUsuario">Volver</a>
+                <a class="borrar" href="<?= $_ENV['base_url'] ?>usuario/borrar/<?= $dato->id?>">Borrar</a>
+                <a class="volver" href="<?= $_ENV['base_url'] ?>usuario/gestionUsuario">Volver</a>
             </div>
             
         </div>

@@ -97,6 +97,14 @@ class Blog{
         return $blog;
     }
 
+    public function setImagenBlog() {
+        //Devuelve la imagen de una entrada
+        $blog = $this->db->query("SELECT imagen FROM blogs 
+        WHERE id={$this->id};");
+
+        return $blog->fetch(PDO::FETCH_OBJ);
+    }
+
     public function save($datos, $img) {
         /**
          * Guarda los datos de la pelicula
@@ -104,16 +112,12 @@ class Blog{
          * y la imagen
          * Devuelve true si se ha creado y false si no
          */
-
-        
-
         $ins = $this->db->prepare("INSERT INTO blogs(titulo, descripcion, texto, fecha, imagen, id_usuario_empleado) 
         VALUES (:titulo, :descripcion, :texto, CURDATE(), :imagen, :id_usuario_empleado)");
 
         $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
         $ins->bindParam( ':descripcion', $descripcion, PDO::PARAM_STR);
         $ins->bindParam( ':texto', $texto, PDO::PARAM_STR);
-        // $ins->bindParam( ':fecha', $fecha, PDO::PARAM_STR);
         $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
         $ins->bindParam( ':id_usuario_empleado', $id_usuario_empleado, PDO::PARAM_STR);
         
@@ -121,7 +125,6 @@ class Blog{
         $titulo = $datos['titulo'];
         $descripcion = $datos['descripcion'];
         $texto = $datos['texto'];
-        // $horario = $datos['fecha'];
         $imagen = $img['name'];
         $id_usuario_empleado = $_SESSION['identity']->id;
         
@@ -136,26 +139,6 @@ class Blog{
        return $result;
     }
 
-
-    public function validar($datos) {
-        /**
-         * Validacion de la pelicula.
-         * Valida el si los campos no están vacíos y que el stock y el precio son números
-         * y no letras
-         **/
-        // if(!is_numeric($datos['precio'])) {
-        //     $this->errores[] = "El precio debe ser un número";
-        // }
-
-        // if(!is_numeric($datos['aforo'])) {
-        //     $this->errores[] = "El aforo debe ser un número";
-        // }
-
-
-        return  $this->errores;
-    }
-
-
     public function crearCarpeta($imagen) {
         /**
          * Guarda la imagen y crea la carpeta si no existe
@@ -168,10 +151,70 @@ class Blog{
             if(!is_dir('img')) {
                 mkdir('img', 0777);
             }
-            move_uploaded_file($imagen['tmp_name'], 'img/blog/'.$nombre);
-          
-            
+            move_uploaded_file($imagen['tmp_name'], 'src/img/'.$nombre);    
         }
+    }
+
+    public function borrar($id) {
+        /**
+         * Borra una pelicula según el id 
+         * que se le pasa 
+         * Si se ha borrado devuelve true y si no devuelve false
+         */
+        $sql = "DELETE FROM blogs WHERE id = :id";
+        $resul =  $this->db->prepare($sql);
+        $resul->bindParam(':id', $id, PDO::PARAM_STR);
+        try{
+            $resul->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
+    }
+
+    public function edit(){
+        $ins = $this->db->prepare("UPDATE blogs
+        SET titulo = :titulo, 
+        descripcion = :descripcion, 
+        texto = :texto, 
+        fecha = CURDATE(),
+        imagen = :imagen,
+        id_usuario_empleado = :id_usuario_empleado
+        WHERE id = :id");
+
+        $ins->bindParam( ':id', $id, PDO::PARAM_STR);
+        $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
+        $ins->bindParam( ':descripcion', $descripcion, PDO::PARAM_STR);
+        $ins->bindParam( ':texto', $texto, PDO::PARAM_STR);
+        $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
+        $ins->bindParam( ':id_usuario_empleado', $id_usuario_empleado, PDO::PARAM_STR);
+
+
+        $id = $this->getId();
+        $titulo= $this->getTitulo();
+        $descripcion= $this->getDescripcion();
+        $texto= $this->getTexto();
+
+        if($this->getImagen()== NULL) {
+            //Devuelve la imagen de la pelicula según el id de ésta
+            $im = $this->setImagenBlog();
+            $imagen = $im->imagen;
+        }else{
+            $imagen = $this->getImagen();   
+        }
+        $id_usuario_empleado = $_SESSION['identity']->id;
+
+        try{
+            $ins->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
+
     }
 
 

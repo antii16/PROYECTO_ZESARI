@@ -16,21 +16,22 @@ use Models\Categoria;
      <!-- MAIN CONTENIDO -->
     <div class="main-contenido">
         <div class="crear"> 
+        <?php while($clase = $datos->fetch(PDO::FETCH_OBJ)):?>
             <form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
                 <div class="contenedor">
                     <div class="caja">
                         <p> 
                             <label for="titulo">Titulo: </label>
-                            <input type="text" name="data[titulo]">
+                            <input type="text" name="data[titulo]" value="<?=$clase->titulo?>">
                         </p>
                         <p> 
                             <label for="precio">Precio: </label>
-                            <input type="text" name="data[precio]">
+                            <input type="text" name="data[precio]" value="<?=$clase->precio?>">
                         </p>
 
                         <p>
                             <label for="cantidad">Cantidad: </label>
-                            <input type="number" name="data[cantidad]">
+                            <input type="number" name="data[cantidad]" value="<?=$clase->cantidad?>">
                         </p>
                     </div>
             
@@ -42,7 +43,7 @@ use Models\Categoria;
                             <select name="data[id_usuario_profesor]">
                                 <option value="selecciona">Selecciona un profesor</option>  
                                 <?php while($profe = $profesores->fetch(PDO::FETCH_OBJ)):?>
-                                    <option value="<?=$profe->id?>"><?=$profe->nombre?> <?=$profe->apellidos?></option>  
+                                    <option value="<?=$profe->id?>" <?php if($clase->id_usuario_profesor == $profe->id) echo 'selected'?>><?=$profe->nombre?> <?=$profe->apellidos?></option>  
                                 <?php endwhile?>
 
                             </select>
@@ -55,7 +56,7 @@ use Models\Categoria;
                             <select name="data[id_categoria]">
                             <option value="selecciona">Selecciona una categoría</option>  
                                 <?php while($categoria = $categorias->fetch(PDO::FETCH_OBJ)):?>
-                                    <option value="<?=$categoria->id?>"><?=$categoria->titulo?></option>  
+                                    <option value="<?=$categoria->id?>" <?php if($clase->id_categoria == $categoria->id) echo 'selected'?>><?=$categoria->titulo?></option>  
                                 <?php endwhile?>
 
                             </select>
@@ -68,6 +69,7 @@ use Models\Categoria;
                     <a class="volver" href="<?= $_ENV['base_url'] ?>clase/gestion">Volver</a>
                 </div>
             </form>
+            <?php endwhile?>
         </div>
     </div>
 </main>

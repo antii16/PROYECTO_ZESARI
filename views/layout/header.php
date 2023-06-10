@@ -59,12 +59,12 @@
 
                         <ul class="submenu">
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>perfil">Perfil</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>usuario/gestionUsuario">Usuarios</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>clase/gestionClase">Clases</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>clase/gestionHorario">Horario</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>blog/gestionBlog">Blogs</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>categoria/gestionCategoria">Categoría</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>pago/gestionPago">Pago</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>usuario/gestion">Usuarios</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>clase/gestion">Clases</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>horario/gestion">Horario</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>blog/gestion">Blogs</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>categoria/gestion">Categoría</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>pago/gestion">Pago</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-right-from-bracket"></i></a></li>
                             
                         </ul>
@@ -90,10 +90,11 @@
                     <li class="menu-item container-submenu">
                         <a href="" class="menu-link submenu-btn">Cliente <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>usuario/registro">Gestión de usuarios</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>perfil">Perfil</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión</a></li>
+                    
 
                     <!-- LOGIN -->
                 <?php elseif (!isset($_SESSION['identity'])) : ?>

@@ -40,6 +40,18 @@ use Utils\Utils;
 
    
     </fieldset>
+    <?php if(isset($_SESSION['identity']) && ($_SESSION['identity']->rol == 'admin' || $_SESSION['identity']->rol == 'empleado')): ?>
+    <p> 
+        <label for="profesion">Profesion: </label>
+        <input type="text" name="data[profesion]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->profesion?>">
+    </p>
+
+    <p> 
+        <label for="experiencia">Experiencia: </label>
+        <input type="text" name="data[experiencia]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->experiencia?>">
+    </p>
+
+    <?php endif; ?>
   
     <p> 
         <label for="fecha_nacimiento">Fecha nacimiento: </label>
@@ -62,6 +74,7 @@ use Utils\Utils;
         <label for="telefono2">Otro teléfono: </label>
         <input type="text" name="data[telefono2]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->telefono2?>">
     </p>
+    
     
     <p> 
         <label for="sexo">Sexo: </label>
