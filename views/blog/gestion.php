@@ -2,15 +2,18 @@
 
 
 <main>
+     <!-- HEADER CONTENIDO -->
+ <div class="header-submenu">
+        <div class="overlay">
+        <h1>Gestión de Blogs</h1>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENIDO -->
 <div class="main-contenido">
-<h1>Gestión de Blogs</h1>
 <div class="crud">
-
-
-
-
 <div class="añadir">
-        <a  href="<?=$_ENV['base_url'] ?>blog/crear">Añadir <i class="fa-brands fa-blogger"></i></i></a>
+        <a class="add" href="<?=$_ENV['base_url'] ?>blog/crear">Añadir +</a>
     </div>
 <table id="tabla" class="display responsive nowrap" style="width:100%">
     <thead>
@@ -35,8 +38,8 @@
             <td style="text-align: center;"><?=$blog->imagen?></td>
             <td style="text-align: center;"><?=$blog->id_usuario_empleado?></td>
             <td style="text-align: center;">
-                <a class="btn btn-danger" href="<?=$_ENV['base_url']?>blog/borrar/<?=$blog->id?>"><i class="fa-solid fa-trash"></i></a>
-                <a class="btn btn-success" href="<?=$_ENV['base_url']?>blog/editar/<?=$blog->id?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a class="borrar" href="<?=$_ENV['base_url']?>blog/borrar/<?=$blog->id?>">Borrar</a>
+                <a class="editar" href="<?=$_ENV['base_url']?>blog/editar/<?=$blog->id?>">Editar</a>
             </td>
         </tr>
      <?php endwhile?>

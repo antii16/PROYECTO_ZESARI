@@ -23,7 +23,9 @@ class Utils{
     }
 
     public static function isAdminOrEmpleado() {
-        if(!isset($_SESSION['admin']) || !isset($_SESSION['empleado'])) {
+        if(!isset($_SESSION['admin']) && !isset($_SESSION['empleado'])) {
+            var_dump($_SESSION['admin']);
+            die();
             header('Location: '. $_ENV['base_url']);
 
         }

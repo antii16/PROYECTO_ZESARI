@@ -2,7 +2,6 @@
 use Utils\Utils;
 use Models\Usuario;
 use Models\Categoria;
-//<br /><b>Warning</b>:  Undefined variable $datos in <b>C:\xampp\htdocs\PROYECTO_ZESARI\views\clase\crear.php</b> on line <b>21</b><br /><br /><b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\xampp\htdocs\PROYECTO_ZESARI\views\clase\crear.php</b> on line <b>21</b><br />
 ?>
 
 <main>
@@ -15,6 +14,24 @@ use Models\Categoria;
     </div>
      <!-- MAIN CONTENIDO -->
     <div class="main-contenido">
+    <div class="alertas">
+        <?php 
+        if(isset($_SESSION['crear_clase']) && $_SESSION['crear_clase']=='complete') {
+            echo "<strong>Clase creada</strong>";
+        }
+
+        elseif(isset($_SESSION['crear_clase']) && $_SESSION['crear_clase']=='failed') {
+            echo "<strong>Clase no creada</strong>";
+        }
+
+        elseif(isset($_SESSION['crear_clase']) && is_array($_SESSION['crear_clase'])){
+            foreach($_SESSION['crear_clase'] as $errores) {
+                echo "<p><strong style=color:red;> *".$errores."</strong></p>";
+            }
+        }
+
+        unset($_SESSION['crear_clase']);
+        ?>
         <div class="crear"> 
             <form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
                 <div class="contenedor">
@@ -30,7 +47,7 @@ use Models\Categoria;
 
                         <p>
                             <label for="cantidad">Cantidad: </label>
-                            <input type="number" name="data[cantidad]">
+                            <input type="text" name="data[cantidad]">
                         </p>
                     </div>
             

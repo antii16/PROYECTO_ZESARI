@@ -23,7 +23,7 @@ use Models\Categoria;
                     <div class="contenido">
                         <p class="post-title"><?=$categoria->titulo?></p>
                         <p class="post-description"><?=$categoria->descripcion?></p>
-                        <a href="<?= $_ENV['base_url'] ?>clase/ver/<?=$categoria->id?>" class="post-saber">Saber Más</a>
+                        <a href="<?= $_ENV['base_url'] ?>categoria/ver/<?=$categoria->id?>" class="post-saber">Saber Más</a>
                     </div>
                 </div>
             <?php endwhile ?>

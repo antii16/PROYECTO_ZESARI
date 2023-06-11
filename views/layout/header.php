@@ -46,69 +46,38 @@
                 <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>equipo">Equipo</a></li>
                 <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>blogs">Blog</a></li>
                 <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>sobreNosotros">Quiénes somos</a></li>
-                <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>contacto">Contacto</a></li>
+                <li class="menu-item"><a class="menu-link contacto" href="<?= $_ENV['base_url'] ?>contacto">Contacto</a></li>
 
                 <!-- ADMINISTRADOR -->
-                <?php if (isset($_SESSION['admin'])) : ?>
+                <?php if (isset($_SESSION['identity'])) : ?>
                     <li class="menu-item container-submenu">
-
-                        <a href="#" class="menu-link submenu-btn">Administrador <i class="fas fa-chevron-down"></i>
+                        <a href="#" class="menu-link submenu-btn"><?= $_SESSION['identity']->nombre?> <i class="fas fa-chevron-down"></i>
                             <img class="imagen-user" src="<?= $_ENV['base_url'] ?>src/img/<?= $_SESSION['identity']->imagen ?>" alt="">
                         </a>
-
-
                         <ul class="submenu">
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>perfil">Perfil</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>usuario/gestion">Usuarios</a></li>
+                            <?php if (isset($_SESSION['empleado']) || isset($_SESSION['admin'])) : ?>
+                                
+                            <?php if (isset($_SESSION['admin'])) : ?>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>clase/gestion">Clases</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>horario/gestion">Horario</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>blog/gestion">Blogs</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>categoria/gestion">Categoría</a></li>
+                            <?php endif; ?>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>usuario/gestion">Usuarios</a></li>
+                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>horario/gestion">Horario</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>pago/gestion">Pago</a></li>
+                            <?php endif; ?>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-right-from-bracket"></i></a></li>
                             
                         </ul>
-                    </li>
-                    
-
-                    <!-- EMPLEADO -->
-                <?php elseif (isset($_SESSION['empleado'])) : ?>
-                    <li class="menu-item container-submenu">
-                        <a href="" class="menu-link submenu-btn">Empleado <i class="fas fa-chevron-down"></i>
-
-                            <img class="imagen-user" src="<?= $_ENV['base_url'] ?>src/img/<?= $_SESSION['identity']->imagen ?>" alt="">
-                        </a>
-                        <ul class="submenu">
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>usuario/gestionUsuario">Usuarios</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>perfil">Perfil</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión</a></li>
-
-                    <!-- CLIENTE -->
-                <?php elseif (isset($_SESSION['cliente'])) : ?>
-                    <li class="menu-item container-submenu">
-                        <a href="" class="menu-link submenu-btn">Cliente <i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>perfil">Perfil</a></li>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                    
-
+                        </li>
                     <!-- LOGIN -->
                 <?php elseif (!isset($_SESSION['identity'])) : ?>
                     <li class="menu-item"><a class="menu-link login" href="<?= $_ENV['base_url'] ?>usuario/login">Login</a></li>
                 <?php endif; ?>
             </ul>
-
-
         </nav>
-
-
-
         </div>
-
     </header>
 
     <!-- PROPIOS -->

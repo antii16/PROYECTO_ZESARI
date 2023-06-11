@@ -15,10 +15,6 @@
 <div class="main-contenido">
 
 <div class="crud">
-
-
-
-
 <div class="añadir">
         <a class="add" href="<?= $_ENV['base_url'] ?>clase/crear">Añadir +</a>
     </div>

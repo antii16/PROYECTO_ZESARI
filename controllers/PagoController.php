@@ -46,7 +46,7 @@ class PagoController{
         
     }
 
-    public function save() {
+    public function save($id) {
         /**
          * Guarda el pelicula que se ha creado.
          * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
@@ -63,7 +63,7 @@ class PagoController{
                    $pago->setTipo($datos['tipo']);
                    $pago->setEstado($datos['estado']);
                    $pago->setCantidad($datos['cantidad']);
-                   $pago->set_idCliente($datos['id_cliente']);
+                   $pago->set_idCliente($id);
                    $pago->set_idClase($datos['id_clase']);
                     $save = $pago->save();
                 

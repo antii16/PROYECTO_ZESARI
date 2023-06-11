@@ -101,6 +101,30 @@ class Pago{
         return $pagos;
     }
 
+    public function getAllPagos() {
+        $pagos = $this->db->query("SELECT usuarios.nombre AS usuario_nombre, 
+        clases.titulo AS clases_titulo, 
+        pagos.id_cliente AS id_cliente, 
+        clases.id_categoria AS id_categoria
+        FROM pagos 
+        INNER JOIN clases ON pagos.id_clase = clases.id
+        INNER JOIN usuarios ON pagos.id_cliente = usuarios.id
+        WHERE id_cliente = {$this->id_cliente}");
+
+        return $pagos;
+    }
+
+    // public function obtenerClasesPagadasUsuario() {
+    //     $consulta = "SELECT clases.titulo as titulo 
+    //     FROM clases 
+    //     INNER JOIN
+        
+        
+    //     WHERE id = {$this->id}";
+    //     $clasesUsuario =  $this->db->query();
+    //     return $categoria;
+    // }
+
     public function save() {
         /**
          * Guarda los datos de la pelicula
@@ -149,9 +173,16 @@ class Pago{
             $this->errores[] = "El precio debe ser un número";
         }
 
-        // if(!is_numeric($datos['aforo'])) {
-        //     $this->errores[] = "El aforo debe ser un número";
-        // }
+        if($datos['tipo'] == 'seleccionada') {
+            $this->errores[] = "Seleccione el tipo de pago";
+        }
+        if($datos['estado'] == 'seleccionada') {
+            $this->errores[] = "Seleccione el estado del pago";
+        }
+
+        if($datos['id_clase'] == 'seleccionada') {
+            $this->errores[] = "Seleccione una clase";
+        }
 
 
         return  $this->errores;

@@ -13,7 +13,7 @@ class Clase{
     private string $precio;
     private string $cantidad;
     private int $id_usuario_profesor;
-    private Categoria $id_categoria;
+    private int $id_categoria;
     private BaseDatos $db;
 
     public function __construct()
@@ -64,11 +64,11 @@ class Clase{
         $this->id_usuario_profesor = $id_usuario_profesor;
     }
 
-    public function get_idCategoria(): Categoria{
+    public function get_idCategoria(): int{
         return $this->id_categoria;
     }
 
-    public function set_idCategoria(Categoria $id_categoria){
+    public function set_idCategoria(int $id_categoria){
         $this->id_categoria = $id_categoria;
     }
 
@@ -150,15 +150,24 @@ class Clase{
          * Valida el si los campos no están vacíos y que el stock y el precio son números
          * y no letras
          **/
+
+        if(is_numeric($datos['titulo'])) {
+            $this->errores[] = "El titulo debe ser texto";
+        }
         if(!is_numeric($datos['precio'])) {
-            $this->errores[] = "El precio debe ser un número";
+            $this->errores[] = "El precio debe ser un valor numérico";
         }
 
-        if(!is_numeric($datos['aforo'])) {
-            $this->errores[] = "El aforo debe ser un número";
+        if(!is_numeric($datos['cantidad'])) {
+            $this->errores[] = "La cantidad debe ser un valor numérico";
         }
 
-
+        if($datos['id_usuario_profesor'] == 'selecciona') {
+            $this->errores[] = "Selecciona un profesor";
+        }
+        if($datos['id_categoria'] == 'selecciona') {
+            $this->errores[] = "Selecciona una categoría";
+        }
         return  $this->errores;
     }
 
@@ -213,5 +222,60 @@ class Clase{
          }
  
         return $result;
+    }
+
+
+    public function edit(){
+        $ins = $this->db->prepare("UPDATE clases
+        SET titulo = :titulo, 
+        precio = :precio, 
+        cantidad = :cantidad,
+        id_usuario_profesor = :id_usuario_profesor,
+        id_categoria = :id_categoria
+        WHERE id = :id");
+
+        $ins->bindParam( ':id', $id, PDO::PARAM_STR);
+        $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
+        $ins->bindParam( ':precio', $precio, PDO::PARAM_STR);
+        $ins->bindParam( ':cantidad', $cantidad, PDO::PARAM_STR);
+        $ins->bindParam( ':id_usuario_profesor', $id_usuario_profesor, PDO::PARAM_STR);
+        $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
+
+        $id = $this->getId();
+        $titulo= $this->getTitulo();
+        $precio= $this->getPrecio();
+        $cantidad= $this->getCantidad();
+        $id_usuario_profesor= $this->get_idProfesor();
+        $id_categoria= $this->get_idCategoria();
+        
+
+        try{
+            $ins->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
+
+    }
+
+    public function borrar($id) {
+        /**
+         * Borra una pelicula según el id 
+         * que se le pasa 
+         * Si se ha borrado devuelve true y si no devuelve false
+         */
+        $sql = "DELETE FROM clases WHERE id = :id";
+        $resul =  $this->db->prepare($sql);
+        $resul->bindParam(':id', $id, PDO::PARAM_STR);
+        try{
+            $resul->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
     }
 }

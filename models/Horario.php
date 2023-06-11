@@ -11,7 +11,7 @@ class Horario{
     private int $id;
     private string $aforo_disponible;
     private string $fecha;
-    private Categoria $id_categoria;
+    private int $id_categoria;
     private BaseDatos $db;
 
     public function __construct()
@@ -46,11 +46,11 @@ class Horario{
         $this->aforo_disponible = $aforo_disponible;
     }
 
-    public function get_idCategoria(): Categoria{
+    public function get_idCategoria(): int{
         return $this->id_categoria;
     }
 
-    public function set_idCategoria(Categoria $id_categoria){
+    public function set_idCategoria(int $id_categoria){
         $this->id_categoria = $id_categoria;
     }
     public static function obtenerHorario() {
@@ -67,15 +67,33 @@ class Horario{
         return $horario;
     }
 
-    public function comprobarAforo() {
-        $consulta = "SELECT titulo,horario, aforo FROM clases 
-        INNER JOIN pagos ON clases.id = pagos.id_cliente
-        INNER JOIN usuarios ON pagos.id_cliente = usuarios.id
-        WHERE rol = 'cliente'";
-        $this->db->query($consulta);
-      
+    public function comprobarAforo($id_horario) {
+        $consulta = $this->db->query("SELECT aforo_disponible FROM horario WHERE id = $id_horario");
+        $aforo = $consulta->fetch(PDO::FETCH_OBJ);
+        if($aforo->aforo_disponible > 0) {
+            return true;
+        }else {
+            return false;
+        }
     }
-    public function save($datos) {
+
+    public function actualizarAforo($id_horario) {
+        $consulta = $this->db->query("SELECT aforo_disponible FROM horario WHERE id = $id_horario");
+        $aforo = $consulta->fetch(PDO::FETCH_OBJ);
+        $aforoRestado = intval($aforo->aforo_disponible) - 1;
+        $consulta = $this->db->query("UPDATE horario SET aforo_disponible = $aforoRestado WHERE id = $id_horario");
+
+    }
+
+    public static function obtenerHorarioPorCategoria($idCategoria) {
+        // Modifica tu consulta para filtrar por ID de categoría
+        $horario = new Horario();
+        $query = "SELECT id, fecha FROM horario WHERE id_categoria = $idCategoria";
+        $horarioFiltrado = $horario->db->query($query);
+        
+        return $horarioFiltrado;
+    }
+    public function save() {
         /**
          * Guarda los datos de la pelicula
          * que se quiere crear pasandole los datos de la pelicula
@@ -90,14 +108,9 @@ class Horario{
         $ins->bindParam( ':fecha', $fecha, PDO::PARAM_STR);
         $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
         
-        $aforo_disponible = $datos['titulo'];
-        $precio = $datos['precio'];
-        $dia = $datos['dia'];
-        $horaInicio = $datos['horaInicio'];
-        $horaFin = $datos['horaFin'];
-        $aforo = $datos['aforo'];
-        $id_usuario_profesor = $datos['id_usuario_profesor'];
-        $id_categoria = $datos['id_categoria'];
+        $aforo_disponible = $this->getAforoDisponible();
+        $fecha = $this->getFecha();
+        $id_categoria = $this->get_idCategoria();
         
         try{
             $ins->execute();
@@ -117,10 +130,15 @@ class Horario{
          * y no letras
          **/
 
-        if(!is_numeric($datos['aforo_disponible'])) {
+        if(isset($datos['aforo_disponible']) && !is_numeric($datos['aforo_disponible'])) {
             $this->errores[] = "El aforo debe ser un número";
         }
-
+        if(isset($datos['id_categoria']) && $datos['id_categoria'] == 'selecciona') {
+            $this->errores[] = "Selecciona una categoría";
+        }
+        if(isset($datos['id_horario']) && $datos['id_horario'] == 'selecciona') {
+            $this->errores[] = "Selecciona un horario";
+        }
 
         return  $this->errores;
     }
@@ -160,5 +178,27 @@ class Horario{
          }
  
         return $result;
+    }
+
+    public function apuntar($datos) {
+        $ins = $this->db->prepare("INSERT INTO apuntado(id_cliente, id_horario) 
+        VALUES (:id_cliente, :id_horario)");
+
+        $ins->bindParam( ':id_cliente', $id_cliente, PDO::PARAM_STR);
+        $ins->bindParam( ':id_horario', $id_horario, PDO::PARAM_STR);
+        
+        $id_cliente = $datos['id_cliente'];
+        $id_horario = $datos['id_horario'];
+
+        $this->actualizarAforo($datos['id_horario']);
+        try{
+            $ins->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+            
+        }
+
+       return $result;
     }
 }

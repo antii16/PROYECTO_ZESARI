@@ -4,14 +4,20 @@ use Utils\Utils;
 
 
 <main>
+
+<!-- HEADER CONTENIDO -->
+</q><div class="header-submenu">
+        <div class="overlay">
+        <h1>Edita tu perfil</h1>
+        </div>
+    </div>
+     <!-- MAIN CONTENIDO -->
 <div class="main-contenido">
 <div class="crear"> 
-
-<h1>Editar usuario</h1>
-
 <div id="formularioUsuario">
-<form  style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>usuario/editar" method="POST" enctype="multipart/form-data">
-   <div class="caja">
+<form  id="formularioCrear" action="<?=$_ENV['base_url']?>usuario/editar" method="POST" enctype="multipart/form-data">
+<div class="contenedor">
+    <div class="caja">
     <fieldset>
     <legend>Datos obligatorios:</legend>
     <p> 
@@ -29,17 +35,40 @@ use Utils\Utils;
     </p>
 
     <p>
-    <a  id="cambiarContraseña" href="#">Cambiar Contraseña</a>
+        <p>
+            <a  class="cambiarPassword" id="cambiarContraseña" href="#">Cambiar Contraseña</a>
+        </p>
+    
     <div id="nuevaPassword">
+        <div>
         <label for="password">Contraseña: </label>
         <input type="password" name="data[password][passwordOld]">
-        <label for="password">Nueva contraseña: </label>
+        </div>
+       <div>
+       <label for="password">Nueva contraseña: </label>
         <input type="password" name="data[password][passwordNew]">
+       </div>
+        
     </div>
 </p>
 
    
     </fieldset>
+
+    </div>
+
+    <div class="caja">
+        <div id="imagenUsuarioForm">
+        <?php if($_SESSION['identity']->imagen != NULL):?>
+            <img src="<?= $_ENV['base_url'] ?>src/img/<?=$_SESSION['identity']->imagen?>" alt="">
+            <?php else: ?> 
+                <img src="<?= $_ENV['base_url'] ?>src/img/user.png" alt="">
+            <?php endif; ?>
+        </div>
+        <p>
+        <label for="imagen"> </label>
+    <input type="file" name="imagen">Imagen  predeterminada:<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->imagen?>
+    </p>
     <?php if(isset($_SESSION['identity']) && ($_SESSION['identity']->rol == 'admin' || $_SESSION['identity']->rol == 'empleado')): ?>
     <p> 
         <label for="profesion">Profesion: </label>
@@ -52,7 +81,12 @@ use Utils\Utils;
     </p>
 
     <?php endif; ?>
-  
+
+    </div>
+</div>   
+
+<div class="contenedor">
+    <div class="caja">
     <p> 
         <label for="fecha_nacimiento">Fecha nacimiento: </label>
         <input type="date" name="data[fecha_nacimiento]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->fecha_nacimiento?>">
@@ -74,8 +108,9 @@ use Utils\Utils;
         <label for="telefono2">Otro teléfono: </label>
         <input type="text" name="data[telefono2]" value="<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->telefono2?>">
     </p>
-    
-    
+    </div>
+
+    <div class="caja">
     <p> 
         <label for="sexo">Sexo: </label>
     
@@ -96,16 +131,20 @@ use Utils\Utils;
     <p>
 
     <label for="patologias">Patologías a tener en cuenta</label>
-<textarea name="data[patologias]" id="" cols="30" rows="10"></textarea>   
+<textarea name="data[patologias]" id="" cols="30" rows="10">
+    <?php echo $_SESSION['identity']->patologias?>
+</textarea>   
 </p>
 
-<p>
-<label for="imagen">Imagen  predeterminada:<?php if(isset($_SESSION['identity'])) echo $_SESSION['identity']->imagen?> </label>
-    <input type="file" name="imagen">
-</p>
 
-   </div> 
-    <input type="submit"  name="editar" value="Edita los datos" class="btn btn-success">
+    </div>
+</div> 
+
+<div class="contenedor">
+<input type="submit"  name="editar" value="Editar" class="insertarDato">
+<a class="volver" href="<?=$_ENV['base_url']?>perfil">Volver</a>
+</div>
+    
     
 </form>
 

@@ -102,7 +102,7 @@
     margin: auto;
     height: 100%;
     width: 100%;
-    background-color: #84778C;
+    background-color: $paleta2;
     padding: 30px;
     box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
     border-radius: 0.5rem;
@@ -116,12 +116,22 @@
         }
         .caja {
             padding: 20px;
+            
+            #imagenUsuarioForm {
+                width: 200px;
+                margin: auto;
+                img {
+                    width: 100%;
+                }
+            }
             p {
                 padding: 10px;
             }
             input[type="text"],
             input[type="number"],
-            input[type="datetime-local"] {
+            input[type="datetime-local"],
+            input[type="file"],
+            input[type="password"] {
                 width: 200px;
                 padding: 3px 10px;
                 border: none;
@@ -145,10 +155,279 @@
                     outline: none;
                 }
             }
+            textarea{
+                width:100%;
+                height:100px;
+                border:1px solid #f6f6f6;
+                border-radius:3px;
+                background-color:#f6f6f6;			
+                margin:8px 0;
+                /*resize: vertical | horizontal | none | both*/
+                resize:none;
+                display:block;
+            }
+
+            fieldset {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+                border: 9px solid #fff;
+                border-radius: 7px;
+    
+    
+                p {
+                    display: flex;
+                    flex-direction: column;
+    
+                }
+    
+                input[type="text"],
+                input[type="email"] {
+                    width: 200px;
+                    padding: 3px 10px;
+                    border: none;
+                    border-radius: 3px;
+                    background-color: #f6f6f6;
+                    margin: 8px 0;
+                    display: inline-block;
+                }
+    
+                label {
+                    width: 72px;
+                    font-weight: bold;
+                }
+    
+                select {
+                    border-radius: 3px;
+                    padding: 3px 10px;
+                    width: 200px;
+    
+                    &:focus {
+                        outline: none;
+                    }
+                }
+    
+                legend {
+                    font-size: 30px;
+                    font-weight: bold;
+                    padding: 5px;
+                }
+            }
+    
+            &:nth-child(2) {
+                flex-direction: row;
+    
+                input[type="submit"],
+                a {
+                    font-size: 16px;
+                    width: 100px;
+                    padding: 10px;
+                    margin: 10px;
+                    border: 1px solid #000;
+                    border-radius: 5px;
+                    display: block;
+                    color: #fff;
+                    background-color: #000;
+                }
+    
+                a {
+                    text-align: center;
+                    background-color: #fff;
+                    color: #000;
+                    border: 1px solid #ffffff;
+                }
+    
+            }
         }
 
         .volver {
-            margin-left: 20px;
+            margin-left: 20px;  
+        }
+
+        .borrar {
+            margin-left: 5px;  
+        }
+        
+        .clasesUsuario {
+            background-color: $blanco;
         }
     }  
 }
+
+
+/*FORMULARIO DE CONTACTO*/
+
+#contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    // background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
+    @include movil-max(movil-max) {
+        flex-direction: column;
+        height: 900px;
+    }
+
+    @include ordenador-max(tablet-min, portatil-L) {
+        flex-direction: row;
+
+    }
+    #mensaje {
+        width: 400px;
+        @include movil-max(movil-max) {
+            width: 300px;
+        }
+        form {
+            padding: 5px;
+            border-radius: 10px;
+            background-color: $paleta2;
+
+            input[type="text"],
+            input[type="email"] {
+                width: 180px;
+                padding: 3px 10px;
+                border: $bordeBlanco;
+                border-radius: 10px;
+                background-color: $blanco;
+                margin: 8px 10px;
+                display: inline-block;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px 16px;
+                margin-top: 32px;
+                border: $bordeNegro;
+                border-radius: 10px;
+                display: block;
+                color: $blanco;
+                background-color: $negro;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+            }
+
+            textarea {
+                width: 100%;
+                height: 100px;
+                border: $bordeBlanco;
+                border-radius:10px;
+                background-color: $blanco;
+                margin: 8px 0;
+                resize: none;
+                display: block;
+            }
+
+        }
+
+        p {
+            margin: 30px;
+        }
+    }
+
+
+   
+    #datos {
+        width: 400px;
+        border: 2px solid $paleta1;
+        border-radius: 10px;
+        height: 300px;
+        padding: 30px;
+        margin-left: 20px;
+        @include movil-max(movil-max) {
+            width: 300px;
+            margin-left: 0px;
+            margin-top: 20px;
+        }
+
+        li {
+            margin: 30px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+
+}
+
+/***************************FORMULARIO LOGIN******************/
+/*************************************************************/
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .login-box {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        max-width: 500px;
+        width: 90%;
+        margin: 0 auto;
+        animation-name: fade-in;
+        animation-duration: 1s;
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+          }
+
+          input[type="text"],
+          input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  input[type="submit"] {
+    background-color: $paleta1;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  input[type="submit"]:hover {
+    background-color: $paleta1;
+  }
+      }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .login-box {
+      padding: 20px;
+    }
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      padding: 8px;
+    }
+    .login-box input[type="submit"] {
+      padding: 8px;
+    }
+  }

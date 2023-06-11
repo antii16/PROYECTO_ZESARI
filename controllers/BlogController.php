@@ -60,29 +60,24 @@ class BlogController{
          */
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['data']) && isset($_FILES['imagen']) ){
-                $datos = $_POST['data'];
+                $creado = $_POST['data'];
                 $img = $_FILES['imagen'];
                 $blog = new Blog();
-                $blog_validado = $blog->validar($datos, $img);
-
-                if(count($blog_validado) == 0){
-                    //Si el $errores[] está vacío significa que no hay error
-
-                    $save = $blog->save($datos, $img);
-                    $blog->crearCarpeta($img);
-                
-                    if($save) {
-                        $_SESSION['crear_blog'] = 'complete';
-                    }else{
-                        $_SESSION['crear_blog'] = 'failed';
-                    }
-                }else{
-                        $_SESSION['crear_blog'] = 'failed';
-                }
-                
-            }
-        }
         
+                $blog->setTitulo($creado['titulo']);
+                $blog->setDescripcion($creado['descripcion']);
+                $blog->setTexto($creado['texto']);
+                $blog->setImagen($img['name']);
+                $save = $blog->save();
+                $blog->crearCarpeta($img);
+            
+                if($save) {   
+                    $_SESSION['crear_blog'] = 'complete';
+                }else{
+                    $_SESSION['crear_blog'] = 'failed';
+                }
+            }
+        } 
         $this->pages->render('blog/crear');
     }
 
@@ -96,15 +91,16 @@ class BlogController{
              * Si name es registrar, se crea un nuevo usuario
              * Si la $_SESSION['identity'] existe se edita el usuario
              */
+
+             $blog = new Blog();
+            $blog->setId($id);
                
              if($_SERVER['REQUEST_METHOD'] === 'POST') {
-                if(isset($_POST['data'])) {
+                if(isset($_POST['data']) && isset($_FILES['imagen']) ) {
                     
                     $editado = $_POST['data'];
                     $img = $_FILES['imagen'];
-                    $blog = new Blog();
-                
-                    $blog->setId($id);
+
                     $blog->setTitulo($editado['titulo']);
                     $blog->setDescripcion($editado['descripcion']);
                     $blog->setTexto($editado['texto']);
@@ -113,20 +109,15 @@ class BlogController{
                     $blog->crearCarpeta($img);
                 
                     if($edit) {   
-                        $_SESSION['edit_blog'] = 'complete';
+                        $_SESSION['editar_blog'] = 'complete';
                     }else{
-                        $_SESSION['edit_blog'] = 'failed';
+                        $_SESSION['editar_blog'] = 'failed';
                     }
                 }
-
-                $this->pages->render('blog/gestion');
-            }else {
-                $blog = new Blog();
-                $blog->setId($id);
-                $datos = $blog->getOneBlog();
-                $this->pages->render('blog/editar', ['datos' => $datos]);
+             }
+            $datos = $blog->getOneBlog();
+            $this->pages->render('blog/editar', ['datos' => $datos]);
             }
-    }
 
     public function delete($id){
         /**
@@ -135,7 +126,7 @@ class BlogController{
          */
         
         $blog = new Blog();
-        $delete = $blog->borrar($id);
+        $blog->borrar($id);
         $this->pages->render('blog/gestion');
     }
 }

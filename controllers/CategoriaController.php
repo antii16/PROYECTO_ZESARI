@@ -24,16 +24,12 @@ class CategoriaController{
         $this->pages->render('categoria/gestion');
     }
 
-    // public function index() {
-    //     /**
-    //      * Muestra todas las peliculas en de la base de datos 
-    //      * en el main 
-    //      */
-    //     $clase = new Clase();
-    //     $clase = $clase->getAll();
-    //     $this->pages->render('layout/main', ['clase' => $clase]);
-        
-    // }
+    public function ver($id) {
+        $categoria = new Categoria();
+        $categoria->setId($id);
+        $categorias = $categoria->getOneCategoria();
+        $this->pages->render('categoria/verCategoria', ['categorias' => $categorias]);
+    }
 
     public function save() {
         /**
@@ -53,23 +49,70 @@ class CategoriaController{
                     $categoria->setTitulo($datos['titulo']);
                     $categoria->setDescripcion($datos['descripcion']);
                     $categoria->setImagen($img['name']);
-
-
                     $save = $categoria->save();
                     $categoria->crearCarpeta($img);
                 
                     if($save) {
-                        $_SESSION['crear_blog'] = 'complete';
+                        $_SESSION['crear_categoria'] = 'complete';
                     }else{
-                        $_SESSION['crear_blog'] = 'failed';
+                        $_SESSION['crear_categoria'] = 'failed';
                     }
                 }else{
-                        $_SESSION['crear_blog'] = 'failed';
+                        $_SESSION['crear_categoria'] = $categoria->errores;
                 }
                 
             }
         }
         
         $this->pages->render('categoria/crear');
+    }
+
+    public function editar($id) {
+
+        /**
+             * Se guardan los datos de un nuevo empleado o de un usuario
+             * que quiera editar sus datos.
+             * La contraseña se encripta y se validan los datos. 
+             * Si los datos están validados se crea o se edita el usuario
+             * Si name es registrar, se crea un nuevo usuario
+             * Si la $_SESSION['identity'] existe se edita el usuario
+             */
+            $categoria = new Categoria();
+            $categoria->setId($id);
+             if($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if(isset($_POST['data']) && isset($_FILES['imagen']) ) {
+                    $datos = $_POST['data'];
+                    $img = $_FILES['imagen'];
+                    $categoria_validado = $categoria->validar($datos, $img);
+                    if(count($categoria_validado) == 0){
+                        $categoria->setTitulo($datos['titulo']);
+                        $categoria->setDescripcion($datos['descripcion']);
+                        $categoria->setImagen($img['name']);
+                        $edit = $categoria->edit();
+                        $categoria->crearCarpeta($img);
+                    
+                        if($edit) {   
+                            $_SESSION['editar_categoria'] = 'complete';
+                        }else{
+                            $_SESSION['editar_categoria'] = 'failed';
+                        }
+                    }else{
+                        $_SESSION['editar_categoria'] = $categoria->errores;
+                    }
+                }
+            }
+                $datos = $categoria->getOneCategoria();
+                $this->pages->render('categoria/editar', ['datos' => $datos]);
+            
+    }
+
+    public function delete($id){
+        /**
+         * Borra la pelicula seleccionada
+         * con el id que se le pasa
+         */
+        $categoria = new Categoria();
+        $categoria->borrar($id);
+        $this->pages->render('categoria/gestion');
     }
 }

@@ -105,7 +105,7 @@ class Blog{
         return $blog->fetch(PDO::FETCH_OBJ);
     }
 
-    public function save($datos, $img) {
+    public function save() {
         /**
          * Guarda los datos de la pelicula
          * que se quiere crear pasandole los datos de la pelicula
@@ -121,11 +121,10 @@ class Blog{
         $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
         $ins->bindParam( ':id_usuario_empleado', $id_usuario_empleado, PDO::PARAM_STR);
         
-        
-        $titulo = $datos['titulo'];
-        $descripcion = $datos['descripcion'];
-        $texto = $datos['texto'];
-        $imagen = $img['name'];
+        $titulo= $this->getTitulo();
+        $descripcion= $this->getDescripcion();
+        $texto= $this->getTexto();
+        $imagen = $this->getImagen();
         $id_usuario_empleado = $_SESSION['identity']->id;
         
         try{

@@ -5,6 +5,8 @@
     align-items: center;
     width: 100%;
 
+    
+
     h1 {
         color: #D96704;
         font-size: 40px;
@@ -17,9 +19,16 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        @include movil-max(movil-max) {
+            flex-direction: column;
+        }
+    
+        @include ordenador-max(tablet-min, nav-menu) {
+            flex-direction: column;
+        }
 
         .texto {
-            width: 50%;
+            width: 80%;
             padding: 20px;
 
             p {

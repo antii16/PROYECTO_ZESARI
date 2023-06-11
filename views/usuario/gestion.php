@@ -39,6 +39,7 @@ use Models\Usuario; ?>
                             <td style="text-align: center;">
                                 <a class="ver" href="<?= $_ENV['base_url'] ?>usuario/ver/<?=$usuario->id?>">Ver</a>
                                 <a class="pagar" href="<?= $_ENV['base_url'] ?>pagar/<?= $usuario->id ?>">Pagar</a>
+                                <a class="volver" href="<?= $_ENV['base_url'] ?>horario/apuntar/<?= $usuario->id ?>">Apuntar</a>
                             </td>
                         </tr>
                     <?php endwhile ?>

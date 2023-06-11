@@ -30,7 +30,7 @@ body {
 header .logo {
   margin-top: 10px;
   z-index: 10000;
-  width: 100px;
+  width: 90px;
   display: inline-block;
   position: fixed;
   margin-left: 100px;
@@ -79,9 +79,10 @@ header .menu {
     height: 100%;
   }
 }
+header .menu .menu-item {
+  padding: 20px;
+}
 header .menu .menu-link {
-  display: flex;
-  padding: 25px;
   color: #fff;
   height: 100%;
   align-items: center;
@@ -89,24 +90,28 @@ header .menu .menu-link {
 header .menu .menu-link:hover {
   color: grey;
 }
-header .menu .login {
+header .menu .contacto {
   background-color: #fff;
   color: #1c1022;
-  width: 100px;
-  margin: 5px;
-  text-align: center;
+  width: 70px;
+  padding: 10px;
+  border-radius: 5px;
+}
+header .menu .login {
+  border: 3px solid #fff;
+  width: 70px;
+  padding: 7px;
+  border-radius: 5px;
 }
 header .menu .container-submenu {
   position: relative;
 }
 header .menu .container-submenu .icono-sub {
   width: 40px;
-  padding: 10px;
   color: #fff;
 }
 header .menu .container-submenu .imagen-user {
-  width: 50px;
-  border-radius: 50%;
+  width: 20px;
 }
 header .menu .container-submenu .submenu {
   position: absolute;
@@ -122,6 +127,12 @@ header .menu .container-submenu .submenu {
     overflow: hidden;
     transition: all 0.3s;
   }
+}
+header .menu .container-submenu .submenu .menu-item {
+  padding: 0px !important;
+}
+header .menu .container-submenu .submenu .menu-item:nth-child(1) {
+  padding-top: 20px !important;
 }
 header .menu .container-submenu .submenu .menu-link {
   background-color: #1c1022;
@@ -237,7 +248,7 @@ header .mostrar {
   z-index: -1000;
   text-align: center;
   width: 100%;
-  height: 500px;
+  height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -283,7 +294,7 @@ header .mostrar {
   z-index: -1000;
   text-align: center;
   width: 100%;
-  height: 500px;
+  height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -329,7 +340,7 @@ header .mostrar {
   z-index: -1000;
   text-align: center;
   width: 100%;
-  height: 500px;
+  height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -476,7 +487,7 @@ main {
   }
 }
 main .main-contenido {
-  margin: 70px;
+  margin: 70px 40px 70px 40px;
 }
 main .main-contenido h1 {
   color: #D96704;
@@ -620,92 +631,6 @@ main .main-contenido #contactaIndex .caja a:hover {
   }
 }
 
-.contenedor-login {
-  width: 500px;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  flex-direction: column;
-  height: 400px;
-  margin: 200px auto;
-  border: 1px rgb(0, 0, 0) solid;
-  border-radius: 10%;
-}
-
-/*MAIN del apartado Escríbenos*/
-h1 {
-  padding: 50px;
-  text-align: center;
-}
-
-#contact {
-  display: flex;
-  justify-content: center;
-  padding: 90px;
-  margin: auto;
-  width: 100%;
-  background-color: grey;
-  /*Es la resolución maxima para un movil */
-}
-@media only screen and (max-width: 767px) {
-  #contact {
-    flex-direction: column;
-    height: 1000px;
-  }
-}
-#contact #mensaje form {
-  padding: 5px;
-  border-radius: 10px;
-  background-color: #d9c5c1;
-}
-#contact #mensaje form input[type=text],
-#contact #mensaje form input[type=email] {
-  width: 180px;
-  padding: 3px 10px;
-  border: 1px rgb(255, 255, 255) solid;
-  border-radius: 3px;
-  background-color: #fff;
-  margin: 8px 10px;
-  display: inline-block;
-}
-#contact #mensaje form button {
-  width: 100%;
-  padding: 10px 16px;
-  margin-top: 32px;
-  border: 1px rgb(0, 0, 0) solid;
-  border-radius: 5px;
-  display: block;
-  color: #fff;
-  background-color: #000000;
-}
-#contact #mensaje form button:hover {
-  cursor: pointer;
-}
-#contact #mensaje form textarea {
-  width: 100%;
-  height: 100px;
-  border: 1px rgb(255, 255, 255) solid;
-  border-radius: 3px;
-  background-color: #fff;
-  margin: 8px 0;
-  resize: none;
-  display: block;
-}
-#contact #mensaje p {
-  margin: 30px;
-}
-#contact #datos {
-  background-color: #fff;
-  text-align: center;
-  border: 1px rgb(0, 0, 0) solid;
-  height: 300px;
-  padding: 30px;
-  margin: 20px;
-}
-#contact #datos li {
-  margin: 30px;
-}
-
 .crear {
   width: 100%;
 }
@@ -814,12 +739,21 @@ h1 {
 #formularioCrear .contenedor .caja {
   padding: 20px;
 }
+#formularioCrear .contenedor .caja #imagenUsuarioForm {
+  width: 200px;
+  margin: auto;
+}
+#formularioCrear .contenedor .caja #imagenUsuarioForm img {
+  width: 100%;
+}
 #formularioCrear .contenedor .caja p {
   padding: 10px;
 }
 #formularioCrear .contenedor .caja input[type=text],
 #formularioCrear .contenedor .caja input[type=number],
-#formularioCrear .contenedor .caja input[type=datetime-local] {
+#formularioCrear .contenedor .caja input[type=datetime-local],
+#formularioCrear .contenedor .caja input[type=file],
+#formularioCrear .contenedor .caja input[type=password] {
   width: 200px;
   padding: 3px 10px;
   border: none;
@@ -840,10 +774,251 @@ h1 {
 #formularioCrear .contenedor .caja select:focus {
   outline: none;
 }
+#formularioCrear .contenedor .caja textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #f6f6f6;
+  border-radius: 3px;
+  background-color: #f6f6f6;
+  margin: 8px 0;
+  /*resize: vertical | horizontal | none | both*/
+  resize: none;
+  display: block;
+}
+#formularioCrear .contenedor .caja fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border: 9px solid #fff;
+  border-radius: 7px;
+}
+#formularioCrear .contenedor .caja fieldset p {
+  display: flex;
+  flex-direction: column;
+}
+#formularioCrear .contenedor .caja fieldset input[type=text],
+#formularioCrear .contenedor .caja fieldset input[type=email] {
+  width: 200px;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #f6f6f6;
+  margin: 8px 0;
+  display: inline-block;
+}
+#formularioCrear .contenedor .caja fieldset label {
+  width: 72px;
+  font-weight: bold;
+}
+#formularioCrear .contenedor .caja fieldset select {
+  border-radius: 3px;
+  padding: 3px 10px;
+  width: 200px;
+}
+#formularioCrear .contenedor .caja fieldset select:focus {
+  outline: none;
+}
+#formularioCrear .contenedor .caja fieldset legend {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 5px;
+}
+#formularioCrear .contenedor .caja:nth-child(2) {
+  flex-direction: row;
+}
+#formularioCrear .contenedor .caja:nth-child(2) input[type=submit],
+#formularioCrear .contenedor .caja:nth-child(2) a {
+  font-size: 16px;
+  width: 100px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: block;
+  color: #fff;
+  background-color: #000;
+}
+#formularioCrear .contenedor .caja:nth-child(2) a {
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ffffff;
+}
 #formularioCrear .contenedor .volver {
   margin-left: 20px;
 }
+#formularioCrear .contenedor .borrar {
+  margin-left: 5px;
+}
+#formularioCrear .contenedor .clasesUsuario {
+  background-color: #fff;
+}
 
+/*FORMULARIO DE CONTACTO*/
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  /*Es la resolución maxima para un movil */
+  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
+}
+@media only screen and (max-width: 767px) {
+  #contact {
+    flex-direction: column;
+    height: 900px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1440px) {
+  #contact {
+    flex-direction: row;
+  }
+}
+#contact #mensaje {
+  width: 400px;
+  /*Es la resolución maxima para un movil */
+}
+@media only screen and (max-width: 767px) {
+  #contact #mensaje {
+    width: 300px;
+  }
+}
+#contact #mensaje form {
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #84778C;
+}
+#contact #mensaje form input[type=text],
+#contact #mensaje form input[type=email] {
+  width: 180px;
+  padding: 3px 10px;
+  border: 1px rgb(255, 255, 255) solid;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 8px 10px;
+  display: inline-block;
+}
+#contact #mensaje form button {
+  width: 100%;
+  padding: 10px 16px;
+  margin-top: 32px;
+  border: 1px rgb(0, 0, 0) solid;
+  border-radius: 10px;
+  display: block;
+  color: #fff;
+  background-color: #000000;
+}
+#contact #mensaje form button:hover {
+  cursor: pointer;
+}
+#contact #mensaje form textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px rgb(255, 255, 255) solid;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 8px 0;
+  resize: none;
+  display: block;
+}
+#contact #mensaje p {
+  margin: 30px;
+}
+#contact #datos {
+  width: 400px;
+  border: 2px solid #321c3d;
+  border-radius: 10px;
+  height: 300px;
+  padding: 30px;
+  margin-left: 20px;
+  /*Es la resolución maxima para un movil */
+}
+@media only screen and (max-width: 767px) {
+  #contact #datos {
+    width: 300px;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+#contact #datos li {
+  margin: 30px;
+}
+#contact #datos span {
+  font-weight: bold;
+}
+
+/***************************FORMULARIO LOGIN******************/
+/*************************************************************/
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container .login-box {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+.container .login-box h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+.container .login-box input[type=text],
+.container .login-box input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.container .login-box input[type=submit] {
+  background-color: #321c3d;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.container .login-box input[type=submit]:hover {
+  background-color: #321c3d;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .login-box {
+    padding: 20px;
+  }
+  .login-box input[type=text],
+  .login-box input[type=password] {
+    padding: 8px;
+  }
+  .login-box input[type=submit] {
+    padding: 8px;
+  }
+}
 .crud {
   margin: 100px;
 }
@@ -901,9 +1076,21 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 100%;
+  /*Es la resolución maxima para un movil */
+  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
+}
+@media only screen and (max-width: 767px) {
+  #sobreNosotros .caja {
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+  #sobreNosotros .caja {
+    flex-direction: column;
+  }
 }
 #sobreNosotros .caja .texto {
-  width: 50%;
+  width: 80%;
   padding: 20px;
 }
 #sobreNosotros .caja .texto p {
@@ -932,16 +1119,10 @@ h1 {
   padding: 10px;
   grid-template-columns: 1fr 1fr 1fr;
   /*Es la resolución maxima para un movil */
-  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .blogs, .clases, .equipo {
     grid-template-columns: 1fr;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1440px) {
-  .blogs, .clases, .equipo {
-    grid-template-columns: 1fr 1fr;
   }
 }
 .blogs .caja, .clases .caja, .equipo .caja {
@@ -980,7 +1161,7 @@ h1 {
 .blogs .caja .contenido .post-title, .clases .caja .contenido .post-title, .equipo .caja .contenido .post-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: black;
+  color: #000000;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -1215,6 +1396,23 @@ h1 {
   background-color: rgba(128, 128, 128, 0.719);
 }
 
+.editar2 {
+  background-color: green;
+  border: solid 2px green;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100px;
+  transition: all 0.5s ease;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+}
+.editar2:hover {
+  border: solid 2px rgba(0, 128, 0, 0.719);
+  background-color: rgba(0, 128, 0, 0.719);
+}
+
 /*BOTON VER USUARIO*/
 #botones {
   margin: 20px;
@@ -1269,4 +1467,22 @@ h1 {
 .insertarDato:hover {
   border: solid 2px rgba(217, 103, 4, 0.719);
   background-color: rgba(217, 103, 4, 0.719);
+}
+
+.cambiarPassword {
+  color: #000000 !important;
+  background-color: rgb(255, 255, 255);
+  border: solid 2px rgb(255, 255, 255);
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100px;
+  transition: all 0.5s ease;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+}
+.cambiarPassword:hover {
+  border: solid 2px rgba(255, 255, 255, 0.719);
+  background-color: rgba(255, 255, 255, 0.719);
 }/*# sourceMappingURL=estilo.css.map */

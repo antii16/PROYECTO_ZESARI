@@ -2,22 +2,29 @@
 
 
 <main>
+      <!-- HEADER CONTENIDO -->
+ <div class="header-submenu">
+        <div class="overlay">
+        <h1>Gestión de Categorias</h1>
+        </div>
+    </div>
+
+     <!-- MAIN CONTENIDO -->
 <div class="main-contenido">
-<h1>Gestión de Categorias</h1>
+
 <div class="crud">
 
 <div class="añadir">
-        <a  href="<?= $_ENV['base_url'] ?>usuario/registro">Añadir <i class="fa-solid fa-pen"></i></a>
+        <a  class="add" href="<?= $_ENV['base_url'] ?>categoria/crear">Añadir +</a>
     </div>
 
-<table id="tabla" class="display" style="width:100%">
+<table id="tabla" class="display responsive nowrap" style="width:100%">
     <thead>
         <tr>
             <th>ID</th>
             <th>Titulo</th>
-            <th>Descripcion</th>
             <th>Imagen</th>
-            <th>Opción</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -26,11 +33,10 @@
         <tr>
             <td style="text-align: center;"><?=$categoria->id?></td>
             <td style="text-align: center;"><?=$categoria->titulo?></td>
-            <td style="text-align: center;"><?=$categoria->descripcion?></td>
             <td style="text-align: center;"><?=$categoria->imagen?></td>
             <td style="text-align: center;">
-                <a class="btn btn-primary" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$categoria->id?>">Borrar</a>
-                <a class="btn btn-success" href="<?=$_ENV['base_url']?>categoria/editar/<?=$categoria->id?>">Editar</a>
+                <a class="borrar" href="<?=$_ENV['base_url']?>categoria/borrar/<?=$categoria->id?>">Borrar</a>
+                <a class="editar" href="<?=$_ENV['base_url']?>categoria/editar/<?=$categoria->id?>">Editar</a>
             </td>
         </tr>
      <?php endwhile?>

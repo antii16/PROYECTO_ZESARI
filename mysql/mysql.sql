@@ -94,7 +94,7 @@ DROP TABLE IF EXISTS `horario`;
 CREATE TABLE IF NOT EXISTS `horario`( 
 `id`             int auto_increment not null,
 `aforo_disponible` int not null,
-`fecha`       date COLLATE utf8mb4_unicode_ci,
+`fecha`       datetime COLLATE utf8mb4_unicode_ci,
 `id_categoria`       int COLLATE utf8mb4_unicode_ci not null,
 CONSTRAINT pk_horario PRIMARY KEY(`id`),
 CONSTRAINT fk_categoria_horario FOREIGN KEY(`id_categoria`) REFERENCES categorias(`id`)
@@ -133,3 +133,37 @@ INSERT INTO `clases` (`titulo`, `precio`, `aforo`, `cantidad_clases`, `id_usuari
 --CLASES SUELTAS
 INSERT INTO `clases` (`titulo`, `precio`, `aforo`, `cantidad_clases`, `id_usuario_profesor`, `id_categoria`) VALUES ('Clase suelta (GS)', 22, 1, 1, 10, 13);
 INSERT INTO `clases` (`titulo`, `precio`, `aforo`, `cantidad_clases`, `id_usuario_profesor`, `id_categoria`) VALUES ('Clase suelta (GM)', 20, 1, 1, 10, 12);
+
+INSERT INTO `horario` (aforo_disponible, fecha, id_categoria)
+VALUES (5,'2023-06-12 10:00:00', 4),
+       (5, '2023-06-12 11:00:00', 4),
+       (5, '2023-06-12 12:00:00', 4),
+       (5, '2023-06-12 13:00:00', 4),
+       (5, '2023-06-12 14:00:00', 4),
+       (5, '2023-06-12 15:00:00', 4),
+       (5, '2023-06-12 16:00:00', 4),
+       (5, '2023-06-12 17:00:00', 4),
+       (5, '2023-06-12 18:00:00', 4),
+       (5, '2023-06-12 19:00:00', 4),
+       (5, '2023-06-12 20:00:00', 4),
+       (5, '2023-06-12 21:00:00', 4),
+       (5, '2023-06-12 22:00:00', 4);
+
+INSERT INTO `horario` (aforo_disponible, fecha, id_categoria)
+VALUES (5, '2023-06-13 08:00:00', 4),
+       (5, '2023-06-13 09:00:00', 4),
+       (5, '2023-06-13 10:00:00', 4),
+       (5, '2023-06-13 11:00:00', 4),
+       (5, '2023-06-13 12:00:00', 4),
+       (5, '2023-06-13 13:00:00', 4),
+       (5, '2023-06-13 14:00:00', 4),
+       (5, '2023-06-13 15:00:00', 4),
+       (5, '2023-06-13 16:00:00', 4),
+       (5, '2023-06-13 17:00:00', 4),
+       (5, '2023-06-13 18:00:00', 4),
+       (5, '2023-06-13 19:00:00', 4),
+       (5, '2023-06-13 20:00:00', 4),
+       (5, '2023-06-13 21:00:00', 4),
+       (5, '2023-06-13 22:00:00', 4);
+
+-- Continuar insertando para el resto de días de junio

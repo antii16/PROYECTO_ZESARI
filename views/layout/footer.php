@@ -16,7 +16,7 @@
             <ul>
                 <li>Dirección: Avenida Constitución 20, local 119, 18012 Granada</li>
                 <li>Telefono: 666-888-999</li>
-                <li>Email: info@pilateszesari.es</li>
+                <li>Email: pilatescentrosalud@gmail.com</li>
                 <hr>
                 <li>HORARIO</li>
                 <hr>

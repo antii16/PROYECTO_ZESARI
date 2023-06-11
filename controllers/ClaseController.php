@@ -21,6 +21,7 @@ class ClaseController{
          */
         $this->pages->render('clase/gestion');
     }
+    
 
     public function obtenerDatosClase($id){
         /**
@@ -67,10 +68,8 @@ class ClaseController{
         $clase = new Clase();
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['data'])){
-
                 $datos = $_POST['data'];
                 $clase_validada = $clase->validar($datos);
-
                 if(count($clase_validada) == 0){
                     //Si el $errores[] está vacío significa que no hay error
 
@@ -87,13 +86,13 @@ class ClaseController{
                         $_SESSION['crear_clase'] = 'failed';
                     }
                 }else{
-                        $_SESSION['crear_clase'] = 'failed';
+                    $_SESSION['crear_clase'] = $clase->errores;
                 }
                 
             }
-        }else{
-            $this->pages->render('clase/crear');
         }
+        $this->pages->render('clase/crear');
+        
     }
     
     public function editar($id) {
@@ -110,56 +109,58 @@ class ClaseController{
             $clase->setId($id);
              if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if(isset($_POST['data'])) {
-                    $editado = $_POST['data'];
-                    $clase->setTitulo($editado['titulo']);
-                    $clase->setPrecio($editado['precio']);
-                    $clase->set_idProfesor($editado['id_usuario_profesor']);
-                    $clase->set_idCategoria($editado['id_categoria']);
-                    $edit = $clase->edit();
-                
-                    if($edit) {   
-                        $_SESSION['edit_clase'] = 'complete';
+                    $datos = $_POST['data'];
+                    $clase_validada = $clase->validar($datos);
+                    if(count($clase_validada) == 0){
+                        $clase->setTitulo($datos['titulo']);
+                        $clase->setPrecio($datos['precio']);
+                        $clase->setCantidad($datos['cantidad']);
+                        $clase->set_idProfesor($datos['id_usuario_profesor']);
+                        $clase->set_idCategoria($datos['id_categoria']);
+                        $edit = $clase->edit();
+                    
+                        if($edit) {   
+                            $_SESSION['editar_clase'] = 'complete';
+                        }else{
+                            $_SESSION['editar_clase'] = 'failed';
+                        }
                     }else{
-                        $_SESSION['edit_clase'] = 'failed';
-                    }
-                }
-
-                $this->pages->render('clase/gestion');
-            }else {
-                $datos = $clase->getOneClase();
-                $this->pages->render('clase/editar', ['datos' => $datos]);
+                        $_SESSION['editar_clase'] = $clase->errores;
+                    } 
+                }     
             }
-    }
+            $datos = $clase->getOneClase();
+            $this->pages->render('clase/editar', ['datos' => $datos]);
+        }
 
     public function delete($id){
         /**
          * Borra la pelicula seleccionada
          * con el id que se le pasa
          */
-        
         $clase = new Clase();
         $delete = $clase->borrar($id);
         $this->pages->render('clase/gestion');
     }
 
-    public function duplicar($id){
-        /**
-         * Borra la pelicula seleccionada
-         * con el id que se le pasa
-         */
+    // public function duplicar($id){
+    //     /**
+    //      * Borra la pelicula seleccionada
+    //      * con el id que se le pasa
+    //      */
         
-        $clase = new Clase();
-        $clase->setId($id);
-        $datos = $clase->getOneClase();
-        $duplicar = $clase->duplicar($datos);
+    //     $clase = new Clase();
+    //     $clase->setId($id);
+    //     $datos = $clase->getOneClase();
+    //     $duplicar = $clase->duplicar($datos);
         
-        if($duplicar) {   
-            $_SESSION['duplicar_clase'] = 'complete';
-        }else{
-            $_SESSION['duplicar_clase'] = 'failed';
-        }
+    //     if($duplicar) {   
+    //         $_SESSION['duplicar_clase'] = 'complete';
+    //     }else{
+    //         $_SESSION['duplicar_clase'] = 'failed';
+    //     }
         
-        $this->pages->render('clase/gestion');
-    }
+    //     $this->pages->render('clase/gestion');
+    // }
 
 }

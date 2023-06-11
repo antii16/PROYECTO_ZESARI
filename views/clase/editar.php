@@ -10,14 +10,34 @@ use Models\Categoria;
     <!-- HEADER CONTENIDO -->
     <div class="header-submenu">
         <div class="overlay">
-            <h1>Crear Clase</h1>
+            <h1>Editar Clase</h1>
         </div>
     </div>
      <!-- MAIN CONTENIDO -->
     <div class="main-contenido">
+    <div class="alertas">
+    <?php 
+    if(isset($_SESSION['editar_clase']) && $_SESSION['editar_clase']=='complete') {
+        echo "<strong>Clase editada</strong>";
+    }
+
+    elseif(isset($_SESSION['editar_clase']) && $_SESSION['editar_clase']=='failed') {
+        echo "<strong>Clase no editada</strong>";
+    }
+
+
+    elseif(isset($_SESSION['editar_clase']) && is_array($_SESSION['editar_clase'])){
+        foreach($_SESSION['editar_clase'] as $errores) {
+            echo "<p><strong style=color:red;> *".$errores."</strong></p>";
+        }
+    
+    }
+    unset($_SESSION['editar_clase']);
+    ?>
+    </div>
         <div class="crear"> 
         <?php while($clase = $datos->fetch(PDO::FETCH_OBJ)):?>
-            <form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
+            <form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/editar/<?=$clase->id?>" method="POST" enctype="multipart/form-data">
                 <div class="contenedor">
                     <div class="caja">
                         <p> 
@@ -65,7 +85,7 @@ use Models\Categoria;
                     </div>
                 </div>
                 <div class="contenedor">
-                    <input class="insertarDato" type="submit"  name="crear" value="Crear">     
+                    <input class="editar2" type="submit"  name="crear" value="Editar">     
                     <a class="volver" href="<?= $_ENV['base_url'] ?>clase/gestion">Volver</a>
                 </div>
             </form>

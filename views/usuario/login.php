@@ -2,20 +2,18 @@
 
 <main>
 <div class="main-contenido">
-<div class="contenedor-login">
-    <h1>Iniciar Sesión</h1>
-    <form action="<?=$_ENV['base_url']?>usuario/login" method="POST" enctype="multipart/form-data">
-        <p>
-            <input type="text" name="data[email]" placeholder="Correo electrónico" required>
-        </p>
-        <p>
-            <input type="password" name="data[password]" placeholder="Contraseña" required>
-        </p>
+<div class="container">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form action="<?=$_ENV['base_url']?>usuario/login" method="POST" enctype="multipart/form-data">
+          <label for="username">Email</label>
+          <input type="text" name="data[email]"  id="username" placeholder="Correo electrónico" required>
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="data[password]" placeholder="Contraseña" required>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
+    </div>
 
-        <input type="submit"  value="Login" class="btn btn-primary">
-
-    </form>
-
-<div>
 </div>
 </main>

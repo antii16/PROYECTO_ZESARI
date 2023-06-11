@@ -61,6 +61,20 @@ class Categoria{
         return $categorias;
     }
 
+    public function getOneCategoria() {
+        $categoria =  $this->db->query("SELECT * FROM categorias WHERE id = {$this->id}");
+        return $categoria;
+    }
+
+    public function setImagenCategoria() {
+        //Devuelve la imagen de una entrada
+        $categoria = $this->db->query("SELECT imagen FROM categorias 
+        WHERE id={$this->id};");
+
+        return $categoria->fetch(PDO::FETCH_OBJ);
+    }
+
+
 
     public function save():bool{
         /**
@@ -92,15 +106,9 @@ class Categoria{
          * Valida el si los campos no están vacíos y que el stock y el precio son números
          * y no letras
          **/
-        // if(!is_numeric($datos['precio'])) {
-        //     $this->errores[] = "El precio debe ser un número";
-        // }
-
-        // if(!is_numeric($datos['aforo'])) {
-        //     $this->errores[] = "El aforo debe ser un número";
-        // }
-
-
+        if(is_numeric($datos['titulo'])) {
+            $this->errores[] = "El titulo debe ser texto";
+        }
         return  $this->errores;
     }
 
@@ -122,5 +130,61 @@ class Categoria{
             
         }
     }
+
+    public function edit(){
+        $ins = $this->db->prepare("UPDATE categorias
+        SET titulo = :titulo, 
+        descripcion = :descripcion, 
+        imagen = :imagen
+        WHERE id = :id");
+
+        $ins->bindParam( ':id', $id, PDO::PARAM_STR);
+        $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
+        $ins->bindParam( ':descripcion', $descripcion, PDO::PARAM_STR);
+        $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
+
+
+        $id = $this->getId();
+        $titulo= $this->getTitulo();
+        $descripcion= $this->getDescripcion();
+        if($this->getImagen()== NULL) {
+            //Devuelve la imagen de la pelicula según el id de ésta
+            $im = $this->setImagenCategoria();
+            $imagen = $im->imagen;
+        }else{
+            $imagen = $this->getImagen();   
+        }
+
+        try{
+            $ins->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
+
+    }
+
+    public function borrar($id) {
+        /**
+         * Borra una pelicula según el id 
+         * que se le pasa 
+         * Si se ha borrado devuelve true y si no devuelve false
+         */
+        $sql = "DELETE FROM categorias WHERE id = :id";
+        $resul =  $this->db->prepare($sql);
+        $resul->bindParam(':id', $id, PDO::PARAM_STR);
+        try{
+            $resul->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
+    }
+
+
 
 }
