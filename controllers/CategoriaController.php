@@ -15,16 +15,16 @@ class CategoriaController{
 
     public function gestion(){
         /**
-         * Muestra todos los peliculas que existen. 
-         * Esto solo está disponible para el admin
-         * Redirigue al Gestionar películas
+         * Tabla de gestión de categorías
          */
-        //Utils::isAdmin();
         
         $this->pages->render('categoria/gestion');
     }
 
     public function ver($id) {
+        /**
+         * Muestra una categoría en específico
+         */
         $categoria = new Categoria();
         $categoria->setId($id);
         $categorias = $categoria->getOneCategoria();
@@ -33,7 +33,7 @@ class CategoriaController{
 
     public function save() {
         /**
-         * Guarda el pelicula que se ha creado.
+         * Guarda el categoría que se ha creado.
          * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
          */
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -68,47 +68,41 @@ class CategoriaController{
     }
 
     public function editar($id) {
-
-        /**
-             * Se guardan los datos de un nuevo empleado o de un usuario
-             * que quiera editar sus datos.
-             * La contraseña se encripta y se validan los datos. 
-             * Si los datos están validados se crea o se edita el usuario
-             * Si name es registrar, se crea un nuevo usuario
-             * Si la $_SESSION['identity'] existe se edita el usuario
-             */
-            $categoria = new Categoria();
-            $categoria->setId($id);
-             if($_SERVER['REQUEST_METHOD'] === 'POST') {
-                if(isset($_POST['data']) && isset($_FILES['imagen']) ) {
-                    $datos = $_POST['data'];
-                    $img = $_FILES['imagen'];
-                    $categoria_validado = $categoria->validar($datos, $img);
-                    if(count($categoria_validado) == 0){
-                        $categoria->setTitulo($datos['titulo']);
-                        $categoria->setDescripcion($datos['descripcion']);
-                        $categoria->setImagen($img['name']);
-                        $edit = $categoria->edit();
-                        $categoria->crearCarpeta($img);
-                    
-                        if($edit) {   
-                            $_SESSION['editar_categoria'] = 'complete';
-                        }else{
-                            $_SESSION['editar_categoria'] = 'failed';
-                        }
+    /**
+         * Edita la categoría
+         */
+        $categoria = new Categoria();
+        $categoria->setId($id);
+            if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(isset($_POST['data']) && isset($_FILES['imagen']) ) {
+                $datos = $_POST['data'];
+                $img = $_FILES['imagen'];
+                $categoria_validado = $categoria->validar($datos, $img);
+                if(count($categoria_validado) == 0){
+                    $categoria->setTitulo($datos['titulo']);
+                    $categoria->setDescripcion($datos['descripcion']);
+                    $categoria->setImagen($img['name']);
+                    $edit = $categoria->edit();
+                    $categoria->crearCarpeta($img);
+                
+                    if($edit) {   
+                        $_SESSION['editar_categoria'] = 'complete';
                     }else{
-                        $_SESSION['editar_categoria'] = $categoria->errores;
+                        $_SESSION['editar_categoria'] = 'failed';
                     }
+                }else{
+                    $_SESSION['editar_categoria'] = $categoria->errores;
                 }
             }
-                $datos = $categoria->getOneCategoria();
-                $this->pages->render('categoria/editar', ['datos' => $datos]);
-            
+        }
+            $datos = $categoria->getOneCategoria();
+            $this->pages->render('categoria/editar', ['datos' => $datos]);
+        
     }
 
     public function delete($id){
         /**
-         * Borra la pelicula seleccionada
+         * Borra la categoría seleccionada
          * con el id que se le pasa
          */
         $categoria = new Categoria();

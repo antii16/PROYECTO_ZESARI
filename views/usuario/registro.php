@@ -14,6 +14,25 @@ use Utils\Utils;
     <!-- MAIN CONTENIDO -->
 
     <div class="main-contenido">
+
+    <div class="alertas">
+        <?php 
+        if(isset($_SESSION['register']) && $_SESSION['register']=='complete') {
+            echo "<strong>Usuario registrado</strong>";
+        }
+
+        elseif(isset($_SESSION['register']) && $_SESSION['register']=='failed') {
+            echo "<strong>Usuario no registrado</strong>";
+        }
+
+        elseif(isset($_SESSION['register']) && is_array($_SESSION['register'])){
+            foreach($_SESSION['register'] as $errores) {
+                echo "<p><strong style=color:red;> *".$errores."</strong></p>";
+            }
+        }
+
+        unset($_SESSION['register']);
+        ?>
         
         <div class="crear"> 
             <form  id="formularioCrearUsuario" action="<?=$_ENV['base_url']?>usuario/registro" method="POST" enctype="multipart/form-data">

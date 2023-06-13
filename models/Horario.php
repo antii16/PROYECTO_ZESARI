@@ -55,7 +55,7 @@ class Horario{
     }
     public static function obtenerHorario() {
         /**
-         * Selecciona todos los peliculas
+         * Selecciona los datos del horario
          */
         $horario = new Horario();
         $horario = $horario->db->query("SELECT * FROM horario ORDER BY id DESC;");
@@ -63,11 +63,13 @@ class Horario{
     }
 
     public function getOneHorario() {
+        /**Selecciona un horario */
         $horario =  $this->db->query("SELECT * FROM horario WHERE id = {$this->id}");
         return $horario;
     }
 
     public function comprobarAforo($id_horario) {
+        /**Comprueba el aforo del horario */
         $consulta = $this->db->query("SELECT aforo_disponible FROM horario WHERE id = $id_horario");
         $aforo = $consulta->fetch(PDO::FETCH_OBJ);
         if($aforo->aforo_disponible > 0) {
@@ -78,6 +80,7 @@ class Horario{
     }
 
     public function actualizarAforo($id_horario) {
+        /**Actualiza el aforo cuando  un cliente se apunta */
         $consulta = $this->db->query("SELECT aforo_disponible FROM horario WHERE id = $id_horario");
         $aforo = $consulta->fetch(PDO::FETCH_OBJ);
         $aforoRestado = intval($aforo->aforo_disponible) - 1;
@@ -86,7 +89,7 @@ class Horario{
     }
 
     public static function obtenerHorarioPorCategoria($idCategoria) {
-        // Modifica tu consulta para filtrar por ID de categoría
+        // obtiene el horario por categoria
         $horario = new Horario();
         $query = "SELECT id, fecha FROM horario WHERE id_categoria = $idCategoria";
         $horarioFiltrado = $horario->db->query($query);
@@ -95,10 +98,7 @@ class Horario{
     }
     public function save() {
         /**
-         * Guarda los datos de la pelicula
-         * que se quiere crear pasandole los datos de la pelicula
-         * y la imagen
-         * Devuelve true si se ha creado y false si no
+         * Guarda los datos del horario
          */
 
         $ins = $this->db->prepare("INSERT INTO horario(aforo_disponible, fecha, id_categoria) 
@@ -125,9 +125,7 @@ class Horario{
 
     public function validar($datos) {
         /**
-         * Validacion de la pelicula.
-         * Valida el si los campos no están vacíos y que el stock y el precio son números
-         * y no letras
+         * Validacion del horario.
          **/
 
         if(isset($datos['aforo_disponible']) && !is_numeric($datos['aforo_disponible'])) {
@@ -142,45 +140,9 @@ class Horario{
 
         return  $this->errores;
     }
-   
-    public function duplicar($datos) {
-/**
-         * Guarda los datos de la pelicula
-         * que se quiere crear pasandole los datos de la pelicula
-         * y la imagen
-         * Devuelve true si se ha creado y false si no
-         */
-
-         $ins = $this->db->prepare("INSERT INTO clases(titulo, precio, horario, aforo, id_usuario_profesor, id_categoria) 
-         VALUES (:titulo, :precio, :horario, :aforo, :id_usuario_profesor, :id_categoria)");
- 
-         $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
-         $ins->bindParam( ':precio', $precio, PDO::PARAM_STR);
-         $ins->bindParam( ':horario', $horario, PDO::PARAM_STR);
-         $ins->bindParam( ':aforo', $aforo, PDO::PARAM_STR);
-         $ins->bindParam( ':id_usuario_profesor', $id_usuario_profesor, PDO::PARAM_STR);
-         $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
-        while($clase = $datos->fetch(PDO::FETCH_OBJ)){
-            $titulo = $clase->titulo;
-            $precio = $clase->precio;
-            $dia =$clase->horario;
-            $aforo = $clase->aforo;
-            $id_usuario_profesor = $clase->id_usuario_profesor;
-            $id_categoria = $clase->id_categoria;
-        }
-        
-         try{
-             $ins->execute();
-             $result = true;
-         }catch(PDOException $err){
-             $result= false;
-             
-         }
- 
-        return $result;
-    }
 
     public function apuntar($datos) {
+        /**Apunta al usuario en un horario y actualiza el aforo  */
         $ins = $this->db->prepare("INSERT INTO apuntado(id_cliente, id_horario) 
         VALUES (:id_cliente, :id_horario)");
 
@@ -200,5 +162,52 @@ class Horario{
         }
 
        return $result;
+    }
+
+    public function borrar($id) {
+        /**
+         * Borra el horario
+         */
+        $sql = "DELETE FROM horario WHERE id = :id";
+        $resul =  $this->db->prepare($sql);
+        $resul->bindParam(':id', $id, PDO::PARAM_STR);
+        try{
+            $resul->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
+    }
+
+    public function edit(){
+        /**Edita el horario */
+        $ins = $this->db->prepare("UPDATE horario
+        SET 
+        aforo_disponible = :aforo_disponible, 
+        fecha = :fecha,
+        id_categoria = :id_categoria
+        WHERE id = :id");
+
+        $ins->bindParam( ':id', $id, PDO::PARAM_STR);
+        $ins->bindParam( ':aforo_disponible', $aforo_disponible, PDO::PARAM_STR);
+        $ins->bindParam( ':fecha', $fecha, PDO::PARAM_STR);
+        $ins->bindParam( ':id_categoria', $id_categoria, PDO::PARAM_STR);
+        
+        $id = $this->getId();
+        $aforo_disponible = $this->getAforoDisponible();
+        $fecha = $this->getFecha();
+        $id_categoria = $this->get_idCategoria();
+    
+        try{
+            $ins->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= false;
+        }
+
+       return $result;
+
     }
 }

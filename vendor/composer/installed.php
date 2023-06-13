@@ -3,7 +3,7 @@
         'name' => 'usuario/proyecto_zesari',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f14549f186491e081b81f8efeb9dde1b5037fe85',
+        'reference' => 'b1d1a90de89a23f450146cb2a7a466ff54f7fc3c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -67,7 +67,7 @@
         'usuario/proyecto_zesari' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f14549f186491e081b81f8efeb9dde1b5037fe85',
+            'reference' => 'b1d1a90de89a23f450146cb2a7a466ff54f7fc3c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

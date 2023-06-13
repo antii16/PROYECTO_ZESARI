@@ -88,16 +88,17 @@ class Pago{
         $this->id_clase = $id_clase;
     }
 
+    public function getOnePago() {
+        $pago =  $this->db->query("SELECT * FROM pagos WHERE id = {$this->id}");
+        return $pago;
+    }
+
     public static function obtenerPagos() {
         /**
-         * Selecciona todos los peliculas
+         * Selecciona todos los pagos
          */
         $pago = new Pago();
         $pagos = $pago->db->query("SELECT * FROM pagos ORDER BY id DESC;");
-
-// INNER JOIN usuarios ON pagos.id_cliente = usuarios.id 
-// INNER JOIN clases ON pagos.id_clase = clases.id 
-// WHERE rol = 'cliente'
         return $pagos;
     }
 
@@ -113,24 +114,9 @@ class Pago{
 
         return $pagos;
     }
-
-    // public function obtenerClasesPagadasUsuario() {
-    //     $consulta = "SELECT clases.titulo as titulo 
-    //     FROM clases 
-    //     INNER JOIN
-        
-        
-    //     WHERE id = {$this->id}";
-    //     $clasesUsuario =  $this->db->query();
-    //     return $categoria;
-    // }
-
     public function save() {
         /**
-         * Guarda los datos de la pelicula
-         * que se quiere crear pasandole los datos de la pelicula
-         * y la imagen
-         * Devuelve true si se ha creado y false si no
+         * Guarda los datos del pago
          */
 
         $ins = $this->db->prepare("INSERT INTO pagos(fecha, tipo, estado, cantidad,id_cliente, id_empleado_anota, id_clase) 
@@ -165,12 +151,10 @@ class Pago{
 
     public function validar($datos) {
         /**
-         * Validacion de la pelicula.
-         * Valida el si los campos no están vacíos y que el stock y el precio son números
-         * y no letras
+         * Validacion del pago.
          **/
         if(!is_numeric($datos['cantidad'])) {
-            $this->errores[] = "El precio debe ser un número";
+            $this->errores[] = "La cantidad debe ser un número";
         }
 
         if($datos['tipo'] == 'seleccionada') {

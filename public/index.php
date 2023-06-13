@@ -7,7 +7,6 @@ use Lib\Router;
 use Lib\Pages;
 use Controllers\UsuarioController;
 use Controllers\ClaseController;
-use Controllers\HomeController;
 use Controllers\BlogController;
 use Controllers\CategoriaController;
 use Controllers\PagoController;
@@ -20,7 +19,7 @@ $dotenv->safeLoad();
 // INDEX
 
 Router::add('GET', '/', function(){
-    return (new HomeController())->index();
+    return (new ClaseController())->index();
     
 });
 
@@ -161,9 +160,6 @@ Router::add('POST', 'usuario/login', function(){
     return (new UsuarioController())->login();
 });
 
-// Router::add('GET', 'usuario/equipo', function(){ //ver
-//     return (new UsuarioController())->mostrarEquipo();
-// });
 
 Router::add('GET', 'logout', function(){
     Utils::isIdentity();
@@ -221,11 +217,11 @@ Router::add('GET', 'blogs', function(){
     return (new BlogController())->mostrarBlog();
 });
 Router::add('GET', 'sobreNosotros', function(){
-    return (new HomeController())->sobreNosotros();
+    return (new ClaseController())->sobreNosotros();
 });
 
 Router::add('GET', 'contacto', function(){
-    return (new HomeController())->contacto();
+    return (new ClaseController())->contacto();
 });
 
 
@@ -271,5 +267,21 @@ Router::add('POST', 'horario/apuntar/:id', function($id){
     Utils::isAdmin();
     return (new HorarioController())->apuntar($id);
 });
+
+Router::add('GET', 'horario/editar/:id', function($id){
+    Utils::isAdmin();
+    return (new HorarioController())->editar($id);
+});
+
+Router::add('POST', 'horario/editar/:id', function($id){
+    Utils::isAdmin();
+    return (new HorarioController())->editar($id);
+});
+
+Router::add('GET', 'horario/borrar/:id', function($id){
+    Utils::isAdmin();
+    return (new HorarioController())->delete($id);
+});
+
 
 Router::dispatch();

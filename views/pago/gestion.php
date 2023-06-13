@@ -20,7 +20,6 @@
                         <th>Tipo</th>
                         <th>Clase</th>
                         <th>Estado</th>
-                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +33,6 @@
                         <td style="text-align: center;"><?=$pago->tipo?></td>
                         <td style="text-align: center;"><?=$pago->id_clase?></td>
                         <td style="text-align: center;"><?=$pago->estado?></td>
-                        <td style="text-align: center;">
-                            <a class="btn btn-success" href="<?=$_ENV['base_url']?>pago/editar/<?=$pago->id?>">Editar</a>
-
-                        </td>
                     </tr>
                 <?php endwhile?>
                 </tbody>

@@ -78,7 +78,7 @@ class Categoria{
 
     public function save():bool{
         /**
-         * Guarda los datos del nuevo usuario
+         * Guarda los datos de una categoria
          * Si es correcto devuelve true y si no devuelve false
          */
         $ins = $this->db->prepare("INSERT INTO categorias(titulo, descripcion, imagen) VALUES (:titulo, :descripcion, :imagen)");
@@ -102,9 +102,7 @@ class Categoria{
 
     public function validar($datos) {
         /**
-         * Validacion de la pelicula.
-         * Valida el si los campos no están vacíos y que el stock y el precio son números
-         * y no letras
+         * Validacion de la categoria
          **/
         if(is_numeric($datos['titulo'])) {
             $this->errores[] = "El titulo debe ser texto";
@@ -168,7 +166,7 @@ class Categoria{
 
     public function borrar($id) {
         /**
-         * Borra una pelicula según el id 
+         * Borra una categoria según el id 
          * que se le pasa 
          * Si se ha borrado devuelve true y si no devuelve false
          */

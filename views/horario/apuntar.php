@@ -68,11 +68,12 @@ unset($_SESSION['apuntar']);
         <input class="insertarDato" type="submit"  name="data[apuntar]" value="Apuntar">
         <a class="volver" href="<?= $_ENV['base_url'] ?>usuario/gestion">Volver</a>
 </div>
-
-        
+    
 </form>
 
 <?php endwhile; ?>
+
+</div>
 </div>
 </div>
 

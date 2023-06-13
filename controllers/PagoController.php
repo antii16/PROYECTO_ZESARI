@@ -15,41 +15,14 @@ class PagoController{
 
     public function gestion(){
         /**
-         * Muestra todos los peliculas que existen. 
-         * Esto solo está disponible para el admin
-         * Redirigue al Gestionar películas
+         * Tabla de gestion de los pagos
          */
-        //Utils::isAdmin();
         
         $this->pages->render('pago/gestion');
     }
-
-    // public function index() {
-    //     /**
-    //      * Muestra todas las peliculas en de la base de datos 
-    //      * en el main 
-    //      */
-    //     $clase = new Clase();
-    //     $clase = $clase->getAll();
-    //     $this->pages->render('layout/main', ['clase' => $clase]);
-        
-    // }
-
-    public function mostrarBlog() {
-        /**
-         * Redirige a la vista ver
-         * Obtiene los datos de la pelicula que se ha seleccionado
-         * y los muestra, para luego comprarla 
-         */
-        
-         $this->pages->render('blog/nav-blog');
-        
-    }
-
     public function save($id) {
         /**
-         * Guarda el pelicula que se ha creado.
-         * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
+         * Guarda el pago realizado con el id del cliente
          */
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['data'])){
@@ -85,6 +58,5 @@ class PagoController{
     public function  pagar($id) {
         $this->pages->render('pago/pagoUsuario', ['id' =>$id]);
 }
-    
 
 }

@@ -16,18 +16,15 @@ class HorarioController{
 
     public function gestion(){
         /**
-         * Muestra todos los peliculas que existen. 
-         * Esto solo está disponible para el admin
-         * Redirigue al Gestionar películas
+         * Muestra la tabla de gestion de horario
          */
-        //Utils::isAdmin();
         
         $this->pages->render('horario/gestion');
     }
 
     public function save() {
         /**
-         * Guarda el pelicula que se ha creado.
+         * Guarda el horario que se ha creado.
          * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
          */
         $horario = new Horario();
@@ -62,56 +59,49 @@ class HorarioController{
     public function editar($id) {
 
         /**
-             * Se guardan los datos de un nuevo empleado o de un usuario
-             * que quiera editar sus datos.
-             * La contraseña se encripta y se validan los datos. 
-             * Si los datos están validados se crea o se edita el usuario
-             * Si name es registrar, se crea un nuevo usuario
-             * Si la $_SESSION['identity'] existe se edita el usuario
-             */
-            $clase = new Clase();
-            $clase->setId($id);
-             if($_SERVER['REQUEST_METHOD'] === 'POST') {
-                if(isset($_POST['data'])) {
-                    $datos = $_POST['data'];
-                    $clase_validada = $clase->validar($datos);
-                    if(count($clase_validada) == 0){
-                        $clase->setTitulo($datos['titulo']);
-                        $clase->setPrecio($datos['precio']);
-                        $clase->setCantidad($datos['cantidad']);
-                        $clase->set_idProfesor($datos['id_usuario_profesor']);
-                        $clase->set_idCategoria($datos['id_categoria']);
-                        $edit = $clase->edit();
-                    
-                        if($edit) {   
-                            $_SESSION['editar_clase'] = 'complete';
-                        }else{
-                            $_SESSION['editar_clase'] = 'failed';
-                        }
-                    }else{
-                        $_SESSION['editar_clase'] = $clase->errores;
-                    } 
-                }     
-            }
-            $datos = $clase->getOneClase();
-            $this->pages->render('clase/editar', ['datos' => $datos]);
-        }
+     * Edita el horario
+     */
+    $horario = new Horario();
+    $horario->setId($id);
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if(isset($_POST['data'])) {
+            $datos = $_POST['data'];
+            $horario_validado = $horario->validar($datos);
+            if(count($horario_validado) == 0){
+                $horario->setAforoDisponible($datos['aforo_disponible']);
+                $horario->setFecha($datos['fecha']);
+                $horario->set_idCategoria($datos['id_categoria']);
+
+                $edit = $horario->edit();
+            
+                if($edit) {   
+                    $_SESSION['editar_horario'] = 'complete';
+                }else{
+                    $_SESSION['editar_horario'] = 'failed';
+                }
+            }else{
+                $_SESSION['editar_horario'] = $clase->errores;
+            } 
+        }     
+    }
+    $datos = $horario->getOneHorario();
+    $this->pages->render('horario/editar', ['datos' => $datos]);
+}
 
     public function delete($id){
         /**
-         * Borra la pelicula seleccionada
+         * Borra el horario seleccionada
          * con el id que se le pasa
          */
-        $clase = new Clase();
-        $delete = $clase->borrar($id);
-        $this->pages->render('clase/gestion');
+        $horario = new Horario();
+        $delete = $horario->borrar($id);
+        $this->pages->render('horario/gestion');
     }
 
 
     public function apuntar($id_cliente) {
         /**
-         * Guarda el pelicula que se ha creado.
-         * La imagen se guarda en una carpeta. Si la carpeta no se ha creado, se crea
+         * Apunta a un usuario en un horario
          */
         $horario = new Horario();
         $pago = new Pago();

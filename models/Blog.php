@@ -107,7 +107,7 @@ class Blog{
 
     public function save() {
         /**
-         * Guarda los datos de la pelicula
+         * Guarda los datos de un blog
          * que se quiere crear pasandole los datos de la pelicula
          * y la imagen
          * Devuelve true si se ha creado y false si no
@@ -156,7 +156,7 @@ class Blog{
 
     public function borrar($id) {
         /**
-         * Borra una pelicula según el id 
+         * Borra un blog según el id 
          * que se le pasa 
          * Si se ha borrado devuelve true y si no devuelve false
          */
