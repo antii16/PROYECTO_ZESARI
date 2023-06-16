@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 /*COLORES */
 
@@ -8,24 +8,18 @@ $paleta1: #321c3d;
 $paleta2:#84778C;
 $paleta3: #D96704;
 $paleta4:#8C471F;
-$gradiente: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40));
 
 /*TIPOGRAFÍA*/
-
-// $tipografia: 'Montserrat', sans-serif;
 $tipografia: 'Open Sans', sans-serif;
 
 
 /*ANCHOS Y ALTOS*/
 
 $espaciadoPA: 1px;
-$espaciadoH1: 5px;
-$espaciadoH2: 3px;
 
-
-$letraPequeña: 15px;
+$letraPeque: 15px;
 $letraMediana: 20px;
-$letraGrandeH2:40px;
+$letraH1secundario:50px;
 $letraTitulo: 4vmin;
 
 /*BORDES*/

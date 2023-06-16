@@ -10,7 +10,7 @@
     text-align: center;
     padding: 50px;
 
-    @include movil-max(movil-max) {
+    @include max(movil-max) {
         flex-direction: column;
         height: 1000px;
     }
@@ -27,7 +27,7 @@
         align-items: center;
         width: 100%;
         margin-top: 30px;
-        @include movil-max(movil-max) {
+        @include max(movil-max) {
             margin-top: 100px;
             flex-direction: column;
             
@@ -56,23 +56,14 @@
     .map-container {
         overflow: hidden;
         position: relative;
-        // margin-top: 50px;
     }
-    
-    // .map-container iframe {
-    //     left: 0;
-    //     top: 0;
-    //     height: 70%;
-    //     width: 50%;
-    //     position: absolute;
-    // }
+
     }
 
 
     .cajaAbajo {
         width: 60%;
         margin-top: 30px;
-        // margin-right: 100px;
         #redes {
             ul {
                 display: flex;

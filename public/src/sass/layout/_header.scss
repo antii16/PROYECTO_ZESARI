@@ -2,7 +2,7 @@
 * .inicio es el div de la pagina principal
 */
 .inicio {
-    height: 100vh;
+    //height: 100vh;
     background-image: linear-gradient(rgba(50, 28, 61, 1), rgba(0, 0, 0, 0.70)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoInicio.jpg);
     background-position: bottom;
     background-size: cover;
@@ -12,12 +12,12 @@
     align-items: center;
     margin-top: 0;
 
-    @include movil-max(movil-max) {
-        height: 120vh;
+    @include max(movil-max) {
+        height: 90vh;
 
     }
 
-    @include ordenador-max(tablet-min, portatil-L) {
+    @include between(tablet-min, portatil-L) {
         height: 100vh;
     }
 
@@ -30,7 +30,7 @@
         width: 50%;
         margin-top: 100px;
 
-        @include movil-max(movil-max) {
+        @include max(movil-max) {
             width: 80%;
             margin-top: 90px;
         }
@@ -41,17 +41,18 @@
             color: $blanco;
             letter-spacing: $espaciadoPA;
 
-            @include movil-max(movil-max) {
-                font-size: $letraPequeña;
-            }
+            // @include movil(movil-max) {
+            //     font-size: $letraPeque;
+            // }
 
-            @include ordenador-max(tablet-min, portatil-L) {
-                font-size: $letraMediana;
-            }
+            // @include ordenador-max(tablet-min, portatil-L) {
+            //     font-size: $letraMediana;
+            // }
         }
 
         h1 {
             text-transform: uppercase;
+            font-size: $letraTitulo;
             letter-spacing: $espaciadoH1;
             word-spacing: 0.25em;
             padding: 10px;
@@ -62,31 +63,23 @@
             color: $blanco;
             background-color: rgb(217, 103, 4);
             border: solid 2px rgb(217, 103, 4);
-
             letter-spacing: $espaciadoPA;
             transition: all 0.5s ease;
-            // background-color:rgba(50, 28, 61);
-            // border: solid 2px rgba(50, 28, 61);
-            // font-weight:bold;
-            // border: $bordeBlanco;
             padding: 15px;
 
             &:hover {
                 border: solid 2px rgba(217, 103, 4, 0.719);
                 background-color: rgba(217, 103, 4, 0.719);
-
-                // border: solid 2px rgba(50, 28, 61, 0.719);
-                // background-color:rgba(50, 28, 61, 0.719);
             }
 
-            @include movil-max(movil-max) {
-                font-size: $letraPequeña;
-            }
+            // @include movil-max(movil-max) {
+            //     font-size: $letraPequeña;
+            // }
 
-            @include ordenador-max(tablet-min, portatil-L) {
-                font-size: $letraMediana;
+            // @include ordenador-max(tablet-min, portatil-L) {
+            //     font-size: $letraMediana;
 
-            }
+            // }
 
         }
     }
@@ -108,7 +101,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
-    @include movil-max(movil-max) {
+    @include max(movil-max) {
         height: 300px;
     }
     
@@ -127,8 +120,8 @@
         h1 {
             font-size: 60px;
             margin-bottom: 30px;
-            @include movil-max(movil-max) {
-                font-size: 30px;
+            @include max(movil-max) {
+                font-size: $letraTitulo;
             }
         
         }
@@ -222,7 +215,7 @@
         text-shadow: 1px 1px 1px #333;
 
         h1 {
-            font-size: 50px;
+            font-size: $letraH1secundario;
             margin-top: 30px;
 
         }

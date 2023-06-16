@@ -156,8 +156,7 @@ class Blog{
 
     public function borrar($id) {
         /**
-         * Borra un blog según el id 
-         * que se le pasa 
+         * Borra un blog según el id que se le pasa 
          * Si se ha borrado devuelve true y si no devuelve false
          */
         $sql = "DELETE FROM blogs WHERE id = :id";

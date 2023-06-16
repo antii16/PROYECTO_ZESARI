@@ -3,7 +3,7 @@
     padding: 10px;
     grid-template-columns: 1fr 1fr 1fr;
 
-    @include movil-max(tablet-min) {
+    @include max(tablet-min) {
         grid-template-columns: 1fr;
     }
 

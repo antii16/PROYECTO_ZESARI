@@ -167,16 +167,10 @@ header .mostrar {
   align-items: center;
   margin-top: 0;
   /*Es la resolución maxima para un movil */
-  /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
 }
 @media only screen and (max-width: 767px) {
   .inicio {
-    height: 120vh;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1440px) {
-  .inicio {
-    height: 100vh;
+    height: 90vh;
   }
 }
 .inicio .header-contenido {

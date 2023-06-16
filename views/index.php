@@ -14,7 +14,7 @@ use Models\Blog;
         <p>
         La buena condición física es el primer requisito para la felicidad
         </p>
-        <a href="<?=$_ENV['base_url']?>navegacion/sobreNosotros">Leer Más</a>
+        <a href="<?=$_ENV['base_url']?>sobreNosotros">Leer Más</a>
     </div>
 </div>
 

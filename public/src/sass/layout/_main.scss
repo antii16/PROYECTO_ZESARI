@@ -3,7 +3,7 @@ main {
     //     margin-top: 100px;
     // }
 
-    @include movil-max(movil-max) {
+    @include max(movil-max) {
         flex-direction: column;
         height: 100%;
         text-align: center;
@@ -13,7 +13,7 @@ main {
         margin: 70px 40px 70px 40px;
 
         h1 {
-            color:#D96704;
+            color: $paleta3;
         }
            // MEDIA QUERIE MAIN
         //    @include movil-max(movil-max) {
@@ -47,10 +47,10 @@ main {
                 grid-template-columns: 1fr 1fr 1fr 1fr;
                 padding: 10px;
     
-                @include movil-max(movil-max) {
+                @include max(movil-max) {
                     grid-template-columns: 1fr;
                 }
-                @include ordenador-max(tablet-min, nav-menu) {
+                @include between(tablet-min, nav-menu) {
                     grid-template-columns: 1fr 1fr;
                 }
     
@@ -108,7 +108,7 @@ main {
             grid-template-columns: 1fr 1fr;
             padding: 10px;
 
-            @include movil-max(movil-max) {
+            @include max(movil-max) {
                 grid-template-columns: 1fr;
             }
 
@@ -118,11 +118,11 @@ main {
                 padding: 40px;
                 text-align: center;
 
-                @include movil-max(movil-max) {
+                @include max(movil-max) {
                      width: 300px;
                 }
 
-                @include ordenador-max(tablet-min, portatil-L)  {
+                @include between(tablet-min, portatil-L)  {
                     width: 400px;
                 }
                 img {
@@ -150,11 +150,11 @@ main {
                         // background-color:rgba(50, 28, 61, 0.719);
                     }
         
-                    @include movil-max(movil-max) {
-                        font-size: $letraPequeña;
+                    @include max(movil-max) {
+                        font-size: $letraPeque;
                     }
         
-                    @include ordenador-max(tablet-min, portatil-L) {
+                    @include between(tablet-min, portatil-L) {
                         font-size: $letraMediana;
         
                     }
@@ -162,9 +162,5 @@ main {
                 }
             }
         }   
-    }
-
-    
-
-   
+    }  
 }

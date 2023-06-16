@@ -2,52 +2,29 @@ $breakpoints: (
     grid-tablet:600px,
     movil-max: 767px,
     tablet-min: 768px,
+    nav-menu: 1279px,
     portatil-L: 1440px,
     ordenador-4k: 2000px,
-    nav-menu: 1279px
+    
 );
 
-@mixin menu-nav-tablet($breakpoint) {
-    /*Es el menú responsive. Utilizado hasta una resolución de 1279px*/
+@mixin max($breakpoint) {
+    /*Es la resolución maxima de un dispositivo*/
     @media only screen and (max-width: map-get($breakpoints, $breakpoint)) {
         @content
     }
-}
+};
 
-;
-
-@mixin grid-lista($breakpointMin, $breakpointMax) {
-    /*Se utiliza para el el grid de la lista de productos*/
+@mixin between($breakpointMin, $breakpointMax ) {
+    /*Es la resolución entre dos medidas*/
     @media only screen and (min-width: map-get($breakpoints, $breakpointMin)) and (max-width: map-get($breakpoints, $breakpointMax)) {
         @content
     }
-}
+};
 
-;
-
-@mixin movil-max($breakpoint) {
-    /*Es la resolución maxima para un movil */
-    @media only screen and (max-width: map-get($breakpoints, $breakpoint)) {
-        @content
-    }
-}
-
-;
-
-@mixin ordenador-max($breakpointMin, $breakpointMax ) {
-    /*Es la resolución que abarca el tamaño de una tablet y ordenador mediano*/
-    @media only screen and (min-width: map-get($breakpoints, $breakpointMin)) and (max-width: map-get($breakpoints, $breakpointMax)) {
-        @content
-    }
-}
-
-;
-
-@mixin ordenador-4k($breakpoint) {
-    /*Resolución para resoluciones superiores a 2000px*/
+@mixin min($breakpoint) {
+    /*Resolución mínimas para los dispositivos*/
     @media only screen and (min-width: map-get($breakpoints, $breakpoint)) {
         @content
     }
-}
-
-;
+};

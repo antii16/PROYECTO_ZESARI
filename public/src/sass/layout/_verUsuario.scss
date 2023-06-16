@@ -3,11 +3,11 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    @include movil-max(movil-max) {
-        flex-direction: column;
-    }
+    // @include max(movil-max) {
+    //     flex-direction: column;
+    // }
 
-    @include ordenador-max(tablet-min, nav-menu) {
+    @include between(movil-max, nav-menu) {
         flex-direction: column;
     }
     .caja {
