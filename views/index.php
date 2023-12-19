@@ -8,8 +8,7 @@ use Models\Blog;
 
 <div class="inicio">
  <div class="header-contenido">
-        <h1>ZÉSARI</h1>
-        <h1>Tu centro de salud y bienestar</h1>
+        <h1>Bienvenido a Tu centro de salud y bienestar</h1>
         <hr>
         <p>
         La buena condición física es el primer requisito para la felicidad
@@ -36,7 +35,7 @@ use Models\Blog;
         
             <div class="contenido">
                 <h4>Pasión por el pilates</h4>
-                <p>En Zesari intentamos trasmitir la pasión del pilates en ti.</p>
+                <p>En Zésari intentamos trasmitir la pasión del pilates en ti.</p>
             </div>
         </div>
 
@@ -69,7 +68,7 @@ use Models\Blog;
         
             <div class="contenido">
                 <h4>Gran equipo y magníficas instalaciones</h4>
-                <p>Grandes profesionales y las instalaciones muy amplias luminoso un lugar que invita al bienestar.</p>
+                <p>Buenos profesionales y un luminoso lugar que invita al bienestar.</p>
             </div>
         </div>
         <div class="caja">

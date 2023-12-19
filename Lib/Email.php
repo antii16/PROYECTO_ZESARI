@@ -6,16 +6,15 @@ use Utils\Utils;
 
 class Email {
     public function enviarEmail($datos) {
-
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
         $phpmailer->Host = 'smtp.gmail.com';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 587;
-        $phpmailer->Username = 'pilatescentrosalud@gmail.com';
-        $phpmailer->Password = 'qxolbjdbmgpissfy';
+        $phpmailer->Username = 'pilatescentrosalud@gmail.com'; /**correo desde que se le envía */
+        $phpmailer->Password = 'ocdj qhhm qjdu xmet'; /**contraseña de este correo */
 
-        $phpmailer->setFrom('pilatescentrosalud@gmail.comm');
+        $phpmailer->setFrom('pilatescentrosalud@gmail.com');
         $phpmailer->addAddress('alvareznella45@gmail.com', 'Cliente');
         $phpmailer->Subject = 'Bienvenida ZESARI';
         $phpmailer->isHTML(true);
@@ -36,6 +35,51 @@ class Email {
             <h2>Recuerda cambiar la contraseña</h2>
             <div>";
             
-        $phpmailer->send();
+        $enviado = $phpmailer->send();
+        if($enviado) {
+            return true;
+        }else{
+            return false;
+        }
     }  
+
+
+    public function enviarEmailZesari($datos){
+        /**Función que utiliza el usuario para enviar un
+         * mensaje a la empresa.
+         */
+        $phpmailer = new PHPMailer();
+        $phpmailer->isSMTP();
+        $phpmailer->Host = 'smtp.gmail.com';
+        $phpmailer->SMTPAuth = true;
+        $phpmailer->Port = 587;
+        $phpmailer->Username = 'alvareznella45@gmail.com'; 
+        //$phpmailer->Password = 'joyr grgm ibhv ccgl'; //esta es la de pilates
+        $phpmailer->Password = 'zfyy qtpg vaax rowa'; //contraseña de aplicacion en alvareznella45@gmail.com
+        $phpmailer->setFrom('alvareznella45@gmail.com');/**Email por defecto, se debería utilizar el email correspondiente */
+        $phpmailer->addAddress('pilatescentrosalud@gmail.com', 'Zésari');
+        $phpmailer->Subject = 'Mensaje de cliente';
+        $phpmailer->isHTML(true);
+        $phpmailer->CharSet = 'UTF-8';
+
+        $nombre = $datos['nombre'];
+        $mensaje = $datos['mensaje'];
+
+        $phpmailer->Body = '';
+
+        $phpmailer->Body .= " 
+        <div style='border-color: #84778C;'>
+            <h1>Tienes un mensaje de $nombre </h1> 
+            <p>$mensaje</p>
+        <div>";
+            
+        $enviado = $phpmailer->send();
+
+        if($enviado) {
+            return true;
+        }else {
+            return false;
+        }
+
+    }
 }

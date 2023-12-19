@@ -56,48 +56,29 @@ class Categoria{
     }
 
     public static function obtenerCategorias(): object {
+        /**
+         * Se obtienen todas las categorias
+         */
         $categoria = new Categoria();
         $categorias = $categoria->db->query("SELECT * FROM categorias");
         return $categorias;
     }
 
     public function getOneCategoria() {
+        /**
+         * Obtiene una categoría 
+         */
         $categoria =  $this->db->query("SELECT * FROM categorias WHERE id = {$this->id}");
         return $categoria;
     }
 
-    public function setImagenCategoria() {
-        //Devuelve la imagen de una entrada
+    public function getImagenCategoria() {
+        /**
+         * Devuelve la imagen de una categoría
+         */
         $categoria = $this->db->query("SELECT imagen FROM categorias 
         WHERE id={$this->id};");
-
         return $categoria->fetch(PDO::FETCH_OBJ);
-    }
-
-
-
-    public function save():bool{
-        /**
-         * Guarda los datos de una categoria
-         * Si es correcto devuelve true y si no devuelve false
-         */
-        $ins = $this->db->prepare("INSERT INTO categorias(titulo, descripcion, imagen) VALUES (:titulo, :descripcion, :imagen)");
-        $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
-        $ins->bindParam( ':descripcion', $descripcion, PDO::PARAM_STR);
-        $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
-  
-        $titulo= $this->getTitulo();
-        $descripcion= $this->getDescripcion();
-        $imagen= $this->getImagen();
-
-    
-        try{
-            $ins->execute();
-            $result = true;
-        }catch(PDOException $err){
-            $result= $err;
-        }
-       return $result;
     }
 
     public function validar($datos) {
@@ -128,8 +109,32 @@ class Categoria{
             
         }
     }
+    public function save():bool{
+        /**
+         * Guarda los datos de una categoria
+         * Si es correcto devuelve true y si no devuelve false
+         */
+        $ins = $this->db->prepare("INSERT INTO categorias(titulo, descripcion, imagen) VALUES (:titulo, :descripcion, :imagen)");
+        $ins->bindParam( ':titulo', $titulo, PDO::PARAM_STR);
+        $ins->bindParam( ':descripcion', $descripcion, PDO::PARAM_STR);
+        $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
+  
+        $titulo= $this->getTitulo();
+        $descripcion= $this->getDescripcion();
+        $imagen= $this->getImagen();
+
+    
+        try{
+            $ins->execute();
+            $result = true;
+        }catch(PDOException $err){
+            $result= $err;
+        }
+       return $result;
+    }
 
     public function edit(){
+        /**Edita una categoría */
         $ins = $this->db->prepare("UPDATE categorias
         SET titulo = :titulo, 
         descripcion = :descripcion, 
@@ -141,13 +146,12 @@ class Categoria{
         $ins->bindParam( ':descripcion', $descripcion, PDO::PARAM_STR);
         $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
 
-
         $id = $this->getId();
         $titulo= $this->getTitulo();
         $descripcion= $this->getDescripcion();
         if($this->getImagen()== NULL) {
             //Devuelve la imagen de la pelicula según el id de ésta
-            $im = $this->setImagenCategoria();
+            $im = $this->getImagenCategoria();
             $imagen = $im->imagen;
         }else{
             $imagen = $this->getImagen();   

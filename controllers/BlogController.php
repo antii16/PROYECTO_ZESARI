@@ -68,13 +68,12 @@ class BlogController{
     }
 
     public function editar($id) {
-
-/**
- * Se editan los datos del blog seleccionado
-*/
+        /**
+         * Se editan los datos del blog seleccionado
+        */
 
         $blog = new Blog();
-    $blog->setId($id);
+        $blog->setId($id);
         
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(isset($_POST['data']) && isset($_FILES['imagen']) ) {

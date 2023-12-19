@@ -26,12 +26,12 @@
             <?php $pagos = Pago::obtenerPagos(); ?>
                 <?php while($pago = $pagos->fetch(PDO::FETCH_OBJ)):?>
                     <tr>
-                        <td style="text-align: center;"><?=$pago->id?></td>
-                        <td style="text-align: center;"><?=$pago->id_cliente?></td>
-                        <td style="text-align: center;"><?=$pago->cantidad?> €</td>
+                        <td style="text-align: center;"><?=$pago->id_pagos?></td>
+                        <td style="text-align: center;"><?=$pago->usuario_nombre?> <?=$pago->usuario_apellidos?></td>
+                        <td style="text-align: center;"><?=$pago->pago_cantidad?> €</td>
                         <td style="text-align: center;"><?=$pago->fecha?></td>
                         <td style="text-align: center;"><?=$pago->tipo?></td>
-                        <td style="text-align: center;"><?=$pago->id_clase?></td>
+                        <td style="text-align: center;"><?=$pago->clases_titulo?></td>
                         <td style="text-align: center;"><?=$pago->estado?></td>
                     </tr>
                 <?php endwhile?>

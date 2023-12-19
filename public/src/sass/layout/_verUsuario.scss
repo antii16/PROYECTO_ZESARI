@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
+    
     // @include max(movil-max) {
     //     flex-direction: column;
     // }
@@ -14,8 +15,8 @@
         width: 100%;
         margin: auto;
         background-color: rgb(243, 240, 240);
-        box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
-        border-radius: 0.5rem;
+        box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%); 
+        padding: 20px;
 
         #imagenVerUsuario {
             width: 200px;
@@ -50,7 +51,7 @@
 
         &:nth-child(2) {
             width: 100%;
-            margin: 10px;
+            margin: 0px;
             padding: 50px;
         }
     }

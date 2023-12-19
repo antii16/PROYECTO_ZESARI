@@ -98,22 +98,32 @@ class Pago{
          * Selecciona todos los pagos
          */
         $pago = new Pago();
-        $pagos = $pago->db->query("SELECT * FROM pagos ORDER BY id DESC;");
-        return $pagos;
-    }
-
-    public function getAllPagos() {
-        $pagos = $this->db->query("SELECT usuarios.nombre AS usuario_nombre, 
-        clases.titulo AS clases_titulo, 
-        pagos.id_cliente AS id_cliente, 
-        clases.id_categoria AS id_categoria
+        $pagos = $pago->db->query("SELECT pagos.id AS id_pagos, usuarios.nombre AS usuario_nombre, usuarios.apellidos AS
+        usuario_apellidos, pagos.cantidad AS pago_cantidad, fecha, tipo, clases.titulo AS clases_titulo, estado
         FROM pagos 
         INNER JOIN clases ON pagos.id_clase = clases.id
         INNER JOIN usuarios ON pagos.id_cliente = usuarios.id
-        WHERE id_cliente = {$this->id_cliente}");
-
+        ORDER BY id_pagos DESC;");
         return $pagos;
     }
+    
+    public static function getAllPagos($id) {
+        /**Selecciona todos los pagos  */
+        $pago = new Pago();
+        $pagos = $pago->db->query("SELECT usuarios.nombre AS usuario_nombre, 
+        clases.titulo AS clases_titulo, 
+        pagos.id_cliente AS id_cliente, 
+        clases.id_categoria AS id_categoria,
+        clases.cantidad AS n_clases_apuntar
+        FROM pagos 
+        INNER JOIN clases ON pagos.id_clase = clases.id
+        INNER JOIN usuarios ON pagos.id_cliente = usuarios.id
+        WHERE id_cliente = {$id}");
+
+        return $pagos->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
     public function save() {
         /**
          * Guarda los datos del pago
@@ -156,19 +166,15 @@ class Pago{
         if(!is_numeric($datos['cantidad'])) {
             $this->errores[] = "La cantidad debe ser un número";
         }
-
         if($datos['tipo'] == 'seleccionada') {
             $this->errores[] = "Seleccione el tipo de pago";
         }
         if($datos['estado'] == 'seleccionada') {
             $this->errores[] = "Seleccione el estado del pago";
         }
-
         if($datos['id_clase'] == 'seleccionada') {
             $this->errores[] = "Seleccione una clase";
         }
-
-
         return  $this->errores;
     }
 }

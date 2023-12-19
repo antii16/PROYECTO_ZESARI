@@ -2,7 +2,6 @@
 use Utils\Utils;
 use Models\Usuario;
 use Models\Categoria;
-//<br /><b>Warning</b>:  Undefined variable $datos in <b>C:\xampp\htdocs\PROYECTO_ZESARI\views\clase\crear.php</b> on line <b>21</b><br /><br /><b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\xampp\htdocs\PROYECTO_ZESARI\views\clase\crear.php</b> on line <b>21</b><br />
 ?>
 
 <main>
@@ -24,8 +23,6 @@ use Models\Categoria;
     elseif(isset($_SESSION['editar_clase']) && $_SESSION['editar_clase']=='failed') {
         echo "<strong>Clase no editada</strong>";
     }
-
-
     elseif(isset($_SESSION['editar_clase']) && is_array($_SESSION['editar_clase'])){
         foreach($_SESSION['editar_clase'] as $errores) {
             echo "<p><strong style=color:red;> *".$errores."</strong></p>";
@@ -37,21 +34,21 @@ use Models\Categoria;
     </div>
         <div class="crear"> 
         <?php while($clase = $datos->fetch(PDO::FETCH_OBJ)):?>
-            <form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/editar/<?=$clase->id?>" method="POST" enctype="multipart/form-data">
+            <form id="formularioCrear" action="<?=$_ENV['base_url']?>clase/editar/<?=$clase->id?>" method="POST" enctype="multipart/form-data">
                 <div class="contenedor">
                     <div class="caja">
                         <p> 
                             <label for="titulo">Titulo: </label>
-                            <input type="text" name="data[titulo]" value="<?=$clase->titulo?>">
+                            <input type="text" name="data[titulo]" value="<?=$clase->titulo?>" required>
                         </p>
                         <p> 
                             <label for="precio">Precio: </label>
-                            <input type="text" name="data[precio]" value="<?=$clase->precio?>">
+                            <input type="text" name="data[precio]" value="<?=$clase->precio?>" required>
                         </p>
 
                         <p>
-                            <label for="cantidad">Cantidad: </label>
-                            <input type="number" name="data[cantidad]" value="<?=$clase->cantidad?>">
+                            <label for="cantidad">Cantidad mensual: </label>
+                            <input type="number" name="data[cantidad]" value="<?=$clase->cantidad?>" required>
                         </p>
                     </div>
             

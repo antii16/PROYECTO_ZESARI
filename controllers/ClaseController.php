@@ -13,6 +13,20 @@ class ClaseController{
         $this->pages = new Pages();
     }
 
+
+    public function obtenerDatosClase($id) {
+        /**
+         * Busca la información de una clase y devuelve 
+         * los datos en JSON, para completar el input 
+         * con el precio correspondiente
+         */
+        $id_clase = json_decode($id);
+        $clase = new Clase();
+        $clase->setId($id_clase);
+        $datos = $clase->getOneClaseDatos();
+        return json_encode($datos);
+    }
+
     public function index() {
         /**
          * Muestra la página principal 
@@ -62,7 +76,6 @@ class ClaseController{
                 $clase_validada = $clase->validar($datos);
                 if(count($clase_validada) == 0){
                     //Si el $errores[] está vacío significa que no hay error
-
                     $clase->setTitulo($datos['titulo']);
                     $clase->setPrecio($datos['precio']);
                     $clase->setCantidad($datos['cantidad']);
@@ -86,13 +99,12 @@ class ClaseController{
     }
     
     public function editar($id) {
-
         /**
          * Edita la clase
          */
         $clase = new Clase();
         $clase->setId($id);
-            if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if(isset($_POST['data'])) {
                 $datos = $_POST['data'];
                 $clase_validada = $clase->validar($datos);

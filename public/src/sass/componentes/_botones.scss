@@ -1,16 +1,16 @@
 @mixin estiloGeneralCrud {
     padding: 5px;
-    margin-bottom: 10px;
+    margin: 10px;
     width: 100px;
     transition: all 0.5s ease;
     text-align: center;
     border-radius: 5px;
     color: #fff;
     font-size: 15px;
+    cursor: pointer;
 }
-
-/*Boton añadir en el CRUD*/
 .añadir {
+    /*Boton añadir en el CRUD*/
     padding: 10px;
     margin-bottom: 10px;
     width: 100px;
@@ -19,6 +19,10 @@
     transition: all 0.5s ease;
     text-align: center;
     border-radius: 5px;
+    a {
+        color:#fff;
+    }
+    
 
     &:hover {
         border: solid 2px rgba(217, 103, 4, 0.719);
@@ -67,15 +71,34 @@
 
 
 .editar2 {
+    /*Editar clase*/
     background-color: green;
     border: solid 2px green;
-
+    
     &:hover {
         border: solid 2px rgba(0, 128, 0, 0.719);
         background-color: rgba(0, 128, 0, 0.719);
     }
 
     @include estiloGeneralCrud;
+}
+
+.desapuntar {
+    background-color: grey;
+    border: solid 2px grey;
+    &:hover {
+        border: solid 2px rgba(128, 128, 128, 0.719);
+        background-color: rgba(128, 128, 128, 0.719);
+    }
+
+    @include estiloGeneralCrud;
+}
+
+#container_boton_horario {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 210px;
 }
 
 /*BOTON VER USUARIO*/

@@ -23,6 +23,7 @@ class Usuario{
     private string $rol;
     private string $profesion;
     private string $experiencia;
+    private string $resumen;
 
     private BaseDatos $db;
 
@@ -161,6 +162,14 @@ class Usuario{
     public function setExperiencia(string $experiencia){
         $this->experiencia = $experiencia;
     } 
+
+    public function getResumen(): string{
+        return $this->resumen;
+    }
+
+    public function setResumen(string $resumen){
+        $this->resumen = $resumen;
+    } 
     
 
     public static function obtenerProfesor(): object {
@@ -171,7 +180,9 @@ class Usuario{
 
     public static function obtenerUsuarios(): object {
         $usuario = new Usuario();
-        $usuarios = $usuario->db->query("SELECT * FROM usuarios WHERE rol='cliente' ORDER  BY id DESC");
+        $usuarios = $usuario->db->query("SELECT * FROM usuarios 
+        WHERE rol='cliente' 
+        ORDER  BY id DESC");
         return $usuarios;
     }
 

@@ -10,6 +10,7 @@
     <!-- CKEditor -->
     <script type="text/javascript" src="/PROYECTO_ZESARI/ckeditor/ckeditor.js"></script>
     <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- FUENTE -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,9 +19,6 @@
     <link rel="stylesheet" href="http://localhost/PROYECTO_ZESARI/DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
     <link href="http://localhost/PROYECTO_ZESARI/DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="http://localhost/PROYECTO_ZESARI/DataTables/Responsive-2.4.1/css/responsive.dataTables.min.css">
-    
-  
-
     <title>Zésari</title>
 </head>
 
@@ -33,9 +31,6 @@
             </li>
 
         </span>
-
-        
-
         <nav class="main-nav">
             <div class="logo">
                 <a href="<?= $_ENV['base_url'] ?>"><img src="<?= $_ENV['base_url'] ?>src/img/logoZesariMorado.png" alt="Logotipo"></a>
@@ -55,6 +50,8 @@
                         <a href="#" class="menu-link submenu-btn"><?= $_SESSION['identity']->nombre?> <i class="fas fa-chevron-down"></i>
                             <img class="imagen-user" src="<?= $_ENV['base_url'] ?>src/img/<?= $_SESSION['identity']->imagen ?>" alt="">
                         </a>
+
+                        <a class="menu-link" href="<?= $_ENV['base_url'] ?>logout"><i class="fa-solid fa-right-from-bracket"></i></a>
                         <ul class="submenu">
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>perfil">Perfil</a></li>
                             <?php if (isset($_SESSION['empleado']) || isset($_SESSION['admin'])) : ?>
@@ -68,7 +65,7 @@
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>horario/gestion">Horario</a></li>
                             <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>pago/gestion">Pago</a></li>
                             <?php endif; ?>
-                            <li class="menu-item"><a class="menu-link" href="<?= $_ENV['base_url'] ?>logout">Cerrar Sesión&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-right-from-bracket"></i></a></li>
+                            
                             
                         </ul>
                         </li>
@@ -99,11 +96,6 @@
     <script src="http://localhost/PROYECTO_ZESARI/DataTables/Buttons-2.3.6/js/buttons.html5.min.js"></script>
     <script src="http://localhost/PROYECTO_ZESARI/DataTables/Buttons-2.3.6/js/buttons.print.min.js"></script>
     <script src="http://localhost/PROYECTO_ZESARI/DataTables/Responsive-2.4.1/js/dataTables.responsive.min.js"></script>
-    
-    
-  
-    
-
 </body>
 
 </html>

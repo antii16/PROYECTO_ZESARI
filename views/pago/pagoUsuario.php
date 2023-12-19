@@ -32,7 +32,7 @@ use Models\Horario;
       </div>
 
       <div class="crear"> 
-        <form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>pagar/<?=$id?>" method="POST" enctype="multipart/form-data">
+        <form id="formularioCrear" action="<?=$_ENV['base_url']?>pagar/<?=$id?>" method="POST" enctype="multipart/form-data">
           <div class="contenedor">
             <div class="caja">
               <p>
@@ -72,7 +72,7 @@ use Models\Horario;
                   <option value="seleccionada">Selecciona una clase</option>    
                   <?php $clases = Clase::obtenerClases(); ?>
                   <?php while($clase = $clases->fetch(PDO::FETCH_OBJ)):?>
-                      <option value="<?=$clase->id?>"><?=$clase->titulo?></option>    
+                      <option value="<?=$clase->id?>"><?=$clase->titulo_clase?></option>    
                   <?php endwhile?>
                 </select>
               </p>
@@ -92,27 +92,30 @@ use Models\Horario;
       </form>
     </div>
   </div>
+
+  
 </main>
 
 <script type="text/javascript">
 
-var claseSeleccionada = document.getElementById('claseSeleccionada');
+  var claseSeleccionada = document.getElementById('claseSeleccionada');
   var detallesClase = document.getElementById('detallesClase');
+  var cantidad = document.getElementById('cantidad');
+
 
   claseSeleccionada.addEventListener('change', function() {
     var selectedValue = claseSeleccionada.value;
     // Realizar una solicitud AJAX para obtener los detalles de la clase seleccionada
     var xhr = new XMLHttpRequest();
+    
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         // Actualizar el contenido de los detalles de la clase con la respuesta del servidor
-        
         var response = JSON.parse(xhr.responseText);
         var precio = response.precio;
-
         // Actualizar el valor del campo de entrada con el precio
         cantidad.value = precio;
-
+        
       }
     };
     xhr.open('GET', '<?=$_ENV['base_url']?>obtener_detalles_clase/'+selectedValue, true);

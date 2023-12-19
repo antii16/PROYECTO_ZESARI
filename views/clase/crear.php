@@ -33,21 +33,21 @@ use Models\Categoria;
         unset($_SESSION['crear_clase']);
         ?>
         <div class="crear"> 
-            <form id="formularioCrear" style="margin-left: 30px; margin-top:30px" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
+            <form id="formularioCrear" action="<?=$_ENV['base_url']?>clase/crear" method="POST" enctype="multipart/form-data">
                 <div class="contenedor">
                     <div class="caja">
                         <p> 
                             <label for="titulo">Titulo: </label>
-                            <input type="text" name="data[titulo]">
+                            <input type="text" name="data[titulo]" required>
                         </p>
                         <p> 
                             <label for="precio">Precio: </label>
-                            <input type="text" name="data[precio]">
+                            <input type="text" name="data[precio]" required>
                         </p>
 
                         <p>
                             <label for="cantidad">Cantidad: </label>
-                            <input type="text" name="data[cantidad]">
+                            <input type="text" name="data[cantidad]" required>
                         </p>
                     </div>
             

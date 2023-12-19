@@ -50,9 +50,9 @@ class PagoController{
                 }
                 
             }
+            
         }
-        
-        $this->pages->render('pago/gestion');
+        $this->pages->render('pago/pagoUsuario', ['id' =>$id]);
     }
 
     public function  pagar($id) {

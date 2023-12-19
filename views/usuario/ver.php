@@ -25,7 +25,7 @@
             </div>
             <div id="botones">
                 <a class="borrar" href="<?= $_ENV['base_url'] ?>usuario/borrar/<?= $dato->id?>">Borrar</a>
-                <a class="volver" href="<?= $_ENV['base_url'] ?>usuario/gestionUsuario">Volver</a>
+                <a class="volver" href="<?= $_ENV['base_url'] ?>usuario/gestion">Volver</a>
             </div>
             
         </div>

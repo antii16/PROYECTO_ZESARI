@@ -2,6 +2,12 @@
 
 $(document).ready( function () {
     var table = $('#tabla').DataTable({
+        
+        // "paging": false, // Desactiva la paginación vertical
+        // "ordering": false, // Desactiva la ordenación
+        // // "pagingType": "full_numbers", // Utiliza la paginación completa
+        // // "pageLength": 7, // Muestra una semana por página (ajusta según tus necesidades)
+        // // "order": [], // Desactiva la ordenación inicial si es necesario
         dom: "Bfrtilp", 
         buttons: [
             {
@@ -268,6 +274,8 @@ $(document).ready( function () {
         },
 
     });
+
+   
 
 });
 

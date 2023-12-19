@@ -72,39 +72,49 @@ class Clase{
         $this->id_categoria = $id_categoria;
     }
 
-    public function obtenerClasesHorario() {
-        $sql = "SELECT * FROM clases";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+    // public function obtenerClasesHorario() {
+    //     $sql = "SELECT * FROM clases";
+    //     $stmt = $this->db->prepare($sql);
+    //     $stmt->execute();
+    //     // Array para almacenar los datos de las clases
+    //     $clases = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //     return $clases;
+    // }
 
-        // Array para almacenar los datos de las clases
-        $clases = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $clases;
-    }
     public static function obtenerClases() {
         /**
-         * Selecciona todos los peliculas
+         * Selecciona todos los clases.
+         * Se utiliza en clases/gestion
          */
         $clase = new Clase();
-        $clases = $clase->db->query("SELECT * FROM clases ORDER BY id DESC;");
+        $clases = $clase->db->query(
+            "SELECT cl.id, cl.titulo as titulo_clase, cantidad,
+            precio, ca.titulo as titulo_categoria
+            FROM clases AS cl INNER JOIN categorias AS ca
+            ON cl.id_categoria = ca.id ORDER BY cl.id DESC;");
         return $clases;
     }
 
     public function getOneClase() {
+        /**
+         * Devuelve los datos de una única clase según el id
+         * Se utiliza en ClaseController->editar
+         */
         $clase =  $this->db->query("SELECT * FROM clases WHERE id = {$this->id}");
         return $clase;
     }
 
     public function getOneClaseDatos() {
-        //Devuelve la imagen de una entrada
+        /**
+         * Devuelve los datos de una única clase según el id 
+         * Se utliza en ClaseController->obtenerDatosClase
+         */
         $clase = $this->db->query("SELECT * FROM clases WHERE id={$this->id};");
         return $clase->fetch(PDO::FETCH_OBJ);
     }
     public function save() {
         /**
          * Guarda los datos de la clase
-         * que se quiere crear pasandole los datos de la pelicula
-         * y la imagen
          * Devuelve true si se ha creado y false si no
          */
 
@@ -145,7 +155,6 @@ class Clase{
         if(!is_numeric($datos['precio'])) {
             $this->errores[] = "El precio debe ser un valor numérico";
         }
-
         if(!is_numeric($datos['cantidad'])) {
             $this->errores[] = "La cantidad debe ser un valor numérico";
         }
@@ -160,6 +169,9 @@ class Clase{
     }
 
     public function edit(){
+        /**
+         * Se edita una clase pasando el id de la clase
+         */
         $ins = $this->db->prepare("UPDATE clases
         SET titulo = :titulo, 
         precio = :precio, 
@@ -181,7 +193,6 @@ class Clase{
         $cantidad= $this->getCantidad();
         $id_usuario_profesor= $this->get_idProfesor();
         $id_categoria= $this->get_idCategoria();
-        
 
         try{
             $ins->execute();
@@ -209,7 +220,6 @@ class Clase{
         }catch(PDOException $err){
             $result= false;
         }
-
        return $result;
     }
 }

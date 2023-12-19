@@ -85,7 +85,9 @@ class Blog{
 
     public static function obtenerBlogs() {
         /**
-         * Selecciona todos los peliculas
+         * Selecciona todos los blogs
+         * Se utiliza en el menu de navegacion de blogs y 
+         * en gestion
          */
         $blog = new Blog();
         $blogs = $blog->db->query("SELECT * FROM blogs ORDER BY id DESC");
@@ -93,23 +95,44 @@ class Blog{
     }
 
     public function getOneBlog() {
+        /**
+         * Selecciona un único blog
+         * Se utiliza en BlogController->ver y en editar
+         */
         $blog =  $this->db->query("SELECT * FROM blogs WHERE id = {$this->id}");
         return $blog;
     }
 
-    public function setImagenBlog() {
-        //Devuelve la imagen de una entrada
+    public function getImagenBlog() {
+       /**
+        * Devuelve la imagen de un blog según un id
+        * Se utiliza para editar un blog.
+        */
         $blog = $this->db->query("SELECT imagen FROM blogs 
         WHERE id={$this->id};");
 
         return $blog->fetch(PDO::FETCH_OBJ);
     }
 
+    public function crearCarpeta($imagen) {
+        /**
+         * Guarda la imagen y crea la carpeta si no existe
+         * La imagen debe ser de tipo jpg, jpeg o png
+         */
+        $nombre = $imagen['name'];
+        $tipo = $imagen['type'];
+      
+        if($tipo == 'image/jpg' || $tipo == 'image/jpeg' || $tipo == 'image/png') {
+            if(!is_dir('img')) {
+                mkdir('img', 0777);
+            }
+            move_uploaded_file($imagen['tmp_name'], 'src/img/'.$nombre);    
+        }
+    }
+
     public function save() {
         /**
          * Guarda los datos de un blog
-         * que se quiere crear pasandole los datos de la pelicula
-         * y la imagen
          * Devuelve true si se ha creado y false si no
          */
         $ins = $this->db->prepare("INSERT INTO blogs(titulo, descripcion, texto, fecha, imagen, id_usuario_empleado) 
@@ -138,22 +161,6 @@ class Blog{
        return $result;
     }
 
-    public function crearCarpeta($imagen) {
-        /**
-         * Guarda la imagen y crea la carpeta si no existe
-         * La imagen debe ser de tipo jpg, jpeg o png
-         */
-        $nombre = $imagen['name'];
-        $tipo = $imagen['type'];
-      
-        if($tipo == 'image/jpg' || $tipo == 'image/jpeg' || $tipo == 'image/png') {
-            if(!is_dir('img')) {
-                mkdir('img', 0777);
-            }
-            move_uploaded_file($imagen['tmp_name'], 'src/img/'.$nombre);    
-        }
-    }
-
     public function borrar($id) {
         /**
          * Borra un blog según el id que se le pasa 
@@ -173,6 +180,7 @@ class Blog{
     }
 
     public function edit(){
+        /**Edita un blog */
         $ins = $this->db->prepare("UPDATE blogs
         SET titulo = :titulo, 
         descripcion = :descripcion, 
@@ -189,15 +197,14 @@ class Blog{
         $ins->bindParam( ':imagen', $imagen, PDO::PARAM_STR);
         $ins->bindParam( ':id_usuario_empleado', $id_usuario_empleado, PDO::PARAM_STR);
 
-
         $id = $this->getId();
         $titulo= $this->getTitulo();
         $descripcion= $this->getDescripcion();
         $texto= $this->getTexto();
 
         if($this->getImagen()== NULL) {
-            //Devuelve la imagen de la pelicula según el id de ésta
-            $im = $this->setImagenBlog();
+            //Devuelve la imagen del blog según el id de ésta
+            $im = $this->getImagenBlog();
             $imagen = $im->imagen;
         }else{
             $imagen = $this->getImagen();   
@@ -214,6 +221,4 @@ class Blog{
        return $result;
 
     }
-
-
 }

@@ -1,6 +1,7 @@
 <?php 
 use Utils\Utils;
 use Models\Categoria;
+use Models\Horario;
 ?>
 
 <main>
@@ -34,32 +35,35 @@ unset($_SESSION['editar_horario']);
 ?>
 </div>
 <div class="crear"> 
-<?php while($horario = $datos->fetch(PDO::FETCH_OBJ)):?>
-<form id="formularioCrear" action="<?=$_ENV['base_url']?>horario/editar/<?=$horario->id?>" method="POST" enctype="multipart/form-data">
-<div class="contenedor">
-    <div class="caja">
-    <p> 
-        <label for="aforo_disponible">Aforo disponible: </label>
-        <input type="text" name="data[aforo_disponible]" value="<?=$horario->aforo_disponible?>" required>
-    </p>
 
-    <p> 
-        <label for="fecha">Día y hora: </label>
-        <input type="datetime-local" name="data[fecha]" value="<?=$horario->fecha?>" required>
-    </p>
-    <?php $categorias = Categoria::obtenerCategorias(); ?>
-    <p>
-        <label for="categoria">Categoria:</label>
-        <select name="data[id_categoria]">
-        <option value="selecciona">Selecciona una categoría</option>  
+<form id="formularioCrear" action="<?=$_ENV['base_url']?>horario/editar" method="POST" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Fecha y hora</th>
+            <th>Categoría</th>
+            <th>Aforo disponible</th>  
+        </tr>
+        <?php $horarios = Horario::obtenerHorario(); ?>
+        <?php while($horario = $horarios->fetch(PDO::FETCH_OBJ)):?>
+        <tr>
+            <td><input type="text" name="data[id][]" value="<?=$horario->id?>" required readonly></td>
+            <td><input type="datetime-local" name="data[fecha][]" value="<?=$horario->fecha?>" required></td>
+            
+            <td>
+            <?php $categorias = Categoria::obtenerCategorias(); ?>
+            <select name="data[id_categoria][]">
+            <option value="selecciona">Selecciona una categoría</option>  
             <?php while($categoria = $categorias->fetch(PDO::FETCH_OBJ)):?>
                 <option value="<?=$categoria->id?>" <?php if($horario->id_categoria == $categoria->id) echo 'selected'?>><?=$categoria->titulo?></option>  
             <?php endwhile?>
 
         </select>
-    </p>
-    </div>
-</div>
+            </td>
+            <td><input type="text" name="data[aforo_disponible][]" value="<?=$horario->aforo_disponible?>" required></td>
+        </tr>
+        <?php endwhile; ?>
+    </table>
 
     <div class="contenedor">
         <input class="editar2" type="submit"  name="crear" value="Editar">
@@ -68,7 +72,7 @@ unset($_SESSION['editar_horario']);
 
         
 </form>
-<?php endwhile; ?>
+
 </div>
 </div>
 

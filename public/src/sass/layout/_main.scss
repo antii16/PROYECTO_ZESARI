@@ -1,7 +1,4 @@
 main {
-    // .main-contenido-contacto {
-    //     margin-top: 100px;
-    // }
 
     @include max(movil-max) {
         flex-direction: column;
@@ -10,20 +7,11 @@ main {
     }
 
     .main-contenido {
-        margin: 70px 40px 70px 40px;
+        // margin-top: 70px;
 
         h1 {
             color: $paleta3;
         }
-           // MEDIA QUERIE MAIN
-        //    @include movil-max(movil-max) {
-        //     height: 1000px;  
-        // }
-
-        // @include ordenador-4k(ordenador-4k) {
-        //     margin-top: 100px;
-
-        // }
 
         section {
             margin-top: 50px;
@@ -33,7 +21,6 @@ main {
             align-items: center;
     
             h2 {
-                // text-transform: uppercase;
                 color: #D96704;
                 font-size: 40px;
             }
@@ -62,10 +49,10 @@ main {
                     margin: 20px;
                     background-color: $blanco;
                     // border: $bordeNegro;
-                    padding: 5px;
+                    padding: 10px;
     
                     .image {
-                        height: 100px;
+                        height: auto;
     
                         picture {
                             display: flex;
@@ -75,13 +62,10 @@ main {
                             img {
                                 width: 30%;
                                 border-radius: 10px;
-    
-    
                             }
                         }
     
                     }
-    
     
                     .contenido {
                         text-align: center;
@@ -111,9 +95,8 @@ main {
             @include max(movil-max) {
                 grid-template-columns: 1fr;
             }
-
-            
             .caja {
+                margin: auto;
                 width: 500px;
                 padding: 40px;
                 text-align: center;
@@ -133,21 +116,13 @@ main {
                     color: $blanco;
                     background-color: rgb(217, 103, 4);
                     border: solid 2px rgb(217, 103, 4);
-        
                     letter-spacing: $espaciadoPA;
                     transition: all 0.5s ease;
-                    // background-color:rgba(50, 28, 61);
-                    // border: solid 2px rgba(50, 28, 61);
-                    // font-weight:bold;
-                    // border: $bordeBlanco;
                     padding: 15px;
         
                     &:hover {
                         border: solid 2px rgba(217, 103, 4, 0.719);
                         background-color: rgba(217, 103, 4, 0.719);
-        
-                        // border: solid 2px rgba(50, 28, 61, 0.719);
-                        // background-color:rgba(50, 28, 61, 0.719);
                     }
         
                     @include max(movil-max) {

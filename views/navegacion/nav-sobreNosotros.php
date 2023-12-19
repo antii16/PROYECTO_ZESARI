@@ -5,16 +5,18 @@
         <div class="overlay">
             <h1>Nuestra historia</h1>
             <h2>Zésari es mucho más que un estudio de Pilates</h2>
-
+        </div>
+        <div class="migas">
+            <a href="<?= $_ENV['base_url'] ?>">Inicio</a> 
+            <span>></span>
+            <span>Quiénes Somos</span>
         </div>
     </div>
 
     <!-- MAIN CONTENIDO -->
     <div class="main-contenido">
         <div id="sobreNosotros">
-
             <div class="caja">
-
                 <div class="texto">
                     <p>
                         Somos un centro de salud y bienestar que
@@ -32,7 +34,6 @@
                         <img src="<?=$_ENV['base_url']?>src/img/grupo-sobreNosotros.png" alt="">
                     </picture>
                 </div>
-
             </div>
 
             <div class="caja">

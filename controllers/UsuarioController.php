@@ -15,6 +15,24 @@ class UsuarioController{
         
     }
 
+    public function contactar_con_zesari() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if(isset($_POST['data'])) {
+                $datos = $_POST['data'];
+                $email = new Email();
+                $enviado = $email->enviarEmailZesari($datos);
+                if($enviado == true){
+                    $_SESSION['email_enviado'] = 'complete';
+                }else{
+                    $_SESSION['email_enviado'] = 'failed';
+                }  
+            }else{
+                $_SESSION['email_enviado'] = 'failed';
+            }
+        }
+        $this->pages->render('navegacion/nav-contacto');
+    }
+
     public function mostrarEquipo() {
         /**Muestra el equipo de la empresa */
         $this->pages->render('navegacion/nav-equipo');
@@ -68,7 +86,7 @@ class UsuarioController{
                 
                     if($save) {
                         $email = new Email();
-                        $email->enviarEmail($datos);
+                        $enviado = $email->enviarEmail($datos);
                         $_SESSION['register'] = 'complete';
                     }else{
                         $_SESSION['register'] = 'failed';
@@ -141,10 +159,9 @@ public function perfil() {
 
 
 public function editar() {
-
     /**
- * Edita el usuario
- */
+    * Edita datos del usuario
+    */
     
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['data'])) {
@@ -153,7 +170,7 @@ public function editar() {
         $img = $_FILES['imagen'];
         $usuario = new Usuario();
     
-        $usuario_validado = $usuario->validar_y_sanitizarRegistro();
+        $usuario_validado = $usuario->validar($editado);
     
         if(count($usuario_validado) == 0) {
             

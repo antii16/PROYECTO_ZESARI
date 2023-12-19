@@ -1,17 +1,16 @@
-<?php
-
-use Models\Blog;
-?>
+<?php use Models\Blog; ?>
 
 <main>
-
     <!-- HEADER CONTENIDO -->
     <div class="header-secundario-blog">
         <div class="overlay">
-            <h1>Nuestros blogs</h1>
-
+            <h1>Blog</h1>
         </div>
-
+        <div class="migas">
+            <a href="<?= $_ENV['base_url'] ?>">Inicio</a> 
+            <span>></span>
+            <span>Blog</span>
+        </div>
     </div>
     <div class="main-contenido">
             <div class="blogs">
@@ -19,18 +18,10 @@ use Models\Blog;
             <?php while ($blog = $blogs->fetch(PDO::FETCH_OBJ)) : ?>
                 <div class="caja">
                     <img src="<?= $_ENV['base_url'] ?>/src/img/<?=$blog->imagen?>" alt="Card image cap">
-                    <div class="contenido">
+                    <div class="texto-hover">
                         <a href="<?= $_ENV['base_url'] ?>blog/ver/<?=$blog->id?>" class="post-title"><?=$blog->titulo?></a>
-                        <span class="post-date"><?=$blog->fecha?></span>
-                        <p class="post-description"><?=$blog->descripcion?></p>
-                        <div class="profile">
-                            <img src="<?= $_ENV['base_url'] ?>/src/img/marisaalvarez.png" alt="" class="profile-img">
-                            <span>Marisa Alvarez</span>
-
-                        </div>
                     </div>
                 </div>
-
                 <?php endwhile ?>
             </div>
     </div>

@@ -10,7 +10,6 @@
         <span><?= $blog->titulo?></span>
 
     </div>
-    <!-- migas de pan -->
     <section class="post-header">
         <div class="header-content post-container">
            

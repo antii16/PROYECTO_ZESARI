@@ -95,23 +95,26 @@
 }
 
 #formularioCrear {
+    /*
+    * Clase -> editar
+    */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    // margin: auto;
     height: 100%;
     width: 100%;
     background-color: $paleta2;
     padding: 30px;
     box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
-    border-radius: 0.5rem;
+    // border-radius: 0.5rem;
 
     .contenedor {
         display: flex;
         justify-content: center;
         align-items: center;
-        @include movil-max(movil-max) {
+        @include max(movil-max) {
             flex-direction: column;
         }
         .caja {
@@ -219,40 +222,37 @@
     
             &:nth-child(2) {
                 flex-direction: row;
+                // input[type="submit"],
+                // a {
+                //     font-size: 16px;
+                //     width: 100px;
+                //     padding: 10px;
+                //     margin: 10px;
+                //     border: 1px solid #000;
+                //     border-radius: 5px;
+                //     display: block;
+                //     color: #fff;
+                //     background-color: #000;
+                // }
     
-                input[type="submit"],
-                a {
-                    font-size: 16px;
-                    width: 100px;
-                    padding: 10px;
-                    margin: 10px;
-                    border: 1px solid #000;
-                    border-radius: 5px;
-                    display: block;
-                    color: #fff;
-                    background-color: #000;
-                }
-    
-                a {
-                    text-align: center;
-                    background-color: #fff;
-                    color: #000;
-                    border: 1px solid #ffffff;
-                }
+                // a {
+                //     text-align: center;
+                //     background-color: #fff;
+                //     color: #000;
+                //     border: 1px solid #ffffff;
+                // }
     
             }
         }
-
-        .volver {
-            margin-left: 20px;  
-        }
-
-        .borrar {
-            margin-left: 5px;  
-        }
-        
         .clasesUsuario {
-            background-color: $blanco;
+            width: 100%;
+            text-align: center;
+            background-color: #f0f0f0;
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }  
 }
@@ -264,26 +264,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 20px 0px;
     width: 100%;
-    // background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
-    @include movil-max(movil-max) {
+    // background-color: red;
+    //background-image: linear-gradient(rgba(50, 28, 61, 0.40), rgba(0, 0, 0, 0.40)), url(http://localhost/PROYECTO_ZESARI/public/src/img/fondoContacto.jpg);
+    @include max(movil-max) {
         flex-direction: column;
         height: 900px;
     }
 
-    @include ordenador-max(tablet-min, portatil-L) {
+    @include between(tablet-min, portatil-L) {
         flex-direction: row;
 
     }
-    #mensaje {
+    .mensaje {
+        
         width: 400px;
-        @include movil-max(movil-max) {
+        @include max(movil-max) {
             width: 300px;
         }
         form {
             padding: 5px;
-            border-radius: 10px;
+            // border-radius: 10px;
             background-color: $paleta2;
 
             input[type="text"],
@@ -293,11 +295,11 @@
                 border: $bordeBlanco;
                 border-radius: 10px;
                 background-color: $blanco;
-                margin: 8px 10px;
+                margin: 10px 0px;
                 display: inline-block;
             }
 
-            button {
+            input[type="submit"] {
                 width: 100%;
                 padding: 10px 16px;
                 margin-top: 32px;
@@ -329,31 +331,35 @@
         p {
             margin: 30px;
         }
+
+        #datos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // width: 400px;
+            // border: 2px solid $paleta1;
+            // border-radius: 10px;
+            height: 100%;
+            padding: 30px;
+            // margin-left: 20px;
+            background-color: $blanco;
+           
+            @include max(movil-max) {
+                width: 300px;
+                margin-left: 0px;
+                margin-top: 20px;
+            }
+    
+            li {
+                margin: 30px;
+            }
+    
+            span {
+                font-weight: bold;
+            }
+        }
     }
 
-
-   
-    #datos {
-        width: 400px;
-        border: 2px solid $paleta1;
-        border-radius: 10px;
-        height: 300px;
-        padding: 30px;
-        margin-left: 20px;
-        @include movil-max(movil-max) {
-            width: 300px;
-            margin-left: 0px;
-            margin-top: 20px;
-        }
-
-        li {
-            margin: 30px;
-        }
-
-        span {
-            font-weight: bold;
-        }
-    }
 
 
 }
@@ -365,7 +371,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    // height: 100vh;
 
     .login-box {
         background-color: #fff;
@@ -374,7 +380,7 @@
         padding: 30px;
         max-width: 500px;
         width: 90%;
-        margin: 0 auto;
+        margin: 20px;
         animation-name: fade-in;
         animation-duration: 1s;
 

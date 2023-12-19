@@ -1,6 +1,10 @@
 <?php
 
-use Models\Usuario; ?>
+use Models\Usuario; 
+
+unset($_SESSION['id_cliente']);
+
+?>
 <main>
     <!-- HEADER CONTENIDO -->
     <div class="header-submenu">
@@ -22,20 +26,20 @@ use Models\Usuario; ?>
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
-                        <th>Email</th>
-                        <th>Rol</th>
+                        <!-- <th>Email</th> -->
+                        <!-- <th>Rol</th> -->
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $usuarios = Usuario::obtenerUsuarios(); ?>
-                    <?php while ($usuario = $usuarios->fetch(PDO::FETCH_OBJ)) : ?>
+                    <?php while ($usuario = $usuarios->fetch(PDO::FETCH_OBJ)): ?>
                         <tr>
                             <td style="text-align: center;"><?= $usuario->id ?></td>
                             <td style="text-align: center;"><?= $usuario->nombre ?></td>
                             <td style="text-align: center;"><?= $usuario->apellidos ?></td>
-                            <td style="text-align: center;"><?= $usuario->email ?></td>
-                            <td style="text-align: center;"><?= $usuario->rol ?></td>
+                            <!-- <td style="text-align: center;"><?= $usuario->email ?></td> -->
+                            <!-- <td style="text-align: center;"><?= $usuario->rol ?></td> -->
                             <td style="text-align: center;">
                                 <a class="ver" href="<?= $_ENV['base_url'] ?>usuario/ver/<?=$usuario->id?>">Ver</a>
                                 <a class="pagar" href="<?= $_ENV['base_url'] ?>pagar/<?= $usuario->id ?>">Pagar</a>

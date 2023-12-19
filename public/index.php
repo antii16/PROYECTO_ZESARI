@@ -11,6 +11,7 @@ use Controllers\BlogController;
 use Controllers\CategoriaController;
 use Controllers\PagoController;
 use Controllers\HorarioController;
+use Controllers\ApunteController;
 use Utils\Utils;
 $pages = new Pages();
 $dotenv = Dotenv::createImmutable(__DIR__);
@@ -68,9 +69,6 @@ Router::add('GET', 'clase/gestion', function(){
     return (new ClaseController())->gestion();
 });
 
-// Router::add('GET', 'clase/crear/:dia/:horaInicio/:horaFin', function($dia, $horaInicio, $horaFin){
-//     return (new ClaseController())->formularioClase($dia, $horaInicio, $horaFin);
-// });
 Router::add('POST', 'clase/crear', function(){
     Utils::isAdmin();
     return (new ClaseController())->save();
@@ -94,12 +92,6 @@ Router::add('POST', 'clase/editar/:id', function($id){
     Utils::isAdmin();
     return (new ClaseController())->editar($id);
 });
-
-
-
-// Router::add('GET', 'clase/duplicar/:id', function($id){
-//     return (new ClaseController())->duplicar($id);
-// });
 
 Router::add('GET', 'obtener_detalles_clase/:id', function($id){
     return (new ClaseController())->obtenerDatosClase($id);
@@ -146,6 +138,10 @@ Router::add('POST', 'blog/editar/:id', function($id){
 
 /*********************************************** */
 /***********************USUARIO***************** */
+
+Router::add('POST', 'usuario/contactar', function(){
+    return (new UsuarioController())->contactar_con_zesari();
+});
 
 Router::add('GET', 'usuario/gestion', function(){ //acceder los empleados y admin
     Utils::isAdminOrEmpleado();
@@ -244,6 +240,13 @@ Router::add('GET', 'pago/gestion', function(){
 
 /*********************************************** */
 /***********************HORARIO***************** */
+
+Router::add('GET', 'horario/crear_mes', function(){
+    Utils::isAdminOrEmpleado();
+    return (new HorarioController())->crear_mes();
+});
+
+
 Router::add('GET', 'horario/gestion', function(){
     Utils::isAdminOrEmpleado();
     return (new HorarioController())->gestion();
@@ -253,19 +256,10 @@ Router::add('GET', 'horario/crear', function(){
     Utils::isAdmin();
     return (new HorarioController())->save();
 });
+
 Router::add('POST', 'horario/crear', function(){
     Utils::isAdmin();
     return (new HorarioController())->save();
-});
-
-Router::add('GET', 'horario/apuntar/:id', function($id){
-    Utils::isAdmin();
-    return (new HorarioController())->apuntar($id);
-});
-
-Router::add('POST', 'horario/apuntar/:id', function($id){
-    Utils::isAdmin();
-    return (new HorarioController())->apuntar($id);
 });
 
 Router::add('GET', 'horario/editar/:id', function($id){
@@ -278,10 +272,35 @@ Router::add('POST', 'horario/editar/:id', function($id){
     return (new HorarioController())->editar($id);
 });
 
+Router::add('GET', 'horario/editarTodo', function(){
+    Utils::isAdmin();
+    return (new HorarioController())->editarTodo();
+});
+
+Router::add('POST', 'horario/editarTodo', function(){
+    Utils::isAdmin();
+    return (new HorarioController())->editarTodo();
+});
+
 Router::add('GET', 'horario/borrar/:id', function($id){
     Utils::isAdmin();
     return (new HorarioController())->delete($id);
 });
 
+/**APUNTAR */
+Router::add('GET', 'horario/apuntar/:id', function($id){
+    Utils::isAdmin();
 
+    return (new ApunteController())->apuntar($id);
+});
+
+Router::add('POST', 'horario/apuntar/:id', function($id){
+    Utils::isAdmin();
+    return (new ApunteController())->apuntar($id);
+});
+
+Router::add('GET', 'horario/desapuntar/:id', function($id){
+    Utils::isAdmin();
+    return (new ApunteController())->desapuntar($id);
+});
 Router::dispatch();

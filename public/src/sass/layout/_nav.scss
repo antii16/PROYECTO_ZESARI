@@ -4,7 +4,7 @@ header {
         z-index: 10000;
         width: 90px;
         display: inline-block;
-        position: fixed;
+        position: absolute;
         margin-left: 100px;
 
         @include max(nav-menu) {
@@ -29,7 +29,7 @@ header {
 
         @include max(nav-menu) {
             display: block;
-            
+
         }
     }
 
@@ -39,10 +39,11 @@ header {
         width: 100%;
         justify-content: center;
         background-color: $paleta1;
-        position: fixed;
+        //position: fixed;
         z-index: 1000;
-        
+
         @include max(nav-menu) {
+            position: fixed;
             display: block;
             margin-left: -100%;
             width: 70%;
@@ -90,9 +91,7 @@ header {
             .imagen-user {
                 width: 20px;
             }
-            
-           
-            
+
             .submenu {
                 //ul desplegable
                 position: absolute;
@@ -122,7 +121,7 @@ header {
                     color: #fff;
                     height: 100%;
                     align-items: center;
-        
+
                     &:hover {
                         color: grey;
                     }
