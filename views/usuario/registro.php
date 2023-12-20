@@ -56,9 +56,12 @@ use Utils\Utils;
                     <p>
                         <label for="rol">Rol: </label>
                         <select name="data[rol]" id="">
-                            <option value="empleado">Empleado</option>
+                            
                             <option value="cliente"  selected="true">Cliente</option>
+                            <?php if (isset($_SESSION['admin'])) : ?>
+                            <option value="empleado">Empleado</option>
                             <option value="admin">Administrador</option>
+                            <?php endif; ?>
                         </select>
                     </p>
 
