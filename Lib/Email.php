@@ -6,6 +6,9 @@ use Utils\Utils;
 
 class Email {
     public function enviarEmail($datos) {
+        $email = $datos['email'];
+        $password = $datos['password'];
+        
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
         $phpmailer->Host = 'smtp.gmail.com';
@@ -15,13 +18,10 @@ class Email {
         $phpmailer->Password = 'ocdj qhhm qjdu xmet'; /**contraseña de este correo */
 
         $phpmailer->setFrom('pilatescentrosalud@gmail.com');
-        $phpmailer->addAddress('alvareznella45@gmail.com', 'Cliente');
+        $phpmailer->addAddress($email, 'Cliente');
         $phpmailer->Subject = 'Bienvenida ZESARI';
         $phpmailer->isHTML(true);
         $phpmailer->CharSet = 'UTF-8';
-
-        $email = $datos['email'];
-        $password = $datos['password'];
 
         $phpmailer->Body = '';
 
