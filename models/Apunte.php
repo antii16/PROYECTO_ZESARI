@@ -5,7 +5,6 @@ use Lib\BaseDatos;
 use PDO;
 use PDOException;
 
-
 class Apunte{
     private int $id;
     private string $id_cliente;
@@ -40,22 +39,6 @@ class Apunte{
 
     public function set_idHorario(int $id_horario){
         $this->id_horario = $id_horario;
-    }
-
-    public static function cantidadApunte($id_cliente, $id_categoria) {
-        /**
-         * Selecciona el número de veces que el cliente está apuntado 
-         * en esa categoría. Por ejemplo, en studio está apuntado a 2 clases
-         * */
-        $horario = new Horario();
-        $query = "SELECT COUNT(horario.id) AS cantidad_horario
-        FROM horario 
-        INNER JOIN apuntado ON apuntado.id_horario = horario.id
-        WHERE id_cliente = {$id_cliente}
-        AND id_categoria = {$id_categoria}";
-
-        $horario =  $horario->db->query($query);
-        return $horario->fetch(PDO::FETCH_OBJ);
     }
 
     public function validarApunte($datos){
@@ -123,7 +106,8 @@ class Apunte{
             
         }
 
-       return $result;
+    //    var_dump($result);
+    //    die();
     }
 
     public function borrar() {

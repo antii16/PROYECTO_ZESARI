@@ -45,7 +45,7 @@ unset($_SESSION['apuntar']);
         <form id="formularioCrear" action="<?=$_ENV['base_url']?>horario/apuntar/<?=$id?>" method="POST" enctype="multipart/form-data">
         <?php foreach($datos as $pago):?>
             <?php 
-                $cantidad = Apunte::cantidadApunte($id, $pago->id_categoria); //tiene que separar por id_cliente y 
+                $cantidad = Horario::cantidadApunte($id, $pago->id_categoria); //tiene que separar por id_cliente y 
                 $clases_apuntadas = $pago->n_clases_apuntar - $cantidad->cantidad_horario; // 4 - 0
         
         ?>

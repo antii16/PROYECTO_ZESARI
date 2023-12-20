@@ -290,7 +290,6 @@ Router::add('GET', 'horario/borrar/:id', function($id){
 /**APUNTAR */
 Router::add('GET', 'horario/apuntar/:id', function($id){
     Utils::isAdmin();
-
     return (new ApunteController())->apuntar($id);
 });
 

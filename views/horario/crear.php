@@ -50,8 +50,8 @@ unset($_SESSION['crear_horario']);
                     <option value="11">Noviembre</option>
                     <option value="12">Diciembre</option>
                 </select>
-
-                <table border="1" id="horario"></table>   
+                <div id="div"></div>
+                <!-- <table border="1" ></table>    -->
 
                 <div class="contenedor">
                         <input class="insertarDato" type="submit" name="crear" value="Crear">
@@ -65,7 +65,7 @@ unset($_SESSION['crear_horario']);
 
 <script type="text/javascript">
        var mes = document.getElementById('mes');
-       var tabla = document.getElementById('horario');
+       var div = document.getElementById('div');
 
        mes.addEventListener('change', function() {
             var mes_seleccionado = mes.value;
@@ -85,11 +85,11 @@ unset($_SESSION['crear_horario']);
             // console.log(selectedValue);
             var dayCounter = 1;
             var horario = '';
-            horario += '<tr><th>Fecha y hora</th><th>Categoría</th><th>Aforo disponible</th></tr>';
+            horario += '<table id="tabla" class="display responsive nowrap" style="width:100%"><thead><tr><th>Fecha y hora</th><th>Categoría</th><th>Aforo disponible</th></tr></thead><tbody>';
             while(dayCounter <= numDays) {
                 for(hora = 8; hora <= 21; hora++){
                     horario += '<tr><td>';
-                    // Suponiendo que ya tienes las variables año, mes, dayCounter y hora
+                    // Suponiendo que ya se tiene las variables año, mes, dayCounter y hora
                     var fechaFormateada = `${ano}-${(mes_seleccionado + '').padStart(2, '0')}-${(dayCounter + '').padStart(2, '0')} ${hora}:00:00`;
 
                     horario += `<input type="text" name="data[fecha][]" value="${fechaFormateada}" required></td>`;
@@ -102,8 +102,8 @@ unset($_SESSION['crear_horario']);
                 dayCounter++;
                 firstDayOfWeek = 0;
             }
-                
-            tabla.innerHTML = horario;
+            horario += '</tbody></table>';   
+            div.innerHTML = horario;
             
         });
 </script>

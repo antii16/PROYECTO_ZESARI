@@ -28,7 +28,7 @@ class ApunteController{
             if(isset($_POST['data'])){
                 
                 $datos = $_POST['data'];
-                $apunte_validado = $horario->validarApunte($datos); 
+                $apunte_validado = $apunte->validarApunte($datos); 
                 if(count($apunte_validado) == 0){
                     $i = count($datos['id_horario'])-1;
                     for($fila=0;$fila <= $i; $fila++) {
@@ -38,7 +38,7 @@ class ApunteController{
                         
                         $id_categoria = $horario->conseguirIdCategoria($id_horario);
                         $aforo = $horario->comprobarAforo($id_horario);
-                        $cantidad = Apunte::cantidadApunte($id_cliente, $id_categoria->id_categoria);
+                        $cantidad = Horario::cantidadApunte($id_cliente, $id_categoria->id_categoria);
                         $pagos = Pago::getAllPagos($id_cliente);
                         $clases_total = $pagos[0]->n_clases_apuntar - $cantidad->cantidad_horario;
                     

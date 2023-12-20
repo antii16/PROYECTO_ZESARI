@@ -132,6 +132,23 @@ class Horario{
         
         return $horarioFiltrado;
     }
+
+    public static function cantidadApunte($id_cliente, $id_categoria) {
+        /**
+         * Selecciona el número de veces que el cliente está apuntado 
+         * en esa categoría. Por ejemplo, en studio está apuntado a 2 clases
+         * */
+        $horario = new Horario();
+        $query = "SELECT COUNT(horario.id) AS cantidad_horario
+        FROM horario 
+        INNER JOIN apuntado ON apuntado.id_horario = horario.id
+        WHERE id_cliente = {$id_cliente}
+        AND id_categoria = {$id_categoria}";
+
+        $horario = $horario->db->query($query);
+        return $horario->fetch(PDO::FETCH_OBJ);
+    }
+    
     public function save() {
         /**
          * Guarda los datos del horario

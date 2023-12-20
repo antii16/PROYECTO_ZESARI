@@ -4,11 +4,7 @@
     justify-content: space-around;
     width: 100%;
     
-    // @include max(movil-max) {
-    //     flex-direction: column;
-    // }
-
-    @include between(movil-max, nav-menu) {
+    @include max(movil-max) {
         flex-direction: column;
     }
     .caja {
