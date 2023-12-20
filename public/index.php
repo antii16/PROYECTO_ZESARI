@@ -289,17 +289,17 @@ Router::add('GET', 'horario/borrar/:id', function($id){
 
 /**APUNTAR */
 Router::add('GET', 'horario/apuntar/:id', function($id){
-    Utils::isAdmin();
+    Utils::isAdminOrEmpleado();
     return (new ApunteController())->apuntar($id);
 });
 
 Router::add('POST', 'horario/apuntar/:id', function($id){
-    Utils::isAdmin();
+    Utils::isAdminOrEmpleado();
     return (new ApunteController())->apuntar($id);
 });
 
 Router::add('GET', 'horario/desapuntar/:id', function($id){
-    Utils::isAdmin();
+    Utils::isAdminOrEmpleado();
     return (new ApunteController())->desapuntar($id);
 });
 Router::dispatch();
